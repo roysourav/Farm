@@ -1,0 +1,226 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+
+use App\Cow;
+
+use App\CowSeller;
+
+use Session;
+
+use Redirect;
+
+use Carbon\Carbon;
+
+
+class cowController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    public function index()
+    {
+        $cows = Cow::all();
+
+        return view( 'cow.index-cow' )->with( 'cows', $cows );
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+       $cowsellers = CowSeller::lists('name','id')->toArray();
+       
+       $cowsellers = array_merge( [null =>'Please Select'], $cowsellers );
+
+
+       return view( 'cow.create-cow' )->withCowsellers($cowsellers);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+         //validate data
+        $this->validate( $request, array(
+
+                'name'          => 'required |  Min:3 | max:100',
+                'sex'           => 'required | string' ,
+                'color'         => 'required | string' ,
+                'img'           => 'image | max:500 | min:50',
+                'date_of_birth' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'weight'        => 'required | digits_between:2,3',
+                'significant_sign' => 'regex:/^[\pL\s\-]+$/u',
+                'price'         => 'required | digits_between:4,6',
+                'date_of_purchase' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'cowseller_id'     => 'required | numeric',
+                'milking_channels' => 'required | digits:1',
+                'date_of_milking' => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'date_of_dryness' => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'disease'       => 'regex:/^[\pL\s\-]+$/u',
+                
+            ) );
+
+        //store in database
+
+        $cow = new Cow;
+
+        $cow->name             = $request->name;
+        $cow->sex              = $request->sex;
+        $cow->color            = $request->color;
+        $cow->date_of_birth    = $request->date_of_birth;
+        $cow->weight           = $request->weight;
+        $cow->significant_sign = $request->significant_sign;
+        $cow->price            = $request->price;
+        $cow->date_of_purchase = $request->date_of_purchase;
+        $cow->cowseller_id     = $request->cowseller_id;
+        $cow->milking_channels = $request->milking_channels;
+        $cow->date_of_milking  = $request->date_of_milking;
+        $cow->date_of_dryness  = $request->date_of_dryness;
+        $cow->disease          = $request->disease;
+
+        if( $request->hasFile('img') ){
+
+            $img = $request->file('img');
+
+            $original_name = $img->getClientOriginalName();
+
+            $img_name = time().'-'.$original_name;
+
+            $img->move('images' , $img_name);
+
+            $img_path = '/images/'.$img_name;
+
+            $cow->img = $img_path;
+        }else{
+            $cow->img = '/images/avatar.png';
+        }
+
+        $cow->save();
+
+        Session::flash( 'success', 'New cow has been saved successfully!' );
+
+        return Redirect::route( 'cow.edit', ['id'=> $cow->id] );
+
+
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $cow = Cow::find($id);
+
+        return view( 'cow.show-cow' )->withCow($cow);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $cow = Cow::find($id);
+
+        $cowsellers = CowSeller::lists('name','id');
+
+        return view('cow.edit-cow')->withCow($cow)->withCowsellers($cowsellers);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+           //validate data
+        $this->validate( $request, array(
+
+                'name'          => 'required |  Min:3 | max:100',
+                'sex'           => 'required | string' ,
+                'color'         => 'required | string' ,
+                'date_of_birth' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'weight'        => 'required | digits_between:2,3',
+                'significant_sign' => 'regex:/^[\pL\s\-]+$/u',
+                'price'         => 'required | digits_between:4,6',
+                'date_of_purchase' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'cowseller_id'     => 'required | numeric',
+                'milking_channels' => 'required | digits:1',
+                'date_of_milking' => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'date_of_dryness' => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'disease'       => 'regex:/^[\pL\s\-]+$/u',
+                
+            ) );
+
+        //updating data
+
+        $cow = Cow::find($id);
+
+        $cow->name             = $request->name;
+        $cow->sex              = $request->sex;
+        $cow->color            = $request->color;
+        $cow->date_of_birth    = $request->date_of_birth;
+        $cow->weight           = $request->weight;
+        $cow->significant_sign = $request->significant_sign;
+        $cow->price            = $request->price;
+        $cow->date_of_purchase = $request->date_of_purchase;
+        $cow->cowseller_id     = $request->cowseller_id;
+        $cow->milking_channels = $request->milking_channels;
+        $cow->date_of_milking  = $request->date_of_milking;
+        $cow->date_of_dryness  = $request->date_of_dryness;
+        $cow->disease          = $request->disease;
+
+        $cow->save();
+
+        Session::flash( 'success' , 'Cow Info. has been updated successfully!' );
+
+        return Redirect::route( 'cow.edit' ,['id'=>$cow->id]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $cow = Cow::find($id);
+
+        $cow->delete();
+
+        Session::flash( 'success', 'Cow Has Been Deleted Successfully !' );
+
+        return Redirect::route( 'cow.index' );
+    }
+}

@@ -4,7 +4,7 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Add New Supplier</h1>
+    <h1>Add New Doctor</h1>
 </section>
 
 @include('partials._message')
@@ -18,34 +18,15 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-9">
-                                    {!! Form::open( array( 'route'=>'supplier.store', 'files'=>true,'id'=>'form',  ) ) !!}
+                                    {!! Form::open( array( 'route'=>'doctor.store', 'id'=>'form', 'files'=>true ) ) !!}
 
                                         <div class="form-group">
 
-                                            <label class="col-sm-3 control-label">Name Of Supplier *</label>
+                                            <label class="col-sm-3 control-label">Name Of Doctor *</label>
 
                                             <div class="col-sm-9">
 
                                                 {!! Form::text( 'name', null, array( 'class'=>'form-control','placeholder'=>'Enter Name', 'required'=> '','minlength'=>'3' ) ) !!}
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <label class="col-sm-3 control-label">Category *</label>
-
-                                            <div class="col-sm-9">
-
-                                                {!! Form::select('cat', [
-                                                   'cow' => 'Cow Supplier',
-                                                   'food' => 'Food Supplier',
-                                                   'medicine' => 'Medicine Supplier',
-                                                   'seed' => 'Seed Supplier',
-                                                   ],'cow',
-                                                   ['class'=>'form-control','required'=> '']
-                                                ) !!}
 
                                             </div>
 
@@ -76,30 +57,6 @@
 
                                         </div>
 
-                                        <div class="form-group">
-
-                                            <label class="col-sm-3 control-label">Additional Mobile </label>
-
-                                            <div class="col-sm-9">
-
-                                                {!! Form::text( 'additional_mobile_one', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','data-parsley-type'=>'number','data-parsley-length'=>'[11, 11]','data-parsley-length-message'=>'This value should be exactly 11 characters long' ) ) !!} 
-                                                        
-                                            </div>
-
-                                         </div>
-
-                                         <div class="form-group">
-
-                                            <label class="col-sm-3 control-label"></label>
-
-                                            <div class="col-sm-9">
-
-                                                {!! Form::text( 'additional_mobile_two', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','data-parsley-type'=>'number','data-parsley-length'=>'[11, 11]','data-parsley-length-message'=>'This value should be exactly 11 characters long' ) ) !!} 
-                                                        
-                                            </div>
-
-                                         </div>
-                                        
 
 
                                         <div class="form-group">
@@ -168,13 +125,15 @@
 
                                         <div class="col-sm-9">
                                             <div class="buttons">
-                                                <a href="{{ route('supplier.index') }}" class="btn btn-primary">Go Back</a>
+                                                <a href="{{ route('doctor.index') }}" class="btn btn-primary">Go Back</a>
                                                                 
                                                 <button type="reset" class="btn btn-danger">Reset All Fields</button>
 
-                                                {!! Form::submit( 'Create New Supplier', array( 'class'=>'btn btn-success' ) ) !!}
+                                                {!! Form::submit( 'Create New Doctor', array( 'class'=>'btn btn-success' ) ) !!}
+
                                             </div>
-                                           
+                                                
+                                       
                                         </div>
                                         
                                         {!! Form::close() !!}

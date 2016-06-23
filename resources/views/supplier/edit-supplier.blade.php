@@ -18,7 +18,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-9">
-                        {!! Form::model( $supplier, array( 'method'=>'put', 'route'=> array( 'supplier.update', $supplier->id ),'id'=>'form' ) ) !!}
+                        {!! Form::model( $supplier, array( 'method'=>'put', 'route'=> array( 'supplier.update', $supplier->id ),'id'=>'form','files'=>true ) ) !!}
 
                                         <div class="form-group">
 
@@ -32,6 +32,37 @@
 
                                         </div>
 
+                                        <div class="form-group">
+
+                                            <label class="col-sm-3 control-label">Category *</label>
+
+                                            <div class="col-sm-9">
+
+                                                {!! Form::select('cat', [
+                                                   'cow' => 'Cow Supplier',
+                                                   'food' => 'Food Supplier',
+                                                   'medicine' => 'Medicine Supplier',
+                                                   'seed' => 'Seed Supplier',
+                                                   ],$supplier->cat,
+                                                   ['class'=>'form-control','required'=> '']
+                                                ) !!}
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <label class="col-sm-3 control-label">Image</label>
+
+                                            <div class="col-sm-9">
+
+                                                {!! Form::file('img') !!} 
+
+                                            </div>
+
+                                        </div>
+
                                         
                                         <div class="form-group">
 
@@ -39,7 +70,7 @@
 
                                             <div class="col-sm-9">
 
-                                                {!! Form::text( 'mobile', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','required'=> '','data-parsley-type'=>'number','data-parsley-length'=>'[10, 10]','data-parsley-length-message'=>'This value should be exactly 10 characters long' ) ) !!} 
+                                                {!! Form::text( 'mobile', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','required'=> '','data-parsley-type'=>'number','data-parsley-length'=>'[11, 11]','data-parsley-length-message'=>'This value should be exactly 11 characters long' ) ) !!} 
                                                         
                                             </div>
 
@@ -51,7 +82,7 @@
 
                                             <div class="col-sm-9">
 
-                                                {!! Form::text( 'additional_mobile_one', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','data-parsley-type'=>'number','data-parsley-length'=>'[10, 10]','data-parsley-length-message'=>'This value should be exactly 10 characters long' ) ) !!} 
+                                                {!! Form::text( 'additional_mobile_one', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','data-parsley-type'=>'number','data-parsley-length'=>'[11, 11]','data-parsley-length-message'=>'This value should be exactly 11 characters long' ) ) !!} 
                                                         
                                             </div>
 
@@ -63,7 +94,7 @@
 
                                             <div class="col-sm-9">
 
-                                                {!! Form::text( 'additional_mobile_two', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','data-parsley-type'=>'number','data-parsley-length'=>'[10, 10]','data-parsley-length-message'=>'This value should be exactly 10 characters long' ) ) !!} 
+                                                {!! Form::text( 'additional_mobile_two', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','data-parsley-type'=>'number','data-parsley-length'=>'[11, 11]','data-parsley-length-message'=>'This value should be exactly 11 characters long' ) ) !!} 
                                                         
                                             </div>
 

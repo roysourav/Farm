@@ -18,7 +18,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-9">
-                        {!! Form::model( $cow, array( 'method'=>'put', 'route'=> array( 'cow.update', $cow->id ),'id'=>'form' ) ) !!}
+                        {!! Form::model( $cow, array( 'method'=>'put', 'route'=> array( 'cow.update', $cow->id ),'id'=>'form','files'=>true ) ) !!}
 
                                
                             <div class="form-group">
@@ -62,6 +62,18 @@
 
                             </div>
 
+                             <div class="form-group">
+
+                                <label class="col-sm-3 control-label">Image</label>
+
+                                <div class="col-sm-9">
+
+                                    {!! Form::file('img') !!} 
+
+                                </div>
+
+                            </div>
+
                             <div class="form-group ">
 
                                 <label class="col-sm-3 control-label">Date Of Birth *</label>
@@ -79,6 +91,23 @@
 
                                 </div>
 
+                            </div>
+
+                            <div class="form-group m_bottom_30">
+                                <label class="col-sm-3 control-label">Cow Percentage(Seed) *</label> 
+                            
+                            
+                                <div class="col-sm-9">
+
+                                    <div class=" input-group">
+
+                                        {!! Form::text( 'percentage', null, array( 'class'=>'form-control','placeholder'=>'Enter Percentage','required'=> '','data-parsley-type'=>'number','data-parsley-range'=>'[0, 100]' ) ) !!}
+
+                                        <span class="input-group-addon">%</span>
+
+                                    </div>
+
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -145,13 +174,13 @@
 
                              <div class="form-group">
 
-                                <label class="col-sm-3 control-label">Seller *</label>
+                                <label class="col-sm-3 control-label">Supplier *</label>
 
                                 <div class="col-sm-9">
                                 
                                    
-                                    {!! Form::select('cowseller_id',$cowsellers,
-                                    $cow->seller->id,[ 'class' => 'form-control','required'=> '']
+                                    {!! Form::select('supplier_id',$suppliers,
+                                    $cow->supplier->id,[ 'class' => 'form-control','required'=> '']
 
                                     ) !!}  
                                 

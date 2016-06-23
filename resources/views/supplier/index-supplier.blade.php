@@ -21,9 +21,11 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
+                                            <th>Sl</th>
                                             <th>#</th>
                                             <th>Name Of Supplier</th>
                                             <th> Id</th>
+                                            <th> Category</th>
                                             <th>Mobile</th>
                                             <th>Email</th>
                                             <th>Bank Account No.</th>
@@ -40,8 +42,21 @@
 										<?php $count++  ?>
                                         <tr>
                                             <td style="color:#fff; background:#9B0D07;">{{ $count }}</td>
+
+                                            <td style="display: block;margin: 0 auto;width: 60px;"> {{ Html::image($supplier->img, $supplier->name, array('class' => 'img-responsive ')) }}</td>
+
                                             <td>{{ $supplier->name }}</td>
                                             <td>{{ 'S-'.$supplier->id }}</td>
+                                            @if( $supplier->cat == 'cow' )
+                                            <td>{{ 'Cow Supplier' }}</td>
+                                            @elseif( $supplier->cat == 'food' )
+                                            <td>{{ 'Food Supplier' }}</td>
+                                            @elseif( $supplier->cat == 'medicine' )
+                                            <td>{{ 'Medicine Supplier' }}</td>
+                                            @else( $supplier->cat == 'seed' )
+                                            <td>{{ 'Seed Supplier' }}</td>
+                                            @endif
+
                                             <td>
                                             <a title=""  href="tel:{{ $supplier->mobile }}"> {{ $supplier->mobile }}</a>
                                             </td>

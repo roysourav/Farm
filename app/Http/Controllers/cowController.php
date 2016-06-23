@@ -8,7 +8,7 @@ use App\Http\Requests;
 
 use App\Cow;
 
-use App\CowSeller;
+use App\Supplier;
 
 use Session;
 
@@ -45,12 +45,18 @@ class cowController extends Controller
      */
     public function create()
     {
-       $cowsellers = CowSeller::lists('name','id')->toArray();
-       
-       $cowsellers = array_merge( [null =>'Please Select'], $cowsellers );
+       $suppliers = Supplier::where('cat', '=','cow')->lists('name','id')->toArray();
 
 
-       return view( 'cow.create-cow' )->withCowsellers($cowsellers);
+       /*wanted to give "please select" option 
+       by the below array merge but 
+        returning value 0 for first array items
+        need to fix these*/
+
+       //$cowsellers = array_merge(  $cowsellers ,[null =>'Please Select']);
+
+
+       return view( 'cow.create-cow' )->withSuppliers($suppliers);
     }
 
     /**
@@ -69,14 +75,15 @@ class cowController extends Controller
                 'color'         => 'required | string' ,
                 'img'           => 'image | max:500 | min:50',
                 'date_of_birth' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'percentage'    => 'required | numeric | between:0,100',
                 'weight'        => 'required | digits_between:2,3',
                 'significant_sign' => 'regex:/^[\pL\s\-]+$/u',
                 'price'         => 'required | digits_between:4,6',
                 'date_of_purchase' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
-                'cowseller_id'     => 'required | numeric',
+                'supplier_id'     => 'required | numeric',
                 'milking_channels' => 'required | digits:1',
-                'date_of_milking' => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
-                'date_of_dryness' => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'date_of_milking'  => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'date_of_dryness'  => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
                 'disease'       => 'regex:/^[\pL\s\-]+$/u',
                 
             ) );
@@ -89,11 +96,12 @@ class cowController extends Controller
         $cow->sex              = $request->sex;
         $cow->color            = $request->color;
         $cow->date_of_birth    = $request->date_of_birth;
+        $cow->percentage       = $request->percentage;
         $cow->weight           = $request->weight;
         $cow->significant_sign = $request->significant_sign;
         $cow->price            = $request->price;
         $cow->date_of_purchase = $request->date_of_purchase;
-        $cow->cowseller_id     = $request->cowseller_id;
+        $cow->supplier_id      = $request->supplier_id;
         $cow->milking_channels = $request->milking_channels;
         $cow->date_of_milking  = $request->date_of_milking;
         $cow->date_of_dryness  = $request->date_of_dryness;
@@ -113,7 +121,7 @@ class cowController extends Controller
 
             $cow->img = $img_path;
         }else{
-            $cow->img = '/images/avatar.png';
+            $cow->img = '/images/avatar.jpg';
         }
 
         $cow->save();
@@ -149,9 +157,9 @@ class cowController extends Controller
     {
         $cow = Cow::find($id);
 
-        $cowsellers = CowSeller::lists('name','id');
+        $suppliers = Supplier::where('cat', '=','cow')->lists('name','id');
 
-        return view('cow.edit-cow')->withCow($cow)->withCowsellers($cowsellers);
+        return view('cow.edit-cow')->withCow($cow)->withSuppliers($suppliers);
     }
 
     /**
@@ -169,12 +177,14 @@ class cowController extends Controller
                 'name'          => 'required |  Min:3 | max:100',
                 'sex'           => 'required | string' ,
                 'color'         => 'required | string' ,
+                'img'           => 'image | max:500 | min:50',
                 'date_of_birth' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'percentage'    => 'required | numeric | between:0,100',
                 'weight'        => 'required | digits_between:2,3',
                 'significant_sign' => 'regex:/^[\pL\s\-]+$/u',
                 'price'         => 'required | digits_between:4,6',
                 'date_of_purchase' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
-                'cowseller_id'     => 'required | numeric',
+                'supplier_id'     => 'required | numeric',
                 'milking_channels' => 'required | digits:1',
                 'date_of_milking' => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
                 'date_of_dryness' => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
@@ -190,15 +200,33 @@ class cowController extends Controller
         $cow->sex              = $request->sex;
         $cow->color            = $request->color;
         $cow->date_of_birth    = $request->date_of_birth;
+        $cow->percentage       = $request->percentage;
         $cow->weight           = $request->weight;
         $cow->significant_sign = $request->significant_sign;
         $cow->price            = $request->price;
         $cow->date_of_purchase = $request->date_of_purchase;
-        $cow->cowseller_id     = $request->cowseller_id;
+        $cow->supplier_id      = $request->supplier_id;
         $cow->milking_channels = $request->milking_channels;
         $cow->date_of_milking  = $request->date_of_milking;
         $cow->date_of_dryness  = $request->date_of_dryness;
         $cow->disease          = $request->disease;
+
+        if( $request->hasFile('img') ){
+
+            $img = $request->file('img');
+
+            $original_name = $img->getClientOriginalName();
+
+            $img_name = time().'-'.$original_name;
+
+            $img->move('images' , $img_name);
+
+            $img_path = '/images/'.$img_name;
+
+            $cow->img = $img_path;
+        }else{
+            $cow->img = '/images/avatar.jpg';
+        }
 
         $cow->save();
 

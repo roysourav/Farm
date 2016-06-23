@@ -95,8 +95,8 @@
                                         </tr>
 
                                         <tr>
-                                            <td>Seller :</td>
-                                            <td>{{ $cow->seller->name }}</td>
+                                            <td>Supplier :</td>
+                                            <td>{{ $cow->supplier->name }}</td>
                                             
                                         </tr>
 

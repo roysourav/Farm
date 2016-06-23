@@ -19,11 +19,12 @@ class CreateCowsTable extends Migration
             $table->string('color');
             $table->string('img');
             $table->string('date_of_birth');
+            $table->integer('percentage');
             $table->string('weight');
             $table->string('significant_sign');
             $table->integer('price');
             $table->string('date_of_purchase');
-            $table->integer('cow_seller_id');
+            $table->integer('supplier_id');
             $table->string('milking_channels');
             $table->string('date_of_milking');
             $table->string('date_of_dryness');

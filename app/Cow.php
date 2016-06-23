@@ -9,8 +9,8 @@ class Cow extends Model
      /**
      * Get the seller who sell the cow.
      */
-    public function seller()
+    public function supplier()
     {
-        return $this->belongsTo('App\CowSeller','cowseller_id');
+        return $this->belongsTo('App\Supplier');
     }
 }

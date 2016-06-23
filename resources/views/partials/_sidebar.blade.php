@@ -6,14 +6,8 @@
 
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel">
-            <div class="pull-left image">
-              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-            </div>
-            <div class="pull-left info">
-              <p>Alexander Pierce</p>
-              <!-- Status -->
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
+            
+            
           </div>
 
           <!-- search form (Optional) -->
@@ -30,19 +24,17 @@
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
 
-            <li class="header">HEADER</li>
-            
-
             <li class="treeview">
-
-              <a href="#"><i class="fa fa-user"></i> <span>Employees</span> <i class="fa fa-angle-left pull-right"></i></a>
+            
+              <a href="#"><i class="fa fa-thumb-tack"></i> <span>Cows</span> <i class="fa fa-angle-left pull-right"></i></a>
 
               <ul class="treeview-menu">
-                <li><a href="{{ route( 'employee.index' ) }}">All Employees</a></li>
-                <li><a href="{{ route( 'employee.create' ) }}">Add New Employee</a></li>
+                <li><a href="{{ route( 'cow.index' ) }}">View All Cows</a></li>
+                <li><a href="{{ route( 'cow.create' ) }}">Add New Cow</a></li>
               </ul>
 
             </li>
+            
 
             <li class="treeview">
 
@@ -66,30 +58,19 @@
               </ul>
 
             </li>
-
+            
             <li class="treeview">
             
-              <a href="#"><i class="fa fa-thumb-tack"></i> <span>Cows</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class="fa fa-male"></i> <span>Doctors</span> <i class="fa fa-angle-left pull-right"></i></a>
 
               <ul class="treeview-menu">
-                <li><a href="{{ route( 'cow.index' ) }}">View All Cows</a></li>
-                <li><a href="{{ route( 'cow.create' ) }}">Add New Cow</a></li>
+                <li><a href="{{ route( 'doctor.index' ) }}">View All Doctors</a></li>
+                <li><a href="{{ route( 'doctor.create' ) }}">Add New Doctor</a></li>
               </ul>
 
             </li>
-
-
-            <li class="treeview">
             
-              <a href="#"><i class="fa fa-male"></i> <span>Cow Sellers</span> <i class="fa fa-angle-left pull-right"></i></a>
-
-              <ul class="treeview-menu">
-                <li><a href="{{ route( 'cowseller.index' ) }}">View All Cow Sellers</a></li>
-                <li><a href="{{ route( 'cowseller.create' ) }}">Add New Cow Seller</a></li>
-              </ul>
-
-            </li>
-
+            
 
             <li class="treeview">
             

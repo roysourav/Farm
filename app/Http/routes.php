@@ -25,6 +25,8 @@ Route::resource( 'cow', 'cowController' );
 
 Route::resource( 'cowseller' , 'cowsellerController' );
 
+Route::resource( 'doctor' , 'doctorController' );
+
 
 
 

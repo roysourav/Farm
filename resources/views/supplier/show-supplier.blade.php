@@ -16,7 +16,10 @@
                         <div class="panel-heading">
                             Details Of Supplier : {{ $supplier->name }}
                         </div>
-                        <!-- /.panel-heading -->
+                        <div class="image ">
+                            {{ Html::image($supplier->img, $supplier->name, array('class' => 'img-responsive img-thumbnail')) }}
+                            </div>
+                        
                         <div class="panel-body">
                             <div class="table-responsive text-float-left">
                                 <table class="table table-striped table-bordered table-hover">
@@ -28,10 +31,35 @@
                                             <td>{{ $supplier->name }}</td>
                                             
                                         </tr>
-                                        
+
+                                        <tr>
+                                            <td>Category :</td>
+                                            @if( $supplier->cat == 'cow' )
+                                            <td>{{ 'Cow Supplier' }}</td>
+                                            @elseif( $supplier->cat == 'food' )
+                                            <td>{{ 'Food Supplier' }}</td>
+                                            @elseif( $supplier->cat == 'medicine' )
+                                            <td>{{ 'Medicine Supplier' }}</td>
+                                            @else( $supplier->cat == 'seed' )
+                                            <td>{{ 'Seed Supplier' }}</td>
+                                            @endif
+                                        </tr>
+
                                         <tr>
                                             <td>Mobile No :</td>
                                             <td><a title=""  href="tel:{{ $supplier->mobile }}"> {{ $supplier->mobile }}</a></td>
+                                            
+                                        </tr>
+
+                                        <tr>
+                                            <td>Add. Mobile No. One:</td>
+                                            <td><a title=""  href="tel:{{ $supplier->additional_mobile_one }}"> {!! $supplier->additional_mobile_one?$supplier->additional_mobile_one:'N/A' !!}</a></td>
+                                            
+                                        </tr>
+
+                                        <tr>
+                                            <td>Add. Mobile No. One:</td>
+                                            <td><a title=""  href="tel:{{ $supplier->additional_mobile_two }}"> {!! $supplier->additional_mobile_two?$supplier->additional_mobile_two:'N/A' !!}</a></td>
                                             
                                         </tr>
                                         

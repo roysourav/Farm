@@ -2,12 +2,10 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Add New Cow</h1>
-    </div>
-                
-</div> 
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Add New Cow</h1>
+</section>
 
 @include('partials._message')
 
@@ -95,6 +93,23 @@
 
                             </div>
 
+                            <div class="form-group m_bottom_30">
+                                <label class="col-sm-3 control-label">Cow Percentage(Seed) *</label> 
+                            
+                            
+                                <div class="col-sm-9">
+
+                                    <div class=" input-group">
+
+                                        {!! Form::text( 'percentage', null, array( 'class'=>'form-control','placeholder'=>'Enter Percentage','required'=> '','data-parsley-type'=>'number','data-parsley-range'=>'[0, 100]' ) ) !!}
+
+                                        <span class="input-group-addon">%</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
                             <div class="form-group">
 
                                 <label class="col-sm-3 control-label">Weight (KG) *</label>
@@ -159,13 +174,13 @@
 
                              <div class="form-group">
 
-                                <label class="col-sm-3 control-label">Seller *</label>
+                                <label class="col-sm-3 control-label">Supplier *</label>
 
                                 <div class="col-sm-9">
                                 
                                     
 
-                                    {!! Form::select('cowseller_id',$cowsellers,
+                                    {!! Form::select('supplier_id',$suppliers,
                                     null,[ 'class' => 'form-control','required'=> '']
 
                                     ) !!} 

@@ -60,9 +60,11 @@ class supplierController extends Controller
         $this->validate( $request, array(
 
                 'name'        => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
-                'mobile'      => 'required | digits:10 | unique:suppliers,mobile',
-                'additional_mobile_one' => ' digits:10 | unique:suppliers,mobile',
-                'additional_mobile_two' => 'digits:10 | unique:suppliers,mobile',
+                'cat'         => 'required ',
+                'img'         => 'image | max:500 | min:50',
+                'mobile'      => 'required | digits:11 | unique:suppliers,mobile',
+                'additional_mobile_one' => ' digits:11 | unique:suppliers,mobile',
+                'additional_mobile_two' => 'digits:11 | unique:suppliers,mobile',
                 'email'       => 'required | email | unique:suppliers,email',
                 'address'     => 'required | min:10 |',
                 'account_no'  => 'required | numeric | unique:suppliers,account_no',
@@ -77,21 +79,41 @@ class supplierController extends Controller
         $supplier = new Supplier;
 
         $supplier->name        = $request->name;
+        $supplier->cat         = $request->cat;
         $supplier->mobile      = $request->mobile;
         $supplier->additional_mobile_one = $request->additional_mobile_one;
         $supplier->additional_mobile_two = $request->additional_mobile_two;
         $supplier->email       = $request->email;
         $supplier->address     = $request->address;
         $supplier->account_no  = $request->account_no;
-        $supplier->bank_name  = $request->bank_name;
-        $supplier->branch_name  = $request->branch_name;
+        $supplier->bank_name   = $request->bank_name;
+        $supplier->branch_name = $request->branch_name;
         
+        if( $request->hasFile('img') ){
+
+            $img = $request->file('img');
+
+            $original_name = $img->getClientOriginalName();
+
+            $img_name = time().'-'.$original_name;
+
+            $img->move('images' , $img_name);
+
+            $img_path = '/images/'.$img_name;
+
+            $supplier->img = $img_path;
+        }else{
+            $supplier->img = '/images/avatar-supplier.png';
+        }
+
 
         $supplier->save();
 
         Session::flash( 'success', 'New supplier has been saved successfully!' );
 
-        return view( 'supplier.edit-supplier' )->with( 'supplier', $supplier );
+        return Redirect::route( 'supplier.edit', ['id' => $supplier->id] );
+
+        //return view( 'supplier.edit-supplier' )->with( 'supplier', $supplier );
     }
 
 
@@ -143,9 +165,11 @@ class supplierController extends Controller
         $this->validate( $request, array(
 
                 'name'        => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
-                'mobile'      => 'required | digits:10 | unique:suppliers,mobile,'.$id,
-                'additional_mobile_one' => ' digits:10 | unique:suppliers,mobile,'.$id,
-                'additional_mobile_two' => 'digits:10 | unique:suppliers,mobile,'.$id,
+                'cat'         => 'required ',
+                'img'         => 'image | max:500 | min:50',
+                'mobile'      => 'required | digits:11 | unique:suppliers,mobile,'.$id,
+                'additional_mobile_one' => ' digits:11 | unique:suppliers,mobile,'.$id,
+                'additional_mobile_two' => 'digits:11 | unique:suppliers,mobile,'.$id,
                 'email'       => 'required | email | unique:suppliers,email,'.$id,
                 'address'     => 'required | min:10 |',
                 'account_no'  => 'required | numeric | unique:suppliers,account_no,'.$id,
@@ -161,6 +185,7 @@ class supplierController extends Controller
         $supplier = Supplier::find( $id );
 
         $supplier->name        = $request->name;
+        $supplier->cat        = $request->cat;
         $supplier->mobile      = $request->mobile;
         $supplier->additional_mobile_one = $request->additional_mobile_one;
         $supplier->additional_mobile_two = $request->additional_mobile_two;
@@ -170,12 +195,28 @@ class supplierController extends Controller
         $supplier->bank_name  = $request->bank_name;
         $supplier->branch_name  = $request->branch_name;
         
+        if( $request->hasFile('img') ){
+
+            $img = $request->file('img');
+
+            $original_name = $img->getClientOriginalName();
+
+            $img_name = time().'-'.$original_name;
+
+            $img->move('images' , $img_name);
+
+            $img_path = '/images/'.$img_name;
+
+            $supplier->img = $img_path;
+        }else{
+            $supplier->img = '/images/avatar-supplier.png';
+        }
 
         $supplier->save();
 
         Session::flash( 'success' , 'Supplier has been updated successfully!' );
 
-        return view( 'supplier.edit-supplier' )->with( 'supplier', $supplier );
+        return Redirect::route( 'supplier.edit', ['id' => $supplier->id] );
     }
 
 

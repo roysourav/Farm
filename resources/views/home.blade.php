@@ -12,7 +12,7 @@
                 <div class="icon">
                   <i class="fa fa-area-chart"></i>
                 </div>
-                <a class="small-box-footer" href="#">
+                <a class="small-box-footer" href="{{ route('cow.index') }}">
                   Enter &nbsp <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>

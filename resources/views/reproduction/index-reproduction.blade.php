@@ -4,7 +4,7 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>All Cow Sellers</h1>
+    <h1>Reproductions Details</h1>
 </section>
 
 @include('partials._message')
@@ -13,7 +13,7 @@
         <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            List Of All Cow Sellers
+                            List Of All Cows ( Reproduction )
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -23,45 +23,55 @@
                                         <tr>
                                             <th>Sl</th>
                                             <th>#</th>
-                                            <th>Name Of Cow Seller</th>
-                                            <th> Id</th>
-                                            <th>Mobile</th>
-                                            <th>Email</th>
-                                            <th>Bank Account No.</th>
-                                            <th>Bank</th>
-                                            <th>Branch</th>
+                                            <th>Name Of Cow</th>
+                                            <th>Cow Id</th>
+                                            <th>Date Of A.I.</th>
+                                            <th>Doctor</th>
+                                            <th>Date Of Check</th>
+                                            <th>Pregnancy Confirmation</th>
                                             <th>#</th>
                                             <th>#</th>
                                             <th>#</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
 									<?php $count = 0;?>	
-                                    @foreach( $cowsellers as $cowseller )
+                                    @foreach( $reproductions as $reproduction )
 										<?php $count++  ?>
                                         <tr>
-                                            <td style="color:#fff; background:#9B0D07;">{{ $count }}</td>
-                                            <td style="display: block;margin: 0 auto;width: 60px;"> {{ Html::image($cowseller->img, $cowseller->name, array('class' => 'img-responsive ')) }}</td>
-                                            <td>{{ $cowseller->name }}</td>
-                                            <td>{{ 'CS-'.$cowseller->id }}</td>
-                                            <td>
-                                            <a title=""  href="tel:{{ $cowseller->mobile }}"> {{ $cowseller->mobile }}</a>
-                                            </td>
-                                            <td>{{ $cowseller->email }}</td>
-                                            <td>{{ $cowseller->account_no }}</td>
-                                            <td>{{ $cowseller->bank_name }}</td>
-                                            <td>{{ $cowseller->branch_name }}</td>
 
+                                            <td style="color:#fff; background:#9B0D07;">{{ $count }}</td>
+
+                                            <td style="display: block;margin: 0 auto;width: 60px;"> {{ Html::image($reproduction->cow->img, $reproduction->cow->name, array('class' => 'img-responsive ')) }}</td>
+
+                                            <td>{{ $reproduction->cow->name }}</td>
+
+                                            <td>{{ 'C-'.$reproduction->cow->id }}</td>
+
+                                           <td>{{ Carbon\Carbon::parse($reproduction->date_of_ai)->format('jS M Y ') }}</td>
+                                            
+                                            <td>{{ $reproduction->doctor->name }}</td>
+
+                                            <td>{{ Carbon\Carbon::parse($reproduction->date_of_check)->format('jS M Y ') }}</td>
+
+                                            <td>
+                                            @if($reproduction->pregnancy > 0 )
+                                            {{ 'Yes' }}
+                                            @else
+                                            {{ 'No' }}
+                                            @endif
+                                            </td>
                                              
 
-                                            <td><a class="btn btn-success" href="{{ route( 'cowseller.show', array( 'id'=> $cowseller->id ) ) }}">Show</a></td>
+                                            <td><a class="btn btn-success" href="{{ route( 'reproduction.show', array( 'id'=> $reproduction->id ) ) }}">Show</a></td>
 
 
-                                            <td><a class="btn btn-warning" href="{{ route( 'cowseller.edit', array( 'id'=> $cowseller->id ) ) }}">Edit</a></td>
+                                            <td><a class="btn btn-warning" href="{{ route( 'reproduction.edit', array( 'id'=> $reproduction->id ) ) }}">Edit</a></td>
 
                                             <td>
                                                 
-                                                {!! Form::open( array( 'route' => array('cowseller.destroy', $cowseller->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
+                                                {!! Form::open( array( 'route' => array('reproduction.destroy', $reproduction->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
                                                 {!! Form::submit('Delete', array( 'class' => 'btn btn-danger' ) ) !!}
                                               

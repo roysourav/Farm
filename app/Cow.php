@@ -13,4 +13,12 @@ class Cow extends Model
     {
         return $this->belongsTo('App\Supplier');
     }
+
+    /**
+     * Get reproduction relation.
+     */
+    public function reproduction()
+    {
+    	return $this->hasMany( 'App\Reproduction' );
+    }
 }

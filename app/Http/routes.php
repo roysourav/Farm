@@ -23,9 +23,9 @@ Route::resource( 'customer', 'customerController' );
 
 Route::resource( 'cow', 'cowController' );
 
-Route::resource( 'cowseller' , 'cowsellerController' );
-
 Route::resource( 'doctor' , 'doctorController' );
+
+Route::resource( 'reproduction' , 'reproductionController' );
 
 
 

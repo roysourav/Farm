@@ -49,6 +49,18 @@
                                             <td>{{ $reproduction->doctor->name }}</td>
                                             
                                         </tr>
+
+                                       <tr>
+                                            <td>Date Of Check :</td>
+                                            <td>{!! Carbon\Carbon::parse( $reproduction->date_of_check )->format('jS M Y ') !!}</td>
+                                            
+                                        </tr>
+
+                                        <tr>
+                                            <td>Pregnancy Confirm :</td>
+                                            <td>{{ $reproduction->pregnancy }}</td>
+                                            
+                                        </tr>
                                         
 
                                     </tbody>

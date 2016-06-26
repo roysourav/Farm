@@ -170,7 +170,7 @@
 
                             <div class="col-sm-9">
                                  
-                                        <a href="{{ route('cow.index') }}" class="btn btn-primary">Go Back</a>
+                                        <a href="{{ route('reproduction.index') }}" class="btn btn-primary">Go Back</a>
                                                         
                                         <button type="reset" class="btn btn-danger">Reset All Fields</button>
 

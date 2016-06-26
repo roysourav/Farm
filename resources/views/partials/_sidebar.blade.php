@@ -69,6 +69,18 @@
               </ul>
 
             </li>
+
+            <li class="treeview">
+            
+              <a href="#"><i class="fa fa-male"></i> <span>Reproduction</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+              <ul class="treeview-menu">
+                <li><a href="{{ route( 'reproduction.index' ) }}">Reproduction</a></li>
+                <li><a href="{{ route( 'reproduction.create' ) }}">Add New Record</a></li>
+              </ul>
+
+            </li>
+            
             
             
 

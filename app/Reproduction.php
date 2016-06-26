@@ -33,6 +33,11 @@ class Reproduction extends Model
      	return $this->belongsTo('App\Supplier');
      }
 
+     public function preg_confirm_doctor()
+     {
+          return $this->belongsTo('App\doctor', 'preg_confirm_doctor_id');
+     }
+
 
 
 

@@ -58,7 +58,27 @@
 
                                         <tr>
                                             <td>Pregnancy Confirm :</td>
-                                            <td>{{ $reproduction->pregnancy }}</td>
+                                            <td>@if($reproduction->pregnancy > 0 )
+                                            {{ 'Yes' }}
+                                            @else
+                                            {{ 'No' }}
+                                            @endif</td>
+                                            
+                                        </tr>
+
+                                        <tr>
+                                            <td>Confirm By (Doctor) :</td>
+                                            <td>{{ $reproduction->preg_confirm_doctor->name }}</td>
+                                            
+                                        </tr>
+
+                                         <tr>
+                                            <td>Delivery Date (Expected):</td>
+                                            <td>@if($reproduction->pregnancy > 0 )
+                                            {{ Carbon\Carbon::parse($reproduction->date_of_ai)->addDays(283)->format('jS M Y ') }}
+                                            @else
+                                            {{ 'N/A' }}
+                                            @endif</td>
                                             
                                         </tr>
                                         

@@ -29,6 +29,7 @@
                                             <th>Doctor</th>
                                             <th>Date Of Check</th>
                                             <th>Pregnancy Confirmation</th>
+                                            <th>Delivery Date</th>
                                             <th>#</th>
                                             <th>#</th>
                                             <th>#</th>
@@ -63,6 +64,13 @@
                                             @endif
                                             </td>
                                              
+                                            <td>
+                                            @if($reproduction->pregnancy > 0 )
+                                            {{ Carbon\Carbon::parse($reproduction->date_of_ai)->addDays(283)->format('jS M Y ') }}
+                                            @else
+                                            {{ 'N/A' }}
+                                            @endif
+                                            </td>
 
                                             <td><a class="btn btn-success" href="{{ route( 'reproduction.show', array( 'id'=> $reproduction->id ) ) }}">Show</a></td>
 

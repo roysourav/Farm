@@ -1,1 +1,1 @@
-# Dairy farm ERP application is under construction
+# This is a Dairy farm ERP application, it is under construction now.

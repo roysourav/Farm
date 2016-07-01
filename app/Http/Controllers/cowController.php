@@ -33,7 +33,7 @@ class cowController extends Controller
 
     public function index()
     {
-        $cows = Cow::all();
+        $cows = Cow::where('active',1)->get();
 
         return view( 'cow.index-cow' )->with( 'cows', $cows );
     }

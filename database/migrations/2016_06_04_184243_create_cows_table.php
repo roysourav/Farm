@@ -28,7 +28,8 @@ class CreateCowsTable extends Migration
             $table->string('milking_channels');
             $table->string('date_of_milking');
             $table->string('date_of_dryness');
-            $table->string('disease');     
+            $table->string('disease');
+            $table->integer('active');     
             $table->timestamps();
         });
     }

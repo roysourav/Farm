@@ -93,6 +93,22 @@
 
                             </div>
 
+                            <div class="form-group">
+
+                                <label class="col-sm-3 control-label">Species *</label>
+
+                                <div class="col-sm-9">
+                                
+                                   
+                                    {!! Form::select('species_id',$species,
+                                    $cow->species_id,[ 'class' => 'form-control','required'=> '']
+
+                                    ) !!}  
+                                
+                                </div>
+
+                            </div>
+
                             <div class="form-group m_bottom_30">
                                 <label class="col-sm-3 control-label">Cow Percentage(Seed) *</label> 
                             

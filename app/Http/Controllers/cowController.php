@@ -7,12 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Cow;
 use App\Supplier;
-<<<<<<< HEAD
-=======
-
 use App\Species;
-
->>>>>>> 05c749dff86b6f53e6a30f22b89a4eb6d14c059f
 use Session;
 use Redirect;
 use Carbon\Carbon;
@@ -46,10 +41,10 @@ class cowController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
+
        $suppliers = Supplier::where('cat', '=','cow')->get();
        return view( 'cow.create-cow' )->withSuppliers($suppliers);
-=======
+
        $suppliers = Supplier::where('cat', '=','cow')->lists('name','id')->toArray();
 
        $species = Species::all()->lists( 'name', 'id' )->toArray();
@@ -64,7 +59,7 @@ class cowController extends Controller
 
 
        return view( 'cow.create-cow' )->withSuppliers($suppliers)->withSpecies($species);
->>>>>>> 05c749dff86b6f53e6a30f22b89a4eb6d14c059f
+
     }
 
     /**

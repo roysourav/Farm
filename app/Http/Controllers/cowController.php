@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Reproduction;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\Cow;
-
 use App\Supplier;
+<<<<<<< HEAD
+=======
 
 use App\Species;
 
+>>>>>>> 05c749dff86b6f53e6a30f22b89a4eb6d14c059f
 use Session;
-
 use Redirect;
-
 use Carbon\Carbon;
-
+use App\Http\Controllers\Credential\CheckExistenceController;
 
 class cowController extends Controller
 {
@@ -35,9 +34,9 @@ class cowController extends Controller
 
     public function index()
     {
-        $cows = Cow::where('active',1)->get();
+        $cows = Cow::where('active', 1)->get();
 
-        return view( 'cow.index-cow' )->with( 'cows', $cows );
+        return view('cow.index-cow')->with('cows', $cows);
     }
 
     /**
@@ -47,6 +46,10 @@ class cowController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
+       $suppliers = Supplier::where('cat', '=','cow')->get();
+       return view( 'cow.create-cow' )->withSuppliers($suppliers);
+=======
        $suppliers = Supplier::where('cat', '=','cow')->lists('name','id')->toArray();
 
        $species = Species::all()->lists( 'name', 'id' )->toArray();
@@ -61,6 +64,7 @@ class cowController extends Controller
 
 
        return view( 'cow.create-cow' )->withSuppliers($suppliers)->withSpecies($species);
+>>>>>>> 05c749dff86b6f53e6a30f22b89a4eb6d14c059f
     }
 
     /**
@@ -253,12 +257,18 @@ class cowController extends Controller
      */
     public function destroy($id)
     {
-        $cow = Cow::find($id);
-
-        $cow->delete();
-
-        Session::flash( 'success', 'Cow Has Been Deleted Successfully !' );
-
-        return Redirect::route( 'cow.index' );
+        $check = new CheckExistenceController();
+        $arr = array(
+            0 => ['model' => Reproduction::class, 'foreign_key' => 'cow_id']
+        );
+        if($check->getCheckExistence($id, $arr) == false) {
+            $cow = Cow::find($id);
+            $cow->delete();
+            Session::flash( 'success', 'Cow Has Been Deleted Successfully !' );
+            return Redirect::route( 'cow.index' );
+        } else {
+            Session::flash('error', 'Cow can not be deleted!');
+            return Redirect::route('cow.index');
+        }
     }
 }

@@ -177,14 +177,12 @@
                                 <label class="col-sm-3 control-label">Supplier *</label>
 
                                 <div class="col-sm-9">
-                                
-                                    
-
-                                    {!! Form::select('supplier_id',$suppliers,
-                                    null,[ 'class' => 'form-control','required'=> '']
-
-                                    ) !!} 
-                                
+                                    <select name="supplier_id" class="form-control">
+                                        <option  value="" selected="Please Select">Please Select</option>
+                                        @foreach($suppliers as $supplier)
+                                            <option value="{{$supplier->id}}">{{ $supplier->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                             </div>

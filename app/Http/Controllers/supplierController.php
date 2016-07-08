@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Reproduction;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Credential\CheckExistenceController;
 use App\Http\Requests;
 
 use App\Supplier;
+
+use App\Cow;
 
 use Session;
 
@@ -231,18 +234,23 @@ class supplierController extends Controller
 
     public function destroy($id)
     {
-        $supplier = Supplier::find( $id );
+        $check = new CheckExistenceController();
+        $arr = array(
+            0 => ['model' => Reproduction::class, 'foreign_key' => 'supplier_id'],
+            1 => ['model' => Cow::class, 'foreign_key' => 'supplier_id']
+        );
+       if($check->getCheckExistence($id, $arr) == false) {
+           $supplier = Supplier::find( $id );
 
-        $supplier->delete();
+           $supplier->delete();
 
-        Session::flash('success', 'Supplier Has Been Deleted Successfully !');
+           Session::flash('success', 'Supplier Has Been Deleted Successfully !');
 
-        return Redirect::route('supplier.index');
+           return Redirect::route('supplier.index');
+       } else {
+           Session::flash('error', 'Supplier can not be deleted!');
+
+           return Redirect::route('supplier.index');
+       }
     }
-
-
-
-
-
-
-}
+    }

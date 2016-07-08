@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Credential\CheckExistenceController;
 use App\Http\Requests;
 
 use App\Doctor;
+
+use App\Reproduction;
 
 use Session;
 
@@ -199,12 +201,19 @@ class doctorController extends Controller
      */
     public function destroy($id)
     {
-        $doctor = Doctor::find( $id );
+        $check = new CheckExistenceController();
+        $arr = ['model' => Reproduction::class, 'foreign_key' => 'doctor_id'];
+        if($check->getCheckExistence($id, $arr) == false) {
+            $doctor = Doctor::find( $id );
 
-        $doctor->delete();
+            $doctor->delete();
 
-        Session::flash('success', 'Doctor Has Been Deleted Successfully !');
+            Session::flash('success', 'Doctor Has Been Deleted Successfully !');
 
-        return Redirect::route('doctor.index');
+            return Redirect::route('doctor.index');
+        } else {
+            Session::flash('error', 'Doctor can not be deleted!');
+            return Redirect::route('doctor.index');
+        }
     }
 }

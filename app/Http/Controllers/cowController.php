@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Reproduction;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\Cow;
-
 use App\Supplier;
-
 use Session;
-
 use Redirect;
-
 use Carbon\Carbon;
-
+use App\Http\Controllers\Credential\CheckExistenceController;
 
 class cowController extends Controller
 {
@@ -33,9 +28,9 @@ class cowController extends Controller
 
     public function index()
     {
-        $cows = Cow::where('active',1)->get();
+        $cows = Cow::where('active', 1)->get();
 
-        return view( 'cow.index-cow' )->with( 'cows', $cows );
+        return view('cow.index-cow')->with('cows', $cows);
     }
 
     /**
@@ -45,17 +40,7 @@ class cowController extends Controller
      */
     public function create()
     {
-       $suppliers = Supplier::where('cat', '=','cow')->lists('name','id')->toArray();
-
-
-       /*wanted to give "please select" option 
-       by the below array merge but 
-        returning value 0 for first array items
-        need to fix these*/
-
-       //$cowsellers = array_merge(  $cowsellers ,[null =>'Please Select']);
-
-
+       $suppliers = Supplier::where('cat', '=','cow')->get();
        return view( 'cow.create-cow' )->withSuppliers($suppliers);
     }
 
@@ -243,12 +228,18 @@ class cowController extends Controller
      */
     public function destroy($id)
     {
-        $cow = Cow::find($id);
-
-        $cow->delete();
-
-        Session::flash( 'success', 'Cow Has Been Deleted Successfully !' );
-
-        return Redirect::route( 'cow.index' );
+        $check = new CheckExistenceController();
+        $arr = array(
+            0 => ['model' => Reproduction::class, 'foreign_key' => 'cow_id']
+        );
+        if($check->getCheckExistence($id, $arr) == false) {
+            $cow = Cow::find($id);
+            $cow->delete();
+            Session::flash( 'success', 'Cow Has Been Deleted Successfully !' );
+            return Redirect::route( 'cow.index' );
+        } else {
+            Session::flash('error', 'Cow can not be deleted!');
+            return Redirect::route('cow.index');
+        }
     }
 }

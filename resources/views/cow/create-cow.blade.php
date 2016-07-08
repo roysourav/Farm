@@ -193,21 +193,15 @@
                                 <label class="col-sm-3 control-label">Supplier *</label>
 
                                 <div class="col-sm-9">
-<<<<<<< HEAD
+
                                     <select name="supplier_id" class="form-control">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($suppliers as $supplier)
                                             <option value="{{$supplier->id}}">{{ $supplier->name }}</option>
                                         @endforeach
                                     </select>
-=======
-                                
-                                    {!! Form::select('supplier_id',$suppliers,
-                                    null,[ 'class' => 'form-control','required'=> '']
 
-                                    ) !!} 
-                                
->>>>>>> 05c749dff86b6f53e6a30f22b89a4eb6d14c059f
+
                                 </div>
 
                             </div>

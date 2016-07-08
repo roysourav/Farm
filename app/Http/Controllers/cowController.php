@@ -43,10 +43,7 @@ class cowController extends Controller
     {
 
        $suppliers = Supplier::where('cat', '=','cow')->get();
-       return view( 'cow.create-cow' )->withSuppliers($suppliers);
-
-       $suppliers = Supplier::where('cat', '=','cow')->lists('name','id')->toArray();
-
+       
        $species = Species::all()->lists( 'name', 'id' )->toArray();
 
 

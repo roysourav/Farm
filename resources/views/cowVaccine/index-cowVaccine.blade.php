@@ -80,8 +80,14 @@
                                             
 
                                             <td>
+
+                                            <form action="{{ 'url' = }}">
                                                 
-                                                {!! Form::open( array( 'url' => ['cowVaccineController@destroy',$cow->id,$vaccine->id], 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
+
+
+                                            </form>
+                                                
+                                                {!! Form::open( array( 'url' => ['cow-vaccine/{$cow->id}/{$vaccine->id}'], 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
                                                 {!! Form::submit('Delete', array( 'class' => 'btn btn-danger' ) ) !!}
                                               

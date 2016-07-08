@@ -29,4 +29,9 @@ class Cow extends Model
     {
     	return $this->hasMany( 'App\Reproduction' );
     }
+
+    public function vaccines()
+    {
+        return $this->belongsToMany('App\Vaccine')->withPivot('date')->withTimestamps();
+    }
 }

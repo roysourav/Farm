@@ -31,6 +31,29 @@ Route::resource( 'dead-cow' , 'cowDeadController' );
 
 Route::resource( 'sell-cow' , 'cowSellController' );
 
+Route::resource( 'vaccine' ,'vaccineController');
+
+
+
+
+
+
+//Route for cow vaccine 
+
+
+Route::get( 'cow-vaccine', [ 'as' => 'cow-vaccine.index', 'uses' => 'cowVaccineController@index' ] );
+
+Route::get( 'cow-vaccine/create', [ 'as' => 'cow-vaccine.create', 'uses' => 'cowVaccineController@create' ] );
+
+Route::post( 'cow-vaccine', [ 'as' => 'cow-vaccine.store', 'uses' => 'cowVaccineController@store' ] );
+
+Route::delete( 'cow-vaccine/{$cow_id}/{$vaccine_id}', [ 'as' => 'cow-vaccine.destroy', 'uses' => 'cowVaccineController@destroy' ] );
+
+
+
+
+
+
 
 //Route for cow species
 
@@ -43,6 +66,13 @@ Route::get( 'species/{id}/edit' , [ 'uses'=>'speciesController@edit' , 'as'=>'sp
 Route::put( 'species/{id}' , [ 'uses'=>'speciesController@update' , 'as'=>'species.update' ] );
 
 Route::delete( 'species/{id}' , [ 'uses'=>'speciesController@destroy' , 'as'=>'species.destroy' ] );
+
+
+
+
+
+
+
 
 //Route::auth();
 

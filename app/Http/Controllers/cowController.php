@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Cow;
 use App\Supplier;
+<<<<<<< HEAD
+=======
+
+use App\Species;
+
+>>>>>>> 05c749dff86b6f53e6a30f22b89a4eb6d14c059f
 use Session;
 use Redirect;
 use Carbon\Carbon;
@@ -40,8 +46,25 @@ class cowController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
        $suppliers = Supplier::where('cat', '=','cow')->get();
        return view( 'cow.create-cow' )->withSuppliers($suppliers);
+=======
+       $suppliers = Supplier::where('cat', '=','cow')->lists('name','id')->toArray();
+
+       $species = Species::all()->lists( 'name', 'id' )->toArray();
+
+
+       /*wanted to give "please select" option 
+       by the below array merge but 
+        returning value 0 for first array items
+        need to fix these*/
+
+       //$cowsellers = array_merge(  $cowsellers ,[null =>'Please Select']);
+
+
+       return view( 'cow.create-cow' )->withSuppliers($suppliers)->withSpecies($species);
+>>>>>>> 05c749dff86b6f53e6a30f22b89a4eb6d14c059f
     }
 
     /**
@@ -60,6 +83,7 @@ class cowController extends Controller
                 'color'         => 'required | string' ,
                 'img'           => 'image | max:500 | min:50',
                 'date_of_birth' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'species_id'    => 'required | numeric',
                 'percentage'    => 'required | numeric | between:0,100',
                 'weight'        => 'required | digits_between:2,3',
                 'significant_sign' => 'regex:/^[\pL\s\-]+$/u',
@@ -81,6 +105,7 @@ class cowController extends Controller
         $cow->sex              = $request->sex;
         $cow->color            = $request->color;
         $cow->date_of_birth    = $request->date_of_birth;
+        $cow->species_id       = $request->species_id;
         $cow->percentage       = $request->percentage;
         $cow->weight           = $request->weight;
         $cow->significant_sign = $request->significant_sign;
@@ -144,7 +169,9 @@ class cowController extends Controller
 
         $suppliers = Supplier::where('cat', '=','cow')->lists('name','id');
 
-        return view('cow.edit-cow')->withCow($cow)->withSuppliers($suppliers);
+        $species = Species::all()->lists( 'name', 'id' )->toArray();
+
+        return view('cow.edit-cow')->withCow($cow)->withSuppliers($suppliers)->withSpecies($species);
     }
 
     /**
@@ -164,6 +191,7 @@ class cowController extends Controller
                 'color'         => 'required | string' ,
                 'img'           => 'image | max:500 | min:50',
                 'date_of_birth' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'species_id'    => 'required | numeric',
                 'percentage'    => 'required | numeric | between:0,100',
                 'weight'        => 'required | digits_between:2,3',
                 'significant_sign' => 'regex:/^[\pL\s\-]+$/u',
@@ -185,6 +213,7 @@ class cowController extends Controller
         $cow->sex              = $request->sex;
         $cow->color            = $request->color;
         $cow->date_of_birth    = $request->date_of_birth;
+        $cow->species_id       = $request->species_id;
         $cow->percentage       = $request->percentage;
         $cow->weight           = $request->weight;
         $cow->significant_sign = $request->significant_sign;

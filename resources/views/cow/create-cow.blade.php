@@ -93,6 +93,22 @@
 
                             </div>
 
+                            <div class="form-group">
+
+                                <label class="col-sm-3 control-label">Species *</label>
+
+                                <div class="col-sm-9">
+                                
+                                    {!! Form::select('species_id',$species,
+                                    null,[ 'class' => 'form-control','required'=> '']
+
+                                    ) !!} 
+                                
+                                </div>
+
+                            </div>
+
+
                             <div class="form-group m_bottom_30">
                                 <label class="col-sm-3 control-label">Cow Percentage(Seed) *</label> 
                             
@@ -177,12 +193,21 @@
                                 <label class="col-sm-3 control-label">Supplier *</label>
 
                                 <div class="col-sm-9">
+<<<<<<< HEAD
                                     <select name="supplier_id" class="form-control">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($suppliers as $supplier)
                                             <option value="{{$supplier->id}}">{{ $supplier->name }}</option>
                                         @endforeach
                                     </select>
+=======
+                                
+                                    {!! Form::select('supplier_id',$suppliers,
+                                    null,[ 'class' => 'form-control','required'=> '']
+
+                                    ) !!} 
+                                
+>>>>>>> 05c749dff86b6f53e6a30f22b89a4eb6d14c059f
                                 </div>
 
                             </div>
@@ -263,14 +288,14 @@
                             <div class="col-sm-3"></div>
 
                             <div class="col-sm-9">
-                                 
-                                        <a href="{{ route('cow.index') }}" class="btn btn-primary">Go Back</a>
+                                <div class="buttons">
+                                    <a href="{{ route('cow.index') }}" class="btn btn-primary">Go Back</a>
                                                         
                                         <button type="reset" class="btn btn-danger">Reset All Fields</button>
 
                                         {!! Form::submit( 'Create New Cow', array( 'class'=>'btn btn-success' ) ) !!}
-
-                               
+                                </div>
+                                 
                            </div>
                            
                             

@@ -52,6 +52,18 @@
                                         </tr>
 
                                         <tr>
+                                            <td>Species :</td>
+                                            <td>{{ $cow->species->name }}</td>
+                                            
+                                        </tr>
+
+                                        <tr>
+                                            <td>Cow Percentage(Seed) :</td>
+                                            <td>{{ $cow->percentage }} %</td>
+                                            
+                                        </tr>
+
+                                        <tr>
                                             <td>Date Of Birth :</td>
                                             <td>{!! Carbon\Carbon::parse($cow->date_of_birth)->format('jS M Y ') !!}</td>
                                             

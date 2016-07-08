@@ -4,12 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CowSell extends Model
+class Species extends Model
 {
-    //gettind the dead cow 
-
+     /**
+     * Get Cows.
+     */
     public function cow()
     {
-    	return $this->belongsTo('App\Cow');
+    	return $this->hasMany( 'App\Cow' );
     }
 }

@@ -31,6 +31,7 @@
               <ul class="treeview-menu">
                 <li><a href="{{ route( 'cow.index' ) }}">View All Cows</a></li>
                 <li><a href="{{ route( 'cow.create' ) }}">Add New Cow</a></li>
+                <li><a href="{{ route( 'species.index' ) }}">Species</a></li>
               </ul>
 
             </li>

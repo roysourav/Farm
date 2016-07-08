@@ -17,6 +17,7 @@ class CreateCowsTable extends Migration
             $table->string('name');
             $table->string('sex');
             $table->string('color');
+            $table->integer('species_id');
             $table->string('img');
             $table->string('date_of_birth');
             $table->integer('percentage');

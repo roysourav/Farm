@@ -14,6 +14,14 @@ class Cow extends Model
         return $this->belongsTo('App\Supplier');
     }
 
+     /**
+     * Get the species of the cow.
+     */
+    public function species()
+    {
+        return $this->belongsTo('App\Species');
+    }
+
     /**
      * Get reproduction relation.
      */

@@ -27,6 +27,7 @@
                                             <th> Id</th>
                                             <th>Color</th>
                                             <th>Age</th>
+                                            <th>Species</th>
                                             <th>Purchesed On</th>
                                             <th>Seller</th>
                                             <th>#</th>
@@ -52,6 +53,8 @@
                                             <td>{{ $cow->color }}</td>
                                             
                                             <td>{!! Carbon\Carbon::now()->diff(Carbon\Carbon::parse($cow->date_of_birth) )->format('%y Y, %m M ') !!}</td>
+
+                                            <td>{{ $cow->species->name }}</td>
 
                                            <td>{{ Carbon\Carbon::parse($cow->date_of_purchase)->format('jS M Y ') }}</td>
                                             

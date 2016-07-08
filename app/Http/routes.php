@@ -32,7 +32,17 @@ Route::resource( 'dead-cow' , 'cowDeadController' );
 Route::resource( 'sell-cow' , 'cowSellController' );
 
 
+//Route for cow species
 
+Route::get( 'species' , [ 'uses'=>'speciesController@getlist', 'as'=>'species.index' ]  );
+
+Route::post( 'species' , [ 'uses'=>'speciesController@store' , 'as'=>'species.store' ] );
+
+Route::get( 'species/{id}/edit' , [ 'uses'=>'speciesController@edit' , 'as'=>'species.edit' ] );
+
+Route::put( 'species/{id}' , [ 'uses'=>'speciesController@update' , 'as'=>'species.update' ] );
+
+Route::delete( 'species/{id}' , [ 'uses'=>'speciesController@destroy' , 'as'=>'species.destroy' ] );
 
 //Route::auth();
 

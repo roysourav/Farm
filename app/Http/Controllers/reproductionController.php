@@ -48,11 +48,11 @@ class reproductionController extends Controller
      */
     public function create()
     {
-        $cows = Cow::lists('name' , 'id')->toArray();
+        $cows = Cow::where( 'active',1 )->get();
 
-        $suppliers = Supplier::where( 'cat', '=', 'seed' )->lists('name', 'id')->toArray();
+        $suppliers = Supplier::where( 'cat', 'seed' )->get();
 
-        $doctors = Doctor::lists('name' , 'id')->toArray();
+        $doctors = Doctor::all();
 
         return view('reproduction.create-reproduction')->withCows( $cows )
                                                        ->withSuppliers( $suppliers )

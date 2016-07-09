@@ -44,15 +44,7 @@ class cowController extends Controller
 
        $suppliers = Supplier::where('cat', '=','cow')->get();
        
-       $species = Species::all()->lists( 'name', 'id' )->toArray();
-
-
-       /*wanted to give "please select" option 
-       by the below array merge but 
-        returning value 0 for first array items
-        need to fix these*/
-
-       //$cowsellers = array_merge(  $cowsellers ,[null =>'Please Select']);
+       $species = Species::all();
 
 
        return view( 'cow.create-cow' )->withSuppliers($suppliers)->withSpecies($species);
@@ -79,13 +71,14 @@ class cowController extends Controller
                 'percentage'    => 'required | numeric | between:0,100',
                 'weight'        => 'required | digits_between:2,3',
                 'significant_sign' => 'regex:/^[\pL\s\-]+$/u',
-                'price'         => 'required | digits_between:4,6',
+                'price'            => 'required | digits_between:4,6',
                 'date_of_purchase' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
-                'supplier_id'     => 'required | numeric',
+                'supplier_id'      => 'required | numeric',
                 'milking_channels' => 'required | digits:1',
                 'date_of_milking'  => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
                 'date_of_dryness'  => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
-                'disease'       => 'regex:/^[\pL\s\-]+$/u',
+                'disease'          => 'regex:/^[\pL\s\-]+$/u',
+
                 
             ) );
 
@@ -108,6 +101,7 @@ class cowController extends Controller
         $cow->date_of_milking  = $request->date_of_milking;
         $cow->date_of_dryness  = $request->date_of_dryness;
         $cow->disease          = $request->disease;
+        $cow->active          = 1;
 
         if( $request->hasFile('img') ){
 

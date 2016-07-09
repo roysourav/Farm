@@ -81,9 +81,6 @@
 
                                             <td>
 
-                                            <form action="{{ 'url' = }}">
-                                                
-
 
                                             </form>
                                                 

@@ -99,11 +99,13 @@
 
                                 <div class="col-sm-9">
                                 
-                                    {!! Form::select('species_id',$species,
-                                    null,[ 'class' => 'form-control','required'=> '']
+                                    <select name="species_id" class="form-control" required="">
+                                        <option  value="" selected="Please Select">Please Select</option>
+                                        @foreach($species as $spec)
+                                            <option value="{{$spec->id}}">{{ $spec->name }}</option>
+                                        @endforeach
+                                    </select>
 
-                                    ) !!} 
-                                
                                 </div>
 
                             </div>
@@ -194,7 +196,7 @@
 
                                 <div class="col-sm-9">
 
-                                    <select name="supplier_id" class="form-control">
+                                    <select name="supplier_id" class="form-control" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($suppliers as $supplier)
                                             <option value="{{$supplier->id}}">{{ $supplier->name }}</option>

@@ -110,20 +110,7 @@ class cowVaccineController extends Controller
      */
     public function destroy($cow_id,$vaccine_id)
     {    
-
-        $test= array('foo' => $cow_id, 'bar' => $vaccine_id );
-
-
-        dd($test);
-
-
-
-        $cow = Cow::find( $cow_id );
-
-        $cow->vaccines->detach($vaccine_id);
-
-        Session::flash( 'success', 'Record Deleted Successfully !' );
-
-        return Redirect::route('cow-vaccine.index');
+        //You can code on it, I just solved that problem
+        return "Cow iD {$cow_id} and Vaccine ID {$vaccine_id}";
     }
 }

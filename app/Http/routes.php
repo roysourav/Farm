@@ -37,9 +37,7 @@ Route::resource( 'vaccine' ,'vaccineController');
 
 
 
-
-//Route for cow vaccine 
-
+//Route for cow vaccine
 
 Route::get( 'cow-vaccine', [ 'as' => 'cow-vaccine.index', 'uses' => 'cowVaccineController@index' ] );
 
@@ -47,7 +45,8 @@ Route::get( 'cow-vaccine/create', [ 'as' => 'cow-vaccine.create', 'uses' => 'cow
 
 Route::post( 'cow-vaccine', [ 'as' => 'cow-vaccine.store', 'uses' => 'cowVaccineController@store' ] );
 
-Route::delete( 'cow-vaccine/{$cow_id}/{$vaccine_id}', [ 'as' => 'cow-vaccine.destroy', 'uses' => 'cowVaccineController@destroy' ] );
+Route::get( 'vaccine/delete/{id}/{vaccine_id}', 'cowVaccineController@destroy');
+
 
 
 

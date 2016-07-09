@@ -1,43 +1,42 @@
-@extends('main')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>All Vaccines</h1>
 </section>
 
-@include('partials._message')
+<?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 
 <div class="tabbable">
     <ul id="myTab" class="nav nav-tabs ">
     <?php $i = 0; ?>
-    @foreach( $vaccines as $vaccine )
+    <?php foreach( $vaccines as $vaccine ): ?>
     <?php $i++; ?>
-        <li class="{{ ( $i == 1 ) ? 'active' : '' }}">
-            <a href="#{{ $vaccine->name }}" data-toggle="tab">
-                {{ $vaccine->name }}
+        <li class="<?php echo e(( $i == 1 ) ? 'active' : ''); ?>">
+            <a href="#<?php echo e($vaccine->name); ?>" data-toggle="tab">
+                <?php echo e($vaccine->name); ?>
+
             </a>
         </li>
-    @endforeach
+    <?php endforeach; ?>
     </ul>
 
     <div class="tab-content">
         <?php $i = 0; ?>
 
-        @foreach( $vaccines as $vaccine )
+        <?php foreach( $vaccines as $vaccine ): ?>
 
          <?php $i++; ?>
 
-        <div class="tab-pane {{ ( $i == 1 ) ? 'in active' : '' }}" id="{{ $vaccine->name }}">
+        <div class="tab-pane <?php echo e(( $i == 1 ) ? 'in active' : ''); ?>" id="<?php echo e($vaccine->name); ?>">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="box box-info">
                         <div class="box-header">
                             <div class="row">
                                 <div class="col-md-12">
-                                   <b>Details Of Vaccine : {{ $vaccine->name }}</b>
+                                   <b>Details Of Vaccine : <?php echo e($vaccine->name); ?></b>
                                 </div>
                                 
                             </div>
@@ -62,29 +61,29 @@
                                     <tbody>
                                           <?php $count = 0;  ?>
 
-                                           @foreach( $vaccine->cows as $cow )
+                                           <?php foreach( $vaccine->cows as $cow ): ?>
                                         <tr>
                                            
                                             <?php $count++  ?>
 
-                                             <td>{{ $count }}</td>
+                                             <td><?php echo e($count); ?></td>
 
-                                            <td>{{ $cow->name }}</td>
+                                            <td><?php echo e($cow->name); ?></td>
 
-                                            <td>C-{{ $cow->id }} </td>
+                                            <td>C-<?php echo e($cow->id); ?> </td>
 
-                                            <td>{{ Carbon\Carbon::parse($cow->pivot->date)->format('jS M Y ') }} </td>
+                                            <td><?php echo e(Carbon\Carbon::parse($cow->pivot->date)->format('jS M Y ')); ?> </td>
 
-                                            <td>{{ Carbon\Carbon::parse($cow->pivot->date)->addMonths( $vaccine->duration )->format('jS M Y ') }} </td>
+                                            <td><?php echo e(Carbon\Carbon::parse($cow->pivot->date)->addMonths( $vaccine->duration )->format('jS M Y ')); ?> </td>
 
                                             
 
                                             <td>
-                                                <a class="label label-danger" href="{{url('vaccine/delete/'.$cow->id.'/'.$vaccine->id.'')}}">Delete</a>
+                                                <a class="label label-danger" href="<?php echo e(url('vaccine/delete/'.$cow->id.'/'.$vaccine->id.'')); ?>">Delete</a>
                                             </td>
                                            
                                         </tr>
-                                        @endforeach
+                                        <?php endforeach; ?>
                                     
                                        
                                     </tbody>
@@ -100,12 +99,14 @@
             </div>
         </div>
 
-        @endforeach
+        <?php endforeach; ?>
 
     </div>
 </div>
 
-@stop
+<?php $__env->stopSection(); ?>
 
 
 
+
+<?php echo $__env->make('main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -13,12 +13,12 @@
 
 	<div class="row">
         <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="box box-info">
+                        <div class="box-header">
                             List Of All Customers
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="boxy-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
@@ -31,9 +31,8 @@
                                             <th>Bank Account No.</th>
                                             <th>Bank</th>
                                             <th>Branch</th>
-                                            <th>#</th>
-                                            <th>#</th>
-                                            <th>#</th>
+                                            <th>Action</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,7 +40,7 @@
                                     @foreach( $customers as $customer )
 										<?php $count++  ?>
                                         <tr>
-                                            <td style="color:#fff; background:#9B0D07;">{{ $count }}</td>
+                                            <td>{{ $count }}</td>
                                             <td>{{ $customer->name }}</td>
                                             <td>{{ 'CUST-'.$customer->id }}</td>
                                             <td>
@@ -54,16 +53,16 @@
 
                                              
 
-                                            <td><a class="btn btn-success" href="{{ route( 'customer.show', array( 'id'=> $customer->id ) ) }}">Show</a></td>
+                                            <td><a class="label label-success" href="{{ route( 'customer.show', array( 'id'=> $customer->id ) ) }}">Show</a>
 
 
-                                            <td><a class="btn btn-primary" href="{{ route( 'customer.edit', array( 'id'=> $customer->id ) ) }}">Edit</a></td>
+                                                <a class="label label-warning" href="{{ route( 'customer.edit', array( 'id'=> $customer->id ) ) }}">Edit</a>
 
-                                            <td>
+                                          
                                                 
                                                 {!! Form::open( array( 'route' => array('customer.destroy', $customer->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
-                                                {!! Form::submit('Delete', array( 'class' => 'btn btn-danger' ) ) !!}
+                                                {!! Form::submit('Delete', array( 'class' => '' ) ) !!}
                                               
                                                 {!! Form::close() !!}
 

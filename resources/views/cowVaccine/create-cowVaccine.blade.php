@@ -26,10 +26,12 @@
 
                                 <div class="col-sm-9">
 
-                                    {!! Form::select('cow_id',$cows,
-                                    null,[ 'class' => 'form-control','required'=> '']
-
-                                    ) !!} 
+                                    <select name="cow_id" class="form-control" required="">
+                                        <option  value="" selected="Please Select">Please Select</option>
+                                        @foreach($cows as $cow)
+                                            <option value="{{$cow->id}}">{{ $cow->name }} (C-{{ $cow->id }})</option>
+                                        @endforeach
+                                    </select> 
                                 
                                 </div>
 
@@ -42,16 +44,16 @@
 
                                 <div class="col-sm-9">
                                 
-                                    {!! Form::select('vaccine_id',$vaccines,
-                                    null,[ 'class' => 'form-control','required'=> '']
-
-                                    ) !!} 
+                                    <select name="vaccine_id" class="form-control" required="">
+                                        <option  value="" selected="Please Select">Please Select</option>
+                                        @foreach($vaccines as $vaccine)
+                                            <option value="{{$vaccine->id}}">{{ $vaccine->name }} </option>
+                                        @endforeach
+                                    </select>
                                 
                                 </div>
 
                             </div>
-
-                            
 
                             <div class="form-group ">
 

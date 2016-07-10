@@ -11,12 +11,12 @@
 
 	<div class="row">
         <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="box box-info">
+                        <div class="box-header">
                             List Of All Dead Cows
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="boxy-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
@@ -30,9 +30,8 @@
                                             <th>Age when Dead</th>
                                             <th>Active For</th>
                                             <th>Reason Of Dead</th>
-                                            <th>#</th>
-                                            <th>#</th>
-                                            <th>#</th>
+                                            <th>Action</th>
+                                            
                                             
                                         </tr>
                                     </thead>
@@ -42,9 +41,9 @@
 										<?php $count++  ?>
                                         <tr>
 
-                                            <td style="color:#fff; background:#9B0D07;">{{ $count }}</td>
+                                            <td>{{ $count }}</td>
 
-                                            <td style="display: block;margin: 0 auto;width: 60px;"> {{ Html::image($dead_cow->cow->img, $dead_cow->cow->name, array('class' => 'img-responsive ')) }}</td>
+                                            <td style="display: block;margin: 0 auto;width: 40px;"> {{ Html::image($dead_cow->cow->img, $dead_cow->cow->name, array('class' => 'img-responsive ')) }}</td>
 
                                             <td>{{ $dead_cow->cow->name }}</td>
 
@@ -62,15 +61,15 @@
                                             
                                             <td>{{ $dead_cow->reason }}</td>
                                              
-                                            <td><a class="btn btn-success" href="{{ route( 'dead-cow.show', array( 'id'=> $dead_cow->id ) ) }}">Show</a></td>
+                                            <td><a class="label label-success" href="{{ route( 'dead-cow.show', array( 'id'=> $dead_cow->id ) ) }}">Show</a>
 
-                                            <td><a class="btn btn-warning" href="{{ route( 'dead-cow.edit', array( 'id'=> $dead_cow->id ) ) }}">Edit</a></td>
+                                            <a class="label label-warning" href="{{ route( 'dead-cow.edit', array( 'id'=> $dead_cow->id ) ) }}">Edit</a>
 
-                                            <td>
+                                            
                                                 
                                                 {!! Form::open( array( 'route' => array('dead-cow.destroy', $dead_cow->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
-                                                {!! Form::submit('Delete', array( 'class' => 'btn btn-danger' ) ) !!}
+                                                {!! Form::submit('Delete', array( 'class' => '' ) ) !!}
                                               
                                                 {!! Form::close() !!}
 

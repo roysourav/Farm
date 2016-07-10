@@ -4821,3 +4821,23 @@ vertical-align: middle;
   min-width: 100px;
  
 }
+.label {
+  
+  font-size: 85%;
+  
+}
+.table input[type="submit"] {
+  cursor: pointer;
+  border-radius: 0.25em;
+color: #fff;
+display: inline;
+font-size: 85%;
+font-weight: 700;
+line-height: 1;
+padding: 0.3em 0.6em 0.3em;
+text-align: center;
+vertical-align: baseline;
+white-space: nowrap;
+background-color: #dd4b39;
+border: none;
+}

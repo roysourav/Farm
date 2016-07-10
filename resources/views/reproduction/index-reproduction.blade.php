@@ -11,12 +11,12 @@
 
 	<div class="row">
         <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="box box-info">
+                        <div class="box-header">
                             List Of All Cows ( Reproduction )
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="boxy-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
@@ -30,9 +30,8 @@
                                             <th>Date Of Check</th>
                                             <th>Pregnancy Confirmation</th>
                                             <th>Delivery Date</th>
-                                            <th>#</th>
-                                            <th>#</th>
-                                            <th>#</th>
+                                            <th>Action</th>
+                                            
                                             
                                         </tr>
                                     </thead>
@@ -42,9 +41,9 @@
 										<?php $count++  ?>
                                         <tr>
 
-                                            <td style="color:#fff; background:#9B0D07;">{{ $count }}</td>
+                                            <td>{{ $count }}</td>
 
-                                            <td style="display: block;margin: 0 auto;width: 60px;"> {{ Html::image($reproduction->cow->img, $reproduction->cow->name, array('class' => 'img-responsive ')) }}</td>
+                                            <td style="display: block;margin: 0 auto;width: 40px;"> {{ Html::image($reproduction->cow->img, $reproduction->cow->name, array('class' => 'img-responsive ')) }}</td>
 
                                             <td>{{ $reproduction->cow->name }}</td>
 
@@ -72,16 +71,16 @@
                                             @endif
                                             </td>
 
-                                            <td><a class="btn btn-success" href="{{ route( 'reproduction.show', array( 'id'=> $reproduction->id ) ) }}">Show</a></td>
+                                            <td><a class="label label-success" href="{{ route( 'reproduction.show', array( 'id'=> $reproduction->id ) ) }}">Show</a>
 
 
-                                            <td><a class="btn btn-warning" href="{{ route( 'reproduction.edit', array( 'id'=> $reproduction->id ) ) }}">Edit</a></td>
+                                            <a class="label label-warning" href="{{ route( 'reproduction.edit', array( 'id'=> $reproduction->id ) ) }}">Edit</a>
 
-                                            <td>
+                                         
                                                 
                                                 {!! Form::open( array( 'route' => array('reproduction.destroy', $reproduction->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
-                                                {!! Form::submit('Delete', array( 'class' => 'btn btn-danger' ) ) !!}
+                                                {!! Form::submit('Delete', array( 'class' => '' ) ) !!}
                                               
                                                 {!! Form::close() !!}
 

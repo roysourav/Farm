@@ -20,7 +20,7 @@
                 {{ $vaccine->name }}
             </a>
         </li>
-    @endforeach                                  
+    @endforeach
     </ul>
 
     <div class="tab-content">
@@ -33,20 +33,20 @@
         <div class="tab-pane {{ ( $i == 1 ) ? 'in active' : '' }}" id="{{ $vaccine->name }}">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="box box-info">
+                        <div class="box-header">
                             <div class="row">
                                 <div class="col-md-12">
-                                   Details Of Vaccine : {{ $vaccine->name }}
+                                   <b>Details Of Vaccine : {{ $vaccine->name }}</b>
                                 </div>
                                 
                             </div>
                             
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="boxy-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Sl</th>
@@ -54,7 +54,7 @@
                                             <th>Cow Id</th>
                                             <th>Applied On</th>
                                             <th>Next Date</th>
-                                            <th>#</th>
+                                            <th>Action</th>
                                             
                                             
                                         </tr>
@@ -67,7 +67,7 @@
                                            
                                             <?php $count++  ?>
 
-                                             <td style="color:#fff; background:#9B0D07;">{{ $count }}</td>
+                                             <td>{{ $count }}</td>
 
                                             <td>{{ $cow->name }}</td>
 
@@ -77,18 +77,9 @@
 
                                             <td>{{ Carbon\Carbon::parse($cow->pivot->date)->addMonths( $vaccine->duration )->format('jS M Y ') }} </td>
 
-                                            
-
                                             <td>
 
-
-                                            </form>
-                                                
-                                                {!! Form::open( array( 'url' => ['cow-vaccine/{$cow->id}/{$vaccine->id}'], 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
-
-                                                {!! Form::submit('Delete', array( 'class' => 'btn btn-danger' ) ) !!}
-                                              
-                                                {!! Form::close() !!}
+                                                <a class="label label-danger" href="{{url('vaccine/delete/'.$cow->id.'/'.$vaccine->id.'')}}">Delete</a>
 
                                             </td>
                                            

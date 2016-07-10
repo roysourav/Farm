@@ -8,6 +8,6 @@ class Vaccine extends Model
 {
     public function cows()
     {
-    	return $this->belongsToMany('App\Cow')->withPivot('date')->withTimestamps();;
+    	return $this->belongsToMany('App\Cow')->withPivot('date')->withTimestamps();
     }
 }

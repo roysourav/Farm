@@ -47,7 +47,7 @@ class cowDeadController extends Controller
      */
     public function create()
     {
-        $cows = Cow::where( 'active', 1 )->lists('name', 'id')->toArray();
+        $cows = Cow::where( 'active', 1 )->get();
 
         return view('cowDead.create-cowDead')->withCows($cows);
     }

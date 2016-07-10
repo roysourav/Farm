@@ -16,6 +16,8 @@ use Redirect;
 
 use Carbon\Carbon;
 
+use DB;
+
 class cowVaccineController extends Controller
 {
     /**
@@ -66,6 +68,27 @@ class cowVaccineController extends Controller
         $vaccine_id = $request->vaccine_id;
         $date       = $request->date;
 
+        
+
+        $row = DB::table('cow_vaccine')->where('cow_id',$cow_id)->where('vaccine_id',$vaccine_id)->first();
+
+       
+
+        if ( count($row) > 0 ) {
+
+            $vaccine = Vaccine::find($row->vaccine_id);
+            $vaccine_duration = $vaccine->duration;
+
+           if (Carbon::parse($row->date)->diff( Carbon::now() )->days < $vaccine->duration*30 ){
+
+            Session::flash( 'error', 'Same vaccine is already given to this cow,You can not use same vaccine before next schedule date' );
+
+            return Redirect::route( 'cow-vaccine.create' );
+
+           }  
+        }
+        
+
         $cow = Cow::find( $cow_id );
 
         $cow->vaccines()->attach( $vaccine_id, ['date' => $date ] );
@@ -112,11 +135,12 @@ class cowVaccineController extends Controller
     {    
         $cow = Cow::find( $cow_id );
 
+        $cow->vaccines()->detach( $vaccine_id );
+
+        Session::flash( 'success', 'Record Deleted Successfully !' );
+        
+        return Redirect::route( 'cow-vaccine.index' );
 
 
-
-
-        //You can code on it, I just solved that problem
-        return "Cow iD {$cow_id} and Vaccine ID {$vaccine_id}";
     }
 }

@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Supplier;
+use Session;
+use Redirect;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,8 +16,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        
+
     }
+
+
+
+
 
     /**
      * Register any application services.

@@ -13,6 +13,8 @@ return array(
     'CreateCustomersTable' => $baseDir . '/database/migrations/2016_06_04_065210_create_customers_table.php',
     'CreateDoctorsTable' => $baseDir . '/database/migrations/2016_06_12_065712_create_doctors_table.php',
     'CreateEmployeesTable' => $baseDir . '/database/migrations/2016_05_21_161006_create_employees_table.php',
+    'CreateMedicineCategoriesTable' => $baseDir . '/database/migrations/2016_07_12_155300_create_medicine_categories_table.php',
+    'CreateMedicinesTable' => $baseDir . '/database/migrations/2016_07_12_153621_create_medicines_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateReproductionsTable' => $baseDir . '/database/migrations/2016_06_24_190630_create_reproductions_table.php',
     'CreateSpeciesTable' => $baseDir . '/database/migrations/2016_07_02_184314_create_species_table.php',

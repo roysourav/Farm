@@ -23,15 +23,19 @@ Route::resource( 'customer', 'customerController' );
 
 Route::resource( 'cow', 'cowController' );
 
-Route::resource( 'doctor' , 'doctorController' );
+Route::resource( 'doctor', 'doctorController' );
 
-Route::resource( 'reproduction' , 'reproductionController' );
+Route::resource( 'reproduction', 'reproductionController' );
 
-Route::resource( 'dead-cow' , 'cowDeadController' );
+Route::resource( 'dead-cow', 'cowDeadController' );
 
-Route::resource( 'sell-cow' , 'cowSellController' );
+Route::resource( 'sell-cow' ,'cowSellController' );
 
-Route::resource( 'vaccine' ,'vaccineController');
+Route::resource( 'vaccine', 'vaccineController');
+
+Route::resource( 'medicine', 'medicineController' );
+
+Route::resource( 'medicine-category', 'medicineCategoryController' , ['except' => ['create','show'] ] );
 
 
 
@@ -45,10 +49,7 @@ Route::get( 'cow-vaccine/create', [ 'as' => 'cow-vaccine.create', 'uses' => 'cow
 
 Route::post( 'cow-vaccine', [ 'as' => 'cow-vaccine.store', 'uses' => 'cowVaccineController@store' ] );
 
-Route::get( 'vaccine/delete/{id}/{vaccine_id}', 'cowVaccineController@destroy');
-
-
-
+Route::get( 'vaccine/delete/{id}/{vaccine_id}', 'cowVaccineController@destroy', [ 'except' => ['create', 'show'] ] );
 
 
 
@@ -65,10 +66,6 @@ Route::get( 'species/{id}/edit' , [ 'uses'=>'speciesController@edit' , 'as'=>'sp
 Route::put( 'species/{id}' , [ 'uses'=>'speciesController@update' , 'as'=>'species.update' ] );
 
 Route::delete( 'species/{id}' , [ 'uses'=>'speciesController@destroy' , 'as'=>'species.destroy' ] );
-
-
-
-
 
 
 

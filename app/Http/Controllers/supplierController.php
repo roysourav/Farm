@@ -234,23 +234,27 @@ class supplierController extends Controller
 
     public function destroy($id)
     {
-        $check = new CheckExistenceController();
-        $arr = array(
-            0 => ['model' => Reproduction::class, 'foreign_key' => 'supplier_id'],
-            1 => ['model' => Cow::class, 'foreign_key' => 'supplier_id']
-        );
-       if($check->getCheckExistence($id, $arr) == false) {
+        
            $supplier = Supplier::find( $id );
 
-           $supplier->delete();
+           $hascow[] = $supplier->cows;
+
+           if( count( $hascow ) > 0 ){
+
+            Session::flash('error', 'Supplier is in use !');
+            
+
+          }else{
+
+            $supplier->delete();
 
            Session::flash('success', 'Supplier Has Been Deleted Successfully !');
-
-           return Redirect::route('supplier.index');
-       } else {
-           Session::flash('error', 'Supplier can not be deleted!');
-
-           return Redirect::route('supplier.index');
        }
+
+           return Redirect::route('supplier.index');
+        
     }
+
     }
+
+

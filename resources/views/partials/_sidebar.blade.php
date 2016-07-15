@@ -119,6 +119,18 @@
 
             <li class="treeview">
             
+              <a href="#"><i class="fa fa-thumb-tack"></i> <span>Medicines</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+              <ul class="treeview-menu">
+                <li><a href="{{ route( 'medicine.create' ) }}">Add New Medicine</a></li>
+                <li><a href="{{ route( 'medicine.index' ) }}">All Medicines</a></li>
+                <li><a href="{{ route( 'medicine-category.index' ) }}">Medicine Category</a></li>
+              </ul>
+
+            </li>
+
+            <li class="treeview">
+            
               <a href="#"><i class="fa fa-user"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>
 
               <ul class="treeview-menu">

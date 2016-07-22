@@ -237,11 +237,13 @@ class supplierController extends Controller
         
            $supplier = Supplier::find( $id );
 
-           $hascow[] = $supplier->cows;
+           $has_related_records[] = $supplier->cows;
 
-           if( count( $hascow ) > 0 ){
+           $has_related_records[] = $supplier->reproduction;
 
-            Session::flash('error', 'Supplier is in use !');
+           if( count( $has_related_records ) > 0 ){
+
+            Session::flash('error', 'That Supplier is in use. You Must Delete related records First !(e.g. cow,reproduction etc)');
             
 
           }else{

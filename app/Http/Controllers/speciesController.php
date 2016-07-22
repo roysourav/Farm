@@ -42,7 +42,7 @@ class speciesController extends Controller
     	 //validate data
         $this->validate( $request, array(
 
-                'name'          => 'required',
+                'name'   => 'required | unique:species,name',
 
             ) );
 
@@ -82,7 +82,7 @@ class speciesController extends Controller
         //validate data
         $this->validate( $request, array(
 
-                'name'          => 'required',
+                'name'  => 'required | unique:species,name,'.$id,
 
             ) );
 
@@ -108,9 +108,19 @@ class speciesController extends Controller
     {
         $species = Species::find($id);
 
-        $species->delete();
+        $has_cow = $species->cow;
 
-        Session::flash( 'success', 'Species Deleted Successfully !' );
+        if( count( $has_cow ) > 0 ){
+
+            Session::flash( 'error', 'Species already in use, You must delete all cows under that species first !' );
+        }else{
+
+            $species->delete();
+
+            Session::flash( 'success', 'Species Deleted Successfully !' );
+        }
+
+        
 
         return Redirect::route('species.index');
 

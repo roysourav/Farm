@@ -34,4 +34,6 @@ class Cow extends Model
     {
         return $this->belongsToMany('App\Vaccine')->withPivot('date')->withTimestamps();
     }
+
+    
 }

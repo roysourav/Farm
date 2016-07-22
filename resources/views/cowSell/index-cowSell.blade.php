@@ -65,7 +65,7 @@
 
                                             
                                                 
-                                                {!! Form::open( array( 'route' => array('dead-cow.destroy', $sold_cow->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
+                                                {!! Form::open( array( 'route' => array('sell-cow.destroy', $sold_cow->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
                                                 {!! Form::submit('Delete', array( 'class' => '' ) ) !!}
                                               

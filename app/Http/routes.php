@@ -37,12 +37,14 @@ Route::resource( 'medicine', 'medicineController' );
 
 Route::resource( 'medicine-category', 'medicineCategoryController' , ['except' => ['create','show'] ] );
 
+Route::resource( 'cow-vaccine', 'cowVaccineController', ['except' => ['edit','update','destroy'] ] );
 
+Route::get( 'vaccine/delete/{cow_id}/{vaccine_id}', 'cowVaccineController@delete' );
 
 
 
 //Route for cow vaccine
-
+/*
 Route::get( 'cow-vaccine', [ 'as' => 'cow-vaccine.index', 'uses' => 'cowVaccineController@index' ] );
 
 Route::get( 'cow-vaccine/create', [ 'as' => 'cow-vaccine.create', 'uses' => 'cowVaccineController@create' ] );
@@ -50,7 +52,7 @@ Route::get( 'cow-vaccine/create', [ 'as' => 'cow-vaccine.create', 'uses' => 'cow
 Route::post( 'cow-vaccine', [ 'as' => 'cow-vaccine.store', 'uses' => 'cowVaccineController@store' ] );
 
 Route::get( 'vaccine/delete/{id}/{vaccine_id}', 'cowVaccineController@destroy', [ 'except' => ['create', 'show'] ] );
-
+*/
 
 
 

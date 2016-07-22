@@ -62,7 +62,7 @@ class cowController extends Controller
          //validate data
         $this->validate( $request, array(
 
-                'name'          => 'required |  Min:3 | max:100',
+                'name'          => 'required |  Min:3 | max:100 | unique:cows,name',
                 'sex'           => 'required | string' ,
                 'color'         => 'required | string' ,
                 'img'           => 'image | max:500 | min:50',
@@ -172,7 +172,7 @@ class cowController extends Controller
            //validate data
         $this->validate( $request, array(
 
-                'name'          => 'required |  Min:3 | max:100',
+                'name'          => 'required |  Min:3 | max:100 | unique:cows,name,'.$id,
                 'sex'           => 'required | string' ,
                 'color'         => 'required | string' ,
                 'img'           => 'image | max:500 | min:50',
@@ -243,18 +243,23 @@ class cowController extends Controller
      */
     public function destroy($id)
     {
-        $check = new CheckExistenceController();
-        $arr = array(
-            0 => ['model' => Reproduction::class, 'foreign_key' => 'cow_id']
-        );
-        if($check->getCheckExistence($id, $arr) == false) {
-            $cow = Cow::find($id);
-            $cow->delete();
-            Session::flash( 'success', 'Cow Has Been Deleted Successfully !' );
-            return Redirect::route( 'cow.index' );
-        } else {
-            Session::flash('error', 'Cow can not be deleted!');
-            return Redirect::route('cow.index');
-        }
+       $cow = Cow::find( $id );
+
+       $has_reproduction = $cow->reproduction;
+
+       if( count( $has_reproduction ) > 0 ){
+
+        Session::flash( 'error', 'Cow already in use, You must delete all records related with that cow first.(e.g. reproduction etc.)' );
+       }else{
+
+         $cow->vaccines()->detach();
+
+         $cow->delete();
+
+         Session::flash( 'success', 'Cow Deleted Successfully !' );
+       }
+
+
+       return Redirect::route('cow.index');
     }
 }

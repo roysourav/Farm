@@ -161,6 +161,18 @@ class cowDeadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dead_cow = CowDead::find( $id );
+
+        $cow_id = $dead_cow->cow->id;
+
+        $dead_cow->delete();
+
+        $cow = Cow::find($cow_id);
+
+        $cow->delete();
+
+        Session::flash( 'success','Cow has been deleted successfully !' );
+
+        return Redirect::route('dead-cow.index');
     }
 }

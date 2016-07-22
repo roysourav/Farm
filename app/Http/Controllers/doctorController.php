@@ -201,19 +201,21 @@ class doctorController extends Controller
      */
     public function destroy($id)
     {
-        $check = new CheckExistenceController();
-        $arr = ['model' => Reproduction::class, 'foreign_key' => 'doctor_id'];
-        if($check->getCheckExistence($id, $arr) == false) {
-            $doctor = Doctor::find( $id );
+        $doctor = Doctor::find( $id );
+
+        $has_reproduction = $doctor->reproduction;
+
+        if( count( $has_reproduction ) > 0 ){
+
+            Session::flash( 'error', 'That Doctor already in use, You must delete all records related with that doctor first !( e.g. reproduction etc)' );
+        }else{
 
             $doctor->delete();
 
-            Session::flash('success', 'Doctor Has Been Deleted Successfully !');
-
-            return Redirect::route('doctor.index');
-        } else {
-            Session::flash('error', 'Doctor can not be deleted!');
-            return Redirect::route('doctor.index');
+            Session::flash( 'success', 'Doctor deleted successfully !' );
         }
+
+        return Redirect::route('doctor.index');
+
     }
 }

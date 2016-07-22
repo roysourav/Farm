@@ -24,6 +24,12 @@
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
 
+          <li class="treeview">
+            
+              <a href="<?php echo e(route('home')); ?>"><i class="fa fa-tachometer"></i> <span>Dashbord</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+            </li>
+
             <li class="treeview">
             
               <a href="#"><i class="fa fa-thumb-tack"></i> <span>Cows</span> <i class="fa fa-angle-left pull-right"></i></a>

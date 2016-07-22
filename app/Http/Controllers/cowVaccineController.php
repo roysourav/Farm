@@ -105,38 +105,27 @@ class cowVaccineController extends Controller
 
     }
 
-   
-
-    /**
-     * Show the form for editing the specified resource.
+   /**
+     * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show($id)
     {
-        //
+       $vaccine = Vaccine::find($id);
+
+       return view('cowVaccine.show-cowVaccine')->withVaccine( $vaccine );
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($cow_id,$vaccine_id)
+    public function delete($cow_id,$vaccine_id)
 
     {    
         $cow = Cow::find( $cow_id );
@@ -145,7 +134,7 @@ class cowVaccineController extends Controller
 
         Session::flash( 'success', 'Record Deleted Successfully !' );
         
-        return Redirect::route( 'cow-vaccine.index' );
+        return Redirect::route( 'cow-vaccine.show', [ 'id'=> $vaccine_id ] );
 
 
     }

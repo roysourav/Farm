@@ -157,6 +157,18 @@ class cowSellController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sold_cow = CowSell::find( $id );
+
+        $cow_id = $sold_cow->cow->id;
+
+        $sold_cow->delete();
+
+        $cow = Cow::find( $cow_id );
+
+        $cow->delete();
+
+        Session::flash( 'success', 'Cow Deleted Successfully !' );
+
+        return Redirect::route('sell-cow.index');
     }
 }

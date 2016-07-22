@@ -15,4 +15,13 @@ class Supplier extends Model
 		return $this->hasMany('App\Cow');
 	}
    
+   /**
+     * Get supplier related with reproduction.
+     */
+	public function reproduction()
+	{
+
+		return $this->hasMany('App\Reproduction');
+	}
+   
 }

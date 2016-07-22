@@ -52,7 +52,7 @@ class vaccineController extends Controller
 
         $this->validate($request, array(
 
-            'name'      => 'required | Min:3',
+            'name'      => 'required | Min:3| unique:vaccines,name',
             'duration'  => 'required | numeric'
 
             ));
@@ -108,7 +108,7 @@ class vaccineController extends Controller
 
         $this->validate($request, array(
 
-            'name'      => 'required | Min:3',
+            'name'      => 'required | Min:3| unique:vaccines,name,'.$id,
             'duration'  => 'required | numeric'
 
             ));
@@ -136,6 +136,8 @@ class vaccineController extends Controller
     public function destroy($id)
     {
         $vaccine = Vaccine::find( $id );
+
+        $vaccine->cows()->detach();
 
         $vaccine->delete();
 

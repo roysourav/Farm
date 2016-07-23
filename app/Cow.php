@@ -32,7 +32,7 @@ class Cow extends Model
 
     public function vaccines()
     {
-        return $this->belongsToMany('App\Vaccine')->withPivot('date')->withTimestamps();
+        return $this->belongsToMany('App\StockConsumptionModels\Vaccine')->withPivot('date')->withTimestamps();
     }
 
     

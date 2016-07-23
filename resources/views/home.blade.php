@@ -30,7 +30,7 @@
                   <i class="fa fa-flask"></i>
                 </div>
                 <a class="small-box-footer" href="#">
-                  Enter &nbsp <i class="fa fa-arrow-circle-right"></i>
+                  Comming Soon &nbsp <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
@@ -46,7 +46,7 @@
                 <div class="icon">
                   <i class="fa fa-user"></i>
                 </div>
-                <a class="small-box-footer" href="#">
+                <a class="small-box-footer" href="{{ route('employee.index') }}">
                  Enter &nbsp <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -64,7 +64,7 @@
                   <i class="fa fa-calculator"></i>
                 </div>
                 <a class="small-box-footer" href="#">
-                  Enter &nbsp <i class="fa fa-arrow-circle-right"></i>
+                  Comming Soon &nbsp <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
@@ -80,7 +80,7 @@
                 <div class="icon">
                   <i class="fa fa-database"></i>
                 </div>
-                <a class="small-box-footer" href="#">
+                <a class="small-box-footer" href="{{ route('vaccine.index') }}">
                  Enter &nbsp <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -98,7 +98,7 @@
                   <i class="fa fa-book"></i>
                 </div>
                 <a class="small-box-footer" href="#">
-                 Enter &nbsp <i class="fa fa-arrow-circle-right"></i>
+                 Comming Soon &nbsp <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->

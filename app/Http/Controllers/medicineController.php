@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Medicine;
+use App\StockConsumptionModels\Medicine;
 
-use App\MedicineCategory;
+use App\StockConsumptionModels\MedicineCategory;
 
 use Session;
 
@@ -33,7 +33,7 @@ class medicineController extends Controller
 
         $medicine_categories = MedicineCategory::all();
 
-        return view( 'medicine.index-medicine' )->withMedicines( $medicines );
+        return view( 'StockConsumptionViews.medicine.index-medicine' )->withMedicines( $medicines );
 
     }
 
@@ -46,7 +46,7 @@ class medicineController extends Controller
     {
         $medicine_categories = MedicineCategory::all();
 
-        return view( 'medicine.create-medicine' )->withMedicine_categories( $medicine_categories );
+        return view( 'StockConsumptionViews.medicine.create-medicine' )->withMedicine_categories( $medicine_categories );
     }
 
     /**
@@ -106,7 +106,7 @@ class medicineController extends Controller
         $medicine = Medicine::find($id);
         $medicine_categories = MedicineCategory::all();
 
-        return view('medicine.edit-medicine')->withMedicine($medicine)
+        return view('StockConsumptionViews.medicine.edit-medicine')->withMedicine($medicine)
                                             ->withMedicine_categories( $medicine_categories );
     }
 

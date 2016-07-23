@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\MedicineCategory;
+use App\StockConsumptionModels\MedicineCategory;
 
 use Session;
 
@@ -28,7 +28,7 @@ class medicineCategoryController extends Controller
     {
     	$medicine_categories = MedicineCategory::all();
 
-    	return view( 'medicine-category.index-medicine-category' )->withMedicine_categories($medicine_categories);
+    	return view( 'StockConsumptionViews.medicine-category.index-medicine-category' )->withMedicine_categories($medicine_categories);
     }
 
     /**
@@ -68,7 +68,7 @@ class medicineCategoryController extends Controller
     {
         $medicine_category = MedicineCategory::find($id);
 
-        return view('medicine-category.edit-medicine-category')->withMedicine_category($medicine_category);
+        return view('StockConsumptionViews.medicine-category.edit-medicine-category')->withMedicine_category($medicine_category);
 
     }
 

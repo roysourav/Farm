@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Employee;
+use App\HrmModels\Employee;
 use App\Supplier;
 
 class HomeController extends Controller

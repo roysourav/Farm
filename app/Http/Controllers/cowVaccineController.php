@@ -8,7 +8,7 @@ use App\Http\Requests;
 
 use App\Cow;
 
-use App\Vaccine;
+use App\StockConsumptionModels\Vaccine;
 
 use Session;
 

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Vaccine;
+use App\StockConsumptionModels\Vaccine;
 
 use Redirect;
 
@@ -27,7 +27,7 @@ class vaccineController extends Controller
     {
         $vaccines = Vaccine::all();
 
-        return view( 'vaccine.index-vaccine' )->withVaccines( $vaccines );
+        return view( 'StockConsumptionViews.vaccine.index-vaccine' )->withVaccines( $vaccines );
     }
 
     /**
@@ -37,7 +37,7 @@ class vaccineController extends Controller
      */
     public function create()
     {
-        return view( 'vaccine.create-vaccine' );
+        return view( 'StockConsumptionViews.vaccine.create-vaccine' );
     }
 
     /**
@@ -92,7 +92,7 @@ class vaccineController extends Controller
     {
         $vaccine = Vaccine::find( $id );
 
-        return view( 'vaccine.edit-vaccine' )->withVaccine( $vaccine );
+        return view( 'StockConsumptionViews.vaccine.edit-vaccine' )->withVaccine( $vaccine );
     }
 
     /**

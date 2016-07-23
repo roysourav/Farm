@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Customer;
+use App\HrmModels\Customer;
 
 use Session;
 
@@ -28,7 +28,7 @@ class customerController extends Controller
     {
         $customers = Customer::all();
 
-        return view(  'customer.index-customer' )->withCustomers($customers);
+        return view(  'HrmViews.customer.index-customer' )->withCustomers($customers);
     }
 
     /**
@@ -38,7 +38,7 @@ class customerController extends Controller
      */
     public function create()
     {
-        return view( 'customer.create-customer' );
+        return view( 'HrmViews.customer.create-customer' );
     }
 
     /**
@@ -78,7 +78,7 @@ class customerController extends Controller
 
         Session::flash( 'success', 'New customer has been saved successfully!' );
 
-        return view( 'customer.edit-customer' )->with( 'customer', $customer );
+        return view( 'HrmViews.customer.edit-customer' )->with( 'customer', $customer );
     }
 
     /**
@@ -91,7 +91,7 @@ class customerController extends Controller
     {
        $customer = Customer::find($id);
 
-       return view( 'customer.show-customer' )->withCustomer($customer);
+       return view( 'HrmViews.customer.show-customer' )->withCustomer($customer);
     }
 
     /**
@@ -104,7 +104,7 @@ class customerController extends Controller
     {
         $customer = Customer::find( $id );
 
-        return view( 'customer.edit-customer' )->with( 'customer', $customer );
+        return view( 'HrmViews.customer.edit-customer' )->with( 'customer', $customer );
     }
 
     /**
@@ -146,7 +146,7 @@ class customerController extends Controller
 
         Session::flash( 'success' , 'Customer has been updated successfully!' );
 
-        return view( 'customer.edit-customer' )->with( 'customer', $customer );
+        return view( 'HrmViews.customer.edit-customer' )->with( 'customer', $customer );
     }
 
     /**

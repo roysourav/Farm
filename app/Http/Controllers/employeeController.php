@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Employee;
+use App\HrmModels\Employee;
 
 use Session;
 
@@ -28,7 +28,7 @@ class employeeController extends Controller
     {
         $employees = Employee::all();
 
-        return view( 'employee.index' )->with( 'employees', $employees );
+        return view( 'HrmViews.employee.index-employee' )->with( 'employees', $employees );
     }
 
     /**
@@ -38,7 +38,7 @@ class employeeController extends Controller
      */
     public function create()
     {
-        return view('employee.create-employee');
+        return view('HrmViews.employee.create-employee');
     }
 
     /**
@@ -57,7 +57,7 @@ class employeeController extends Controller
                 'father_name' => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'mother_name' => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'nid'         => 'required | digits:13 | unique:employees,nid',
-                'mobile'      => 'required | digits:10 | unique:employees,mobile',
+                'mobile'      => 'required | digits:11 | unique:employees,mobile',
                 'email'       => 'email | unique:employees,email',
                 'address'     => 'required | min:10 |',
                 'appointment_date'  => 'required | date_format:h/i/Y',
@@ -84,7 +84,7 @@ class employeeController extends Controller
 
         Session::flash( 'success', 'New employee has been saved successfully!' );
 
-        return view( 'employee.edit' )->with( 'employee', $employee );
+        return view( 'HrmViews.employee.edit-employee' )->with( 'employee', $employee );
     }
 
     /**
@@ -97,7 +97,7 @@ class employeeController extends Controller
     {
         $employee = Employee::find( $id );
 
-        return view( 'employee.show' )->with( 'employee', $employee );
+        return view( 'HrmViews.employee.show-employee' )->with( 'employee', $employee );
     }
 
     /**
@@ -110,7 +110,7 @@ class employeeController extends Controller
     {
         $employee = Employee::find( $id );
 
-        return view( 'employee.edit' )->with( 'employee', $employee );
+        return view( 'HrmViews.employee.edit-employee' )->with( 'employee', $employee );
     }
 
     /**
@@ -131,7 +131,7 @@ class employeeController extends Controller
                 'father_name' => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'mother_name' => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'nid'         => 'required | digits:13 | unique:employees,nid,'.$id,
-                'mobile'      => 'required | digits:10 | unique:employees,mobile,'.$id,
+                'mobile'      => 'required | digits:11 | unique:employees,mobile,'.$id,
                 'email'       => 'email | unique:employees,email,'.$id,
                 'address'     => 'required | min:10 |',
                 'appointment_date'  => 'required | date_format:h/i/Y',
@@ -157,7 +157,7 @@ class employeeController extends Controller
 
             Session::flash( 'success' , 'Employee has been updated successfully!' );
 
-            return view( 'employee.edit' )->with( 'employee', $employee );
+            return view( 'HrmViews.employee.edit-employee' )->with( 'employee', $employee );
 
     }
 

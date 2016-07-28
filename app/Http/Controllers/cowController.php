@@ -6,7 +6,7 @@ use App\Reproduction;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Cow;
-use App\Supplier;
+use App\HrmModels\Supplier;
 use App\Species;
 use Session;
 use Redirect;

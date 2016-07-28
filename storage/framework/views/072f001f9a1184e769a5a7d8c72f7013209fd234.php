@@ -29,6 +29,8 @@
                                             <th>Vaccine ID</th>
                                             <th>Name Of Vaccine</th>
                                             <th>Dose Duration ( Months )</th>
+                                            <th>Cost ( Per Unit )</th>
+                                            <th>Stock ( In Unit )</th>
                                             <th>Action</th>
                                             
                                         </tr>
@@ -45,7 +47,9 @@
 
                                             <td><?php echo e($vaccine->name); ?></td>
 
-                                            <td><?php echo e($vaccine->duration); ?> Months</td>
+                                            <td><?php echo e($vaccine->duration); ?></td>
+                                            <td><?php echo e($vaccine->cost); ?></td>
+                                            <td><?php echo e($vaccine->stock); ?></td>
                                             
 
 

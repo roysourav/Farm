@@ -53,7 +53,9 @@ class vaccineController extends Controller
         $this->validate($request, array(
 
             'name'      => 'required | Min:3| unique:vaccines,name',
-            'duration'  => 'required | numeric'
+            'duration'  => 'required | numeric',
+            'cost'      => 'required | numeric',
+            'stock'     => 'required | numeric',
 
             ));
 
@@ -63,6 +65,8 @@ class vaccineController extends Controller
 
         $vaccine->name      = $request->name;
         $vaccine->duration  = $request->duration;
+        $vaccine->cost      = $request->cost;
+        $vaccine->stock     = $request->stock;
 
         $vaccine->save();
 
@@ -109,7 +113,9 @@ class vaccineController extends Controller
         $this->validate($request, array(
 
             'name'      => 'required | Min:3| unique:vaccines,name,'.$id,
-            'duration'  => 'required | numeric'
+            'duration'  => 'required | numeric',
+            'cost'      => 'required | numeric',
+            'stock'     => 'required | numeric',
 
             ));
 
@@ -119,6 +125,8 @@ class vaccineController extends Controller
 
         $vaccine->name      = $request->name;
         $vaccine->duration  = $request->duration;
+        $vaccine->cost      = $request->cost;
+        $vaccine->increment('stock',$request->stock);
 
         $vaccine->save();
 

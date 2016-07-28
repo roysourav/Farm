@@ -50,7 +50,6 @@
                                 </div>
 
                             </div>
-                           
 
                             <div class="form-group m_bottom_30">
                                 <label class="col-sm-3 control-label">Cost Per Unit *</label> 
@@ -66,6 +65,26 @@
 
 
                                         <span class="input-group-addon">.00</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group m_bottom_30">
+                                <label class="col-sm-3 control-label">Stock(In Unit) *</label> 
+                            
+                            
+                                <div class="col-sm-9">
+
+                                    <div class=" input-group">
+
+                                        
+                                        
+                                        <?php echo Form::text( 'stock', null, array( 'class'=>'form-control','placeholder'=>'Enter stock in unit','required'=> '','data-parsley-type'=>'number' ) ); ?>
+
+
+                                        <span class="input-group-addon">Unit</span>
 
                                     </div>
 

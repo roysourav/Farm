@@ -16,6 +16,8 @@ class CreateVaccinesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('duration');
+            $table->string('cost');
+            $table->integer('stock');
             $table->timestamps();
         });
     }

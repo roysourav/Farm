@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\HrmModels\Employee;
-use App\Supplier;
+
 
 class HomeController extends Controller
 {
@@ -26,11 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
+       
 
-        $suppliers = Supplier::all();
-
-        return view('home')->withEmployees($employees)
-                           ->withSuppliers($suppliers);
+        return view('home');
     }
 }

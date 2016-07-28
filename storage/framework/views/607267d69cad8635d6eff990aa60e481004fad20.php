@@ -25,6 +25,7 @@
                                             <th> Id</th>
                                             <th>Category</th>
                                             <th>Cost(Per Unit)TK.</th>
+                                            <th>Stock(Unit)</th>
                                             <th>Action</th>
                                             
                                             
@@ -44,6 +45,7 @@
                                             <td><?php echo e($medicine->category->name); ?></td>
 
                                             <td><?php echo e($medicine->cost); ?></td>
+                                            <td><?php echo e($medicine->stock); ?></td>
                                             
                                             
                                             <td>

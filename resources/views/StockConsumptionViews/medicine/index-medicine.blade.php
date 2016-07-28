@@ -27,6 +27,7 @@
                                             <th> Id</th>
                                             <th>Category</th>
                                             <th>Cost(Per Unit)TK.</th>
+                                            <th>Stock(Unit)</th>
                                             <th>Action</th>
                                             
                                             
@@ -46,6 +47,7 @@
                                             <td>{{ $medicine->category->name }}</td>
 
                                             <td>{{ $medicine->cost }}</td>
+                                            <td>{{ $medicine->stock }}</td>
                                             
                                             
                                             <td>

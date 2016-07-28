@@ -1,10 +1,10 @@
-@extends('main')
+@extends('HrmViews.HrmMaster')
 
 @section('content')
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Update Doctor: {{ $doctor->name }}</h1>
+    <h1>Add New Doctor</h1>
 </section>
 
 @include('partials._message')
@@ -13,12 +13,12 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Update General Information
+                            Add New Record
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-9">
-                                    {!! Form::model( $doctor, array( 'method'=>'put', 'route'=> array( 'doctor.update', $doctor->id ),'id'=>'form','files'=>true ) ) !!}
+                                    {!! Form::open( array( 'route'=>'doctor.store', 'id'=>'form', 'files'=>true ) ) !!}
 
                                         <div class="form-group">
 
@@ -126,8 +126,10 @@
                                         <div class="col-sm-9">
                                             <div class="buttons">
                                                 <a href="{{ route('doctor.index') }}" class="btn btn-primary">Go Back</a>
-                                                 
-                                                {!! Form::submit( 'Update Doctor', array( 'class'=>'btn btn-warning' ) ) !!}
+                                                                
+                                                <button type="reset" class="btn btn-danger">Reset All Fields</button>
+
+                                                {!! Form::submit( 'Create New Doctor', array( 'class'=>'btn btn-success' ) ) !!}
 
                                             </div>
                                                 
@@ -138,36 +140,54 @@
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                 <div class="col-lg-3">
-                                <div class="panel panel-primary">
+                                    <div class="panel panel-primary">
                                     <div class="panel-heading">
-                                        Log Information
+                                        Validation Rules
                                     </div>
                                     <div class="panel-body">
-                                        <h5>Created At:</h5>
-                                        <p>{!! Carbon\Carbon::parse($doctor->created_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                        <p>
+                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                            All * mark fields are required.
+                                        </p>
+
+                                        <p>
+                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                             Name field can only content letters and must be minimum 3 characters.
+                                        </p>
+
+                                        <p>
+                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                            Mobile number must be unique and exactly 11 characters long.
+                                        </p>
+                                        <p>
+                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                            Email must be unique.
+                                        </p>
+                                        <p>
+                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                            Bank Account number must be unique.
+                                        </p>
                                         
-                                        <h5>Last Updated At:</h5>
-                                        <p>{!! Carbon\Carbon::parse($doctor->updated_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                        <p>
+                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+                                            Address must be minimum 10 characters long.
+                                        </p>
                                         
                                     </div>
                                     <div class="panel-footer">
-                                        <div class="buttons">
-                                            <a href="{{ route('doctor.index') }}" class="btn btn-primary">Go Back</a>
-                                            <a href="{{ route( 'doctor.show', array( 'id'=> $doctor->id ) ) }}" class="btn btn-success">Show</a>
-                                        </div>
-                                        
+                                        Panel Footer
+                                    </div>
                                     </div>
                                 </div>
+                                <!-- /.col-lg-6 (nested) -->
                             </div>
-                                
-                            </div>
-                            
+                            <!-- /.row (nested) -->
                         </div>
-                        
+                        <!-- /.panel-body -->
                     </div>
-                    
+                    <!-- /.panel -->
                 </div>
-               
+                <!-- /.col-lg-12 -->
             </div>
-            
+            <!-- /.row -->
 @stop

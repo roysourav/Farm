@@ -1,4 +1,4 @@
-@extends('main')
+@extends('HrmViews.HrmMaster')
 
 @section('content')
 

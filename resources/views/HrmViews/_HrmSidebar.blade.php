@@ -7,7 +7,7 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel">
             
-            
+            <h3>Hrm Module</h3>
           </div>
 
          
@@ -44,6 +44,28 @@
               <ul class="treeview-menu">
                 <li><a href="{{ route( 'customer.index' ) }}">View All Customers</a></li>
                 <li><a href="{{ route( 'customer.create' ) }}">Add New Customers</a></li>
+              </ul>
+
+            </li>
+
+            <li class="treeview">
+
+              <a href="#"><i class="fa fa-truck"></i> <span>Suppliers</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+              <ul class="treeview-menu">
+                <li><a href="{{ route( 'supplier.index' ) }}">View All Suppliers</a></li>
+                 <li><a href="{{ route( 'supplier.create' ) }}">Add New Supplier</a></li>
+              </ul>
+
+            </li>
+
+            <li class="treeview">
+            
+              <a href="#"><i class="fa fa-user-md"></i> <span>Doctors</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+              <ul class="treeview-menu">
+                <li><a href="{{ route( 'doctor.index' ) }}">View All Doctors</a></li>
+                <li><a href="{{ route( 'doctor.create' ) }}">Add New Doctor</a></li>
               </ul>
 
             </li>

@@ -6,7 +6,7 @@
 
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel">
-            
+            <h3>St.&Cons. Module</h3>
             
           </div>
 
@@ -26,10 +26,10 @@
 
             <li class="treeview">
             
-              <a href="#"><i class="fa fa-medkit"></i> <span>Vaccine</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class="fa fa-medkit"></i> <span>Vaccines</span> <i class="fa fa-angle-left pull-right"></i></a>
 
               <ul class="treeview-menu">
-                <li><a href="{{ route( 'vaccine.index' ) }}">All Vaccine</a></li>
+                <li><a href="{{ route( 'vaccine.index' ) }}">All Vaccin</a></li>
                 <li><a href="{{ route( 'vaccine.create' ) }}">Add New Vaccine</a></li>
                 
               </ul>
@@ -38,12 +38,36 @@
 
              <li class="treeview">
             
-              <a href="#"><i class="fa fa-thumb-tack"></i> <span>Medicines</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class="fa fa-thumb-tack"></i> <span>Medicine</span> <i class="fa fa-angle-left pull-right"></i></a>
 
               <ul class="treeview-menu">
                 <li><a href="{{ route( 'medicine.create' ) }}">Add New Medicine</a></li>
                 <li><a href="{{ route( 'medicine.index' ) }}">All Medicines</a></li>
                 <li><a href="{{ route( 'medicine-category.index' ) }}">Medicine Category</a></li>
+              </ul>
+
+            </li>
+
+            <li class="treeview">
+            
+              <a href="#"><i class="fa fa-thumb-tack"></i> <span>Food</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+              <ul class="treeview-menu">
+                
+                <li><a href="{{ route( 'food.index' ) }}">All Foods</a></li>
+               
+              </ul>
+
+            </li>
+
+            <li class="treeview">
+            
+              <a href="#"><i class="fa fa-thumb-tack"></i> <span>Consumption</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+              <ul class="treeview-menu">
+                
+                <li><a href="{{ route( 'consumption.create' ) }}">Add Record</a></li>
+               
               </ul>
 
             </li>

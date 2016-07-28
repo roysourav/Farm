@@ -31,6 +31,8 @@
                                             <th>Vaccine ID</th>
                                             <th>Name Of Vaccine</th>
                                             <th>Dose Duration ( Months )</th>
+                                            <th>Cost ( Per Unit )</th>
+                                            <th>Stock ( In Unit )</th>
                                             <th>Action</th>
                                             
                                         </tr>
@@ -47,7 +49,9 @@
 
                                             <td>{{ $vaccine->name }}</td>
 
-                                            <td>{{ $vaccine->duration }} Months</td>
+                                            <td>{{ $vaccine->duration }}</td>
+                                            <td>{{ $vaccine->cost }}</td>
+                                            <td>{{ $vaccine->stock }}</td>
                                             
 
 

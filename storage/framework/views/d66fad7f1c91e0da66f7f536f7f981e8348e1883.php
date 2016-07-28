@@ -73,6 +73,27 @@
                                 </div>
                             </div>
 
+                            <div class="form-group m_bottom_30">
+                                <label class="col-sm-3 control-label">Add Stock(In Unit) *</label> 
+                            
+                            
+                                <div class="col-sm-9">
+
+                                    <div class=" input-group">
+
+                                        
+                                        
+                                        <?php echo Form::text( 'stock', 0, array( 'class'=>'form-control','placeholder'=>'Enter stock in unit','required'=> '','data-parsley-type'=>'number' ) ); ?>
+
+
+                                        <span class="input-group-addon">Unit</span>
+
+                                    </div>
+                                    <p>( The stock you add above, will be added with existing stock, default is 0 )</p>
+
+                                </div>
+                            </div>
+
                             
                            
                             <div class="col-sm-3"></div>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Credential\CheckExistenceController;
 use App\Http\Requests;
 
-use App\Doctor;
+use App\HrmModels\Doctor;
 
 use App\Reproduction;
 
@@ -32,7 +32,7 @@ class doctorController extends Controller
     {
         $doctors = Doctor::all();
 
-        return view('doctor.index-doctor')->withDoctors( $doctors );
+        return view('HrmViews.doctor.index-doctor')->withDoctors( $doctors );
     }
 
     /**
@@ -42,7 +42,7 @@ class doctorController extends Controller
      */
     public function create()
     {
-        return view('doctor.create-doctor');
+        return view('HrmViews.doctor.create-doctor');
     }
 
     /**
@@ -114,7 +114,7 @@ class doctorController extends Controller
     {
         $doctor = Doctor::find( $id );
 
-        return view( 'doctor.show-doctor' )->withDoctor($doctor);
+        return view( 'HrmViews.doctor.show-doctor' )->withDoctor($doctor);
     }
 
     /**
@@ -127,7 +127,7 @@ class doctorController extends Controller
     {
         $doctor = Doctor::find( $id );
 
-        return view('doctor.edit-doctor')->withDoctor($doctor);
+        return view('HrmViews.doctor.edit-doctor')->withDoctor($doctor);
     }
 
     /**

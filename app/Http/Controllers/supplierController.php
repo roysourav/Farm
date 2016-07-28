@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Credential\CheckExistenceController;
 use App\Http\Requests;
 
-use App\Supplier;
+use App\HrmModels\Supplier;
 
 use App\Cow;
 
@@ -32,7 +32,7 @@ class supplierController extends Controller
     {
         $suppliers = Supplier::all();
 
-        return view( 'supplier.index-supplier' )->with( 'suppliers', $suppliers );
+        return view( 'HrmViews.supplier.index-supplier' )->with( 'suppliers', $suppliers );
     }
 
 
@@ -45,7 +45,7 @@ class supplierController extends Controller
 
     public function create()
     {
-        return view( 'supplier.create-supplier' );
+        return view( 'HrmViews.supplier.create-supplier' );
     }
 
 
@@ -132,7 +132,7 @@ class supplierController extends Controller
     {
         $supplier = Supplier::find( $id );
 
-        return view( 'supplier.show-supplier' )->with( 'supplier', $supplier );
+        return view( 'HrmViews.supplier.show-supplier' )->with( 'supplier', $supplier );
     }
 
 
@@ -148,7 +148,7 @@ class supplierController extends Controller
     {
         $supplier = Supplier::find( $id );
 
-        return view( 'supplier.edit-supplier' )->with( 'supplier', $supplier );
+        return view( 'HrmViews.supplier.edit-supplier' )->with( 'supplier', $supplier );
     }
 
 

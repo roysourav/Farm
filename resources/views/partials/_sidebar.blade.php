@@ -6,7 +6,7 @@
 
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel">
-            
+            <h3>Cow Module</h3>
             
           </div>
 
@@ -33,58 +33,12 @@
             
 
             <li class="treeview">
-
-              <a href="#"><i class="fa fa-truck"></i> <span>Suppliers</span> <i class="fa fa-angle-left pull-right"></i></a>
-
-              <ul class="treeview-menu">
-                <li><a href="{{ route( 'supplier.index' ) }}">View All Suppliers</a></li>
-                 <li><a href="{{ route( 'supplier.create' ) }}">Add New Supplier</a></li>
-              </ul>
-
-            </li>
-
-
-            
-            <li class="treeview">
-            
-              <a href="#"><i class="fa fa-user-md"></i> <span>Doctors</span> <i class="fa fa-angle-left pull-right"></i></a>
-
-              <ul class="treeview-menu">
-                <li><a href="{{ route( 'doctor.index' ) }}">View All Doctors</a></li>
-                <li><a href="{{ route( 'doctor.create' ) }}">Add New Doctor</a></li>
-              </ul>
-
-            </li>
-
-            <li class="treeview">
             
               <a href="#"><i class="fa fa-paw"></i> <span>Reproduction</span> <i class="fa fa-angle-left pull-right"></i></a>
 
               <ul class="treeview-menu">
                 <li><a href="{{ route( 'reproduction.index' ) }}">Reproduction</a></li>
                 <li><a href="{{ route( 'reproduction.create' ) }}">Add New Record</a></li>
-              </ul>
-
-            </li>
-            
-            <li class="treeview">
-            
-              <a href="#"><i class="fa fa-exclamation-triangle"></i> <span>Death Register</span> <i class="fa fa-angle-left pull-right"></i></a>
-
-              <ul class="treeview-menu">
-                <li><a href="{{ route( 'dead-cow.index' ) }}">All Records</a></li>
-                <li><a href="{{ route( 'dead-cow.create' ) }}">Add New Record</a></li>
-              </ul>
-
-            </li>
-            
-            <li class="treeview">
-            
-              <a href="#"><i class="fa fa-thumbs-down"></i> <span>Cow Sell Register</span> <i class="fa fa-angle-left pull-right"></i></a>
-
-              <ul class="treeview-menu">
-                <li><a href="{{ route( 'sell-cow.index' ) }}">All Records</a></li>
-                <li><a href="{{ route( 'sell-cow.create' ) }}">Add New Record</a></li>
               </ul>
 
             </li>
@@ -100,7 +54,29 @@
 
             </li>
 
-           
+            <li class="treeview">
+            
+              <a href="#"><i class="fa fa-thumbs-down"></i> <span>Cow Sell Register</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+              <ul class="treeview-menu">
+                <li><a href="{{ route( 'sell-cow.index' ) }}">All Records</a></li>
+                <li><a href="{{ route( 'sell-cow.create' ) }}">Add New Record</a></li>
+              </ul>
+
+            </li>
+
+            
+            <li class="treeview">
+            
+              <a href="#"><i class="fa fa-exclamation-triangle"></i> <span>Death Register</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+              <ul class="treeview-menu">
+                <li><a href="{{ route( 'dead-cow.index' ) }}">All Records</a></li>
+                <li><a href="{{ route( 'dead-cow.create' ) }}">Add New Record</a></li>
+              </ul>
+
+            </li>
+            
             <li class="treeview">
             
               <a href="#"><i class="fa fa-user"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>

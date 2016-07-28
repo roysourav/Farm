@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CreateConsumptionsTable' => $baseDir . '/database/migrations/2016_07_25_165036_create_consumptions_table.php',
     'CreateCowDeadsTable' => $baseDir . '/database/migrations/2016_06_27_162631_create_cow_deads_table.php',
     'CreateCowSellsTable' => $baseDir . '/database/migrations/2016_07_01_162811_create_cow_sells_table.php',
     'CreateCowVaccineTable' => $baseDir . '/database/migrations/2016_07_06_160619_create_cow_vaccine_table.php',
@@ -13,6 +14,7 @@ return array(
     'CreateCustomersTable' => $baseDir . '/database/migrations/2016_06_04_065210_create_customers_table.php',
     'CreateDoctorsTable' => $baseDir . '/database/migrations/2016_06_12_065712_create_doctors_table.php',
     'CreateEmployeesTable' => $baseDir . '/database/migrations/2016_05_21_161006_create_employees_table.php',
+    'CreateFoodsTable' => $baseDir . '/database/migrations/2016_07_25_170220_create_foods_table.php',
     'CreateMedicineCategoriesTable' => $baseDir . '/database/migrations/2016_07_12_155300_create_medicine_categories_table.php',
     'CreateMedicinesTable' => $baseDir . '/database/migrations/2016_07_12_153621_create_medicines_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

@@ -74,11 +74,19 @@ class cowVaccineController extends Controller
         $vaccine_id = $request->vaccine_id;
         $date       = $request->date;
 
+        //check vaccine stock
+        $vaccine = Vaccine::find($vaccine_id);
         
+        if( $vaccine->stock < 1 ){
+             Session::flash( 'error', 'Insufficient stock,You need to stock the vaccine first' );
+
+            return Redirect::route( 'cow-vaccine.create' );
+        }
+
+
+        //checking whether before shedule date 
 
         $row = DB::table('cow_vaccine')->where('cow_id',$cow_id)->where('vaccine_id',$vaccine_id)->first();
-
-       
 
         if ( count($row) > 0 ) {
 
@@ -94,10 +102,18 @@ class cowVaccineController extends Controller
            }  
         }
         
-
+        //attch cow with vaccine
         $cow = Cow::find( $cow_id );
 
         $cow->vaccines()->attach( $vaccine_id, ['date' => $date ] );
+
+
+        //vaccine stock maintain
+        $vaccine = Vaccine::find($vaccine_id);
+
+        $vaccine->decrement('stock',1);
+
+
 
         Session::flash( 'success', 'New Record Saved Successfully !' );
         

@@ -43,7 +43,7 @@
                                                    '1'  => '1 Month',
                                                    '3'  => '3 Months',
                                                    '6'  => '6 Months',
-                                                   '9 ' => '9 Months',
+                                                   '9' => '9 Months',
                                                    '12' => '12 Months',
                                                    '18' => '18 Months',
                                                    '24' => '24 Months',
@@ -54,6 +54,46 @@
 
                                             </div>
 
+                                        </div>
+
+                                               <div class="form-group m_bottom_30">
+                                            <label class="col-sm-3 control-label">Cost Per Unit *</label> 
+                                        
+                                        
+                                            <div class="col-sm-9">
+
+                                                <div class=" input-group">
+
+                                                    <span class="input-group-addon">Tk:</span>
+                                                    
+                                                    <?php echo Form::text( 'cost', null, array( 'class'=>'form-control','placeholder'=>'Enter Cost Per Dose','required'=> '','data-parsley-type'=>'number' ) ); ?>
+
+
+                                                    <span class="input-group-addon">.00</span>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group m_bottom_30">
+                                            <label class="col-sm-3 control-label">Add Stock (In Unit)</label> 
+                                        
+                                        
+                                            <div class="col-sm-9">
+
+                                                <div class=" input-group">
+
+                                                    <?php echo Form::text( 'stock',0, array( 'class'=>'form-control','placeholder'=>'Enter Stock In Unit','data-parsley-type'=>'number','required'=> '' ) ); ?>
+
+
+                                                    <span class="input-group-addon">Unit</span>
+
+
+                                                </div>
+                                                <p>( The stock you add above, will be added with existing stock, default is 0 )</p>
+
+                                            </div>
                                         </div>
 
  

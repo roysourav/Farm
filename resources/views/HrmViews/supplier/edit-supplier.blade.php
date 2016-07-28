@@ -1,24 +1,24 @@
-@extends('main')
+@extends('HrmViews.HrmMaster')
 
 @section('content')
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Add New Supplier</h1>
+    <h1>Update Supplier: {{ $supplier->name }}</h1>
 </section>
 
 @include('partials._message')
-            
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Add New Record
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-9">
-                                    {!! Form::open( array( 'route'=>'supplier.store', 'files'=>true,'id'=>'form',  ) ) !!}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Update General Information
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-9">
+                        {!! Form::model( $supplier, array( 'method'=>'put', 'route'=> array( 'supplier.update', $supplier->id ),'id'=>'form','files'=>true ) ) !!}
 
                                         <div class="form-group">
 
@@ -43,7 +43,7 @@
                                                    'food' => 'Food Supplier',
                                                    'medicine' => 'Medicine Supplier',
                                                    'seed' => 'Seed Supplier',
-                                                   ],'cow',
+                                                   ],$supplier->cat,
                                                    ['class'=>'form-control','required'=> '']
                                                 ) !!}
 
@@ -162,73 +162,51 @@
                                             </div>
 
                                         </div>
+ 
 
-                                        
-                                        <div class="col-sm-3"></div>
+                            <div class="col-sm-3"></div>
 
-                                        <div class="col-sm-9">
-                                            <div class="buttons">
-                                                <a href="{{ route('supplier.index') }}" class="btn btn-primary">Go Back</a>
-                                                                
-                                                <button type="reset" class="btn btn-danger">Reset All Fields</button>
-
-                                                {!! Form::submit( 'Create New Supplier', array( 'class'=>'btn btn-success' ) ) !!}
-                                            </div>
-                                           
-                                        </div>
-                                        
-                                        {!! Form::close() !!}
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                                <div class="col-lg-3">
-                                    <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        Validation Rules
-                                    </div>
-                                    <div class="panel-body">
-                                        <p>
-                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                                            All * mark fields are required.
-                                        </p>
-
-                                        <p>
-                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                                             Name field can only content letters and must be minimum 3 characters.
-                                        </p>
-
-                                        <p>
-                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                                            Mobile number must be unique and exactly 11 characters long.
-                                        </p>
-                                        <p>
-                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                                            Email must be unique.
-                                        </p>
-                                        <p>
-                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                                            Bank Account number must be unique.
-                                        </p>
-                                        
-                                        <p>
-                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                                            Address must be minimum 10 characters long.
-                                        </p>
-                                        
-                                    </div>
-                                    <div class="panel-footer">
-                                        Panel Footer
-                                    </div>
-                                    </div>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
+                            <div class="col-sm-9">
+                            <div class="buttons">
+                                 <a href="{{ route('supplier.index') }}" class="btn btn-primary">Go Back</a>
+                                
+                                {!! Form::submit( 'Update Supplier', array( 'class'=>'btn btn-warning' ) ) !!}
                             </div>
-                            <!-- /.row (nested) -->
-                        </div>
-                        <!-- /.panel-body -->
+                                     
+                            {!! Form::close() !!}
+                            </div>
                     </div>
-                    <!-- /.panel -->
+                                
+                    <div class="col-lg-3">
+                        <div class="panel panel-primary">
+	                        <div class="panel-heading">
+	                            Log Information
+	                        </div>
+		                    <div class="panel-body">
+                                <h5>Created At:</h5>
+                                <p>{!! Carbon\Carbon::parse($supplier->created_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                
+                                <h5>Last Updated At:</h5>
+                                <p>{!! Carbon\Carbon::parse($supplier->updated_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                
+                            </div>
+	                        <div class="panel-footer">
+                                <div class="buttons">
+                                    <a href="{{ route('supplier.index') }}" class="btn btn-primary">Go Back</a>
+                                    <a href="{{ route( 'supplier.show', array( 'id'=> $supplier->id ) ) }}" class="btn btn-success">Show</a>
+                                </div>
+                                
+	                        </div>
+                    	</div>
+                    </div>
+                                
                 </div>
-                <!-- /.col-lg-12 -->
+                            
             </div>
-            <!-- /.row -->
+                        
+        </div>
+                    
+    </div>
+               
+</div>
 @stop

@@ -17,6 +17,7 @@ class CreateMedicinesTable extends Migration
             $table->string('name');
             $table->integer('cat_id');
             $table->string('cost');
+            $table->integer('stock');
             $table->timestamps();
         });
     }

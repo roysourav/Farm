@@ -21,7 +21,7 @@ class Reproduction extends Model
 
      public function doctor()
      {
-     	return $this->belongsTo('App\Doctor');
+     	return $this->belongsTo('App\HrmModels\Doctor');
      }
 
      /**
@@ -30,12 +30,12 @@ class Reproduction extends Model
 
      public function supplier()
      {
-     	return $this->belongsTo('App\Supplier');
+     	return $this->belongsTo('App\HrmModels\Supplier');
      }
 
      public function preg_confirm_doctor()
      {
-          return $this->belongsTo('App\doctor', 'preg_confirm_doctor_id');
+          return $this->belongsTo('App\HrmModels\doctor', 'preg_confirm_doctor_id');
      }
 
 

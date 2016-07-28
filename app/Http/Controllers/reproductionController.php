@@ -8,9 +8,9 @@ use App\Http\Requests;
 
 use App\Cow;
 
-use App\Supplier;
+use App\HrmModels\Supplier;
 
-use App\Doctor;
+use App\HrmModels\Doctor;
 
 use App\Reproduction;
 

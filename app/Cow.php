@@ -11,7 +11,7 @@ class Cow extends Model
      */
     public function supplier()
     {
-        return $this->belongsTo('App\Supplier');
+        return $this->belongsTo('App\HrmModels\Supplier');
     }
 
      /**

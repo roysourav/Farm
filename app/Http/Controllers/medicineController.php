@@ -64,6 +64,7 @@ class medicineController extends Controller
                 'name'      => 'required | Min:3 | max:100 | unique:medicines,name',
                 'cat_id'    => 'required | numeric',
                 'cost'      => 'required | numeric',
+                'stock'     => 'required | numeric',
 
             ) );
 
@@ -74,6 +75,7 @@ class medicineController extends Controller
         $medicine->name     = $request->name;
         $medicine->cat_id   = $request->cat_id;
         $medicine->cost     = $request->cost;
+        $medicine->stock    = $request->stock;
 
         $medicine->save();
 
@@ -126,6 +128,7 @@ class medicineController extends Controller
                 'name'      => 'required | Min:3 | max:100 | unique:medicines,name,'.$id,
                 'cat_id'    => 'required | numeric',
                 'cost'      => 'required | numeric',
+                'stock'     => 'required | numeric',
 
             ) );
 
@@ -136,6 +139,7 @@ class medicineController extends Controller
         $medicine->name     = $request->name;
         $medicine->cat_id   = $request->cat_id;
         $medicine->cost     = $request->cost;
+        $medicine->increment('stock',$request->stock);
 
         $medicine->save();
 

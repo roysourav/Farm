@@ -29,8 +29,8 @@
                 <div class="icon">
                   <i class="fa fa-flask"></i>
                 </div>
-                <a class="small-box-footer" href="#">
-                  Comming Soon &nbsp <i class="fa fa-arrow-circle-right"></i>
+                <a class="small-box-footer" href="{{ route('milk.create') }}">
+                  Enter &nbsp <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->

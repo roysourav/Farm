@@ -45,6 +45,13 @@ Route::resource( 'consumption', 'consumptionController' );
 
 Route::resource( 'food', 'foodController' );
 
+Route::resource( 'milk', 'milkController' );
+
+Route::get( 'milk-date',  [ 'uses' => 'milkController@getdate', 'as' => 'milk.date.get'] );
+
+Route::post( 'milk-date', [ 'uses'=> 'milkController@storedate', 'as' => 'milk.date.store' ] );
+
+
 
 
 //Route for cow vaccine

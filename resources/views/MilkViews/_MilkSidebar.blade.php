@@ -30,6 +30,7 @@
 
               <ul class="treeview-menu">
                 
+                <li><a href="{{ route( 'milk.index' ) }}">All Record</a></li>
                 <li><a href="{{ route( 'milk.date.get' ) }}">Add Record</a></li>
                 
               </ul>

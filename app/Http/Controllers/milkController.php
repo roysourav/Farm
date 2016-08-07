@@ -14,6 +14,8 @@ use Session;
 
 use Redirect;
 
+
+
 class milkController extends Controller
 {
     /**
@@ -50,7 +52,9 @@ class milkController extends Controller
 
     public function index()
     {
+        $milks = Milk::orderBy('date', 'DESC')->groupBy('date')->selectRaw('sum(morning) as morning, date')->selectRaw('sum(evening) as evening, date')->get();
         
+        return view('MilkViews.milk.index-milk')->withMilks($milks);
     }
 
     /**
@@ -98,6 +102,16 @@ class milkController extends Controller
 
             ) );
 
+        $is_exists = Milk::where( ['date' => $request->date, 'cow_id'=> $request->cow_id ] )->count();
+
+        if( $is_exists > 0 )
+        {
+            Session::flash('error', 'Record of that cow was already added !');
+
+            return redirect::route('milk.create');
+
+        }
+
         $milk = new Milk;
 
         $milk->cow_id = $request->cow_id;
@@ -131,8 +145,11 @@ class milkController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $milk = Milk::find($id);
+
+        return view('MilkViews.milk.edit-milk')->withMilk($milk);
+
     }
 
     /**
@@ -144,7 +161,26 @@ class milkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+
+            
+            'date'   => 'required | date ',
+            'morning' => 'required | numeric ',
+            'evening' => 'required | numeric ',
+
+            ) );
+
+        $milk = Milk::find($id);
+
+       
+        $milk->morning = $request->morning;
+        $milk->evening = $request->evening;
+
+        $milk->save();
+
+        Session::flash('success','Record updaed successfully !');
+
+        return redirect::route('milk.create');
     }
 
     /**
@@ -155,6 +191,12 @@ class milkController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $milk = Milk::find($id);
+
+        $milk->delete();
+
+        Session::flash('success', 'Record Deleted Successfully !');
+
+        return redirect::route('milk.create');
     }
 }

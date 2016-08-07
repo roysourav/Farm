@@ -97,9 +97,9 @@
 
                             <div class="col-sm-9">
                                 <div class="buttons">
-                                    <a href="{{ route('medicine.index') }}" class="btn btn-primary">Go Back</a>
+                                    <a href="{{ route('medicine.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp Go Back</a>
                                             
-                                        {!! Form::submit( 'Edit Medicine', array( 'class'=>'btn btn-warning' ) ) !!}
+                                        {!! Form::submit( '&#10004; Edit Medicine', array( 'class'=>'btn btn-warning' ) ) !!}
                                 </div>
                                  
                            </div>

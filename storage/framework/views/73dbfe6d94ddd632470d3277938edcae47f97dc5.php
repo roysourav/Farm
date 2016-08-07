@@ -11,10 +11,8 @@
         <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            
-                                    List Of All Foods
-                               
-                            
+                             List Of All Foods
+                             
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -40,14 +38,14 @@
                                             
 
 
-                                            <td><a class="label label-warning" href="<?php echo e(route( 'food.edit', array( 'id'=> $food->id ) )); ?>">Edit Food</a>
+                                            <td><a class="label label-warning" href="<?php echo e(route( 'food.edit', array( 'id'=> $food->id ) )); ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Food</a>
 
                                            
                                                 
                                                 <?php echo Form::open( array( 'route' => array('food.destroy', $food->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ); ?>
 
 
-                                                <?php echo Form::submit('Delete Food', array( 'class' => 'btn btn-danger' ) ); ?>
+                                                <?php echo Form::submit('X Delete Food', array( 'class' => 'btn btn-danger' ) ); ?>
 
                                               
                                                 <?php echo Form::close(); ?>
@@ -84,7 +82,7 @@
 
 
                                         <span class="input-group-btn">
-                                         <?php echo Form::submit( 'Add New Food', array( 'class'=>'btn btn-success btn-flat' ) ); ?>
+                                         <?php echo Form::submit( '&#10004; Add New Food', array( 'class'=>'btn btn-success btn-flat' ) ); ?>
 
                                           
                                         </span>

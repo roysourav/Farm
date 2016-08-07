@@ -100,9 +100,9 @@
 
                                         <div class="col-sm-9">
                                             <div class="buttons">
-                                                <a href="<?php echo e(route('vaccine.index')); ?>" class="btn btn-primary">Go Back</a>
+                                                <a href="<?php echo e(route('vaccine.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
 
-                                                <?php echo Form::submit( 'Create New Vaccine', array( 'class'=>'btn btn-success' ) ); ?>
+                                                <?php echo Form::submit( '&#10004; Create New Vaccine', array( 'class'=>'btn btn-success' ) ); ?>
 
                                             </div>
                                            

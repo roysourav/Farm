@@ -35,6 +35,11 @@ class Cow extends Model
         return $this->belongsToMany('App\StockConsumptionModels\Vaccine')->withPivot('date')->withTimestamps();
     }
 
+    public function medicines()
+    {
+        return $this->belongsToMany('App\StockConsumptionModels\Medicine')->withPivot('date','dose','days')->withTimestamps();
+    }
+
      /**
      * Get Milk.
      */

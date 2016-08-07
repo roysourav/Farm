@@ -18,7 +18,7 @@
                                    <b>Details Of Vaccine : {{ $vaccine->name }}</b>
                                 </div>
                                 <div class="col-md-2">
-                                    <a href="{{ route('cow-vaccine.index') }}" class="btn btn-info pull-right btn-block">Go Back</a>
+                                    <a href="{{ route('cow-vaccine.index') }}" class="btn btn-info pull-right btn-block"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
                                 </div>
                                 
                             </div>
@@ -59,7 +59,7 @@
 
                                                 <td>
 
-                                                    <a class="label label-danger" href="{{url('vaccine/delete/'.$cow->id.'/'.$vaccine->id.'')}}">Delete</a>
+                                                    <a class="label label-danger" href="{{url('vaccine/delete/'.$cow->id.'/'.$vaccine->id.'')}}"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
 
                                                 </td>
                                                
@@ -69,7 +69,7 @@
                                        
                                     </tbody>
                                 </table>
-                                <a href="{{ route('cow-vaccine.index') }}" class="btn btn-info pull-right btn-block">Go Back</a>
+                                
                             </div>
                             <!-- /.table-responsive -->
                         </div>

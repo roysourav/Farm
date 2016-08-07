@@ -46,17 +46,17 @@
 
                                              
 
-                                            <td><a class="label label-success" href="<?php echo e(route( 'employee.show', array( 'id'=> $employee->id ) )); ?>">Show</a>
+                                            <td><a class="label label-success" href="<?php echo e(route( 'employee.show', array( 'id'=> $employee->id ) )); ?>"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
 
 
-                                            <a class="label label-warning" href="<?php echo e(route( 'employee.edit', array( 'id'=> $employee->id ) )); ?>">Edit</a>
+                                            <a class="label label-warning" href="<?php echo e(route( 'employee.edit', array( 'id'=> $employee->id ) )); ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
                                             
                                                 
                                                 <?php echo Form::open( array( 'route' => array('employee.destroy', $employee->id), 'method' => 'DELETE', 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ); ?>
 
 
-                                                <?php echo Form::submit('Delete', array( 'class' => '' ) ); ?>
+                                                <?php echo Form::submit('X Delete', array( 'class' => '' ) ); ?>
 
                                               
                                                 <?php echo Form::close(); ?>

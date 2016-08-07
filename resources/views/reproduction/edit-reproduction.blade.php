@@ -170,7 +170,7 @@
 
                             <div class="col-sm-9">
                                 <div class="buttons">
-                                    <a href="{{ route('reproduction.index') }}" class="btn btn-primary">Go Back</a>
+                                    <a href="{{ route('reproduction.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
                                     
                                     {!! Form::submit( 'Update Record', array( 'class'=>'btn btn-warning' ) ) !!}
                                 </div> 
@@ -198,8 +198,8 @@
                             </div>
                             <div class="panel-footer">
                                 <div class="buttons">
-                                    <a href="{{ route('reproduction.index') }}" class="btn btn-primary">Go Back</a>
-                                    <a href="{{ route( 'reproduction.show', array( 'id'=> $reproduction->id ) ) }}" class="btn btn-success">Show</a>
+                                    <a href="{{ route('reproduction.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
+                                    <a href="{{ route( 'reproduction.show', array( 'id'=> $reproduction->id ) ) }}" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
                                 </div>
                                 
                             </div>

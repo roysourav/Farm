@@ -12,4 +12,10 @@ class Medicine extends Model
     {
     	return $this->belongsTo('App\StockConsumptionModels\MedicineCategory','cat_id');
     }
+
+//get cows
+    public function cows()
+    {
+    	return $this->belongsToMany('App\Cow')->withPivot('dose','days','date')->withTimestamps();
+    }
 }

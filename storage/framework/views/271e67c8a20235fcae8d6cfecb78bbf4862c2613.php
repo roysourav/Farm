@@ -73,17 +73,17 @@
                                             <?php endif; ?>
                                             </td>
 
-                                            <td><a class="label label-success" href="<?php echo e(route( 'reproduction.show', array( 'id'=> $reproduction->id ) )); ?>">Show</a>
+                                            <td><a class="label label-success" href="<?php echo e(route( 'reproduction.show', array( 'id'=> $reproduction->id ) )); ?>"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
 
 
-                                            <a class="label label-warning" href="<?php echo e(route( 'reproduction.edit', array( 'id'=> $reproduction->id ) )); ?>">Edit</a>
+                                            <a class="label label-warning" href="<?php echo e(route( 'reproduction.edit', array( 'id'=> $reproduction->id ) )); ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
                                          
                                                 
                                                 <?php echo Form::open( array( 'route' => array('reproduction.destroy', $reproduction->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ); ?>
 
 
-                                                <?php echo Form::submit('Delete', array( 'class' => '' ) ); ?>
+                                                <?php echo Form::submit('X Delete', array( 'class' => '' ) ); ?>
 
                                               
                                                 <?php echo Form::close(); ?>

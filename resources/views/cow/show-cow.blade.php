@@ -12,13 +12,21 @@
 	<div class="row">
         <div class="col-lg-9">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Details Of Cow - {{ $cow->name }} 
-                        </div>
-                         
-                             <div class="image ">
-                            {{ Html::image($cow->img, $cow->name, array('class' => 'img-responsive img-thumbnail')) }}
+                        <div class="row">   
+                            <div class="col-md-6">  
+                                <div class="panel-heading">
+                                Details Of Cow - {{ $cow->name }} 
+                                </div>
                             </div>
+                            <div class="col-md-6">
+                                 <div class="image">
+                                {{ Html::image($cow->img, $cow->name, array('class' => 'img-responsive img-thumbnail')) }}
+                                </div>
+
+                            </div>
+                           
+                        </div>
+                        
                         
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -176,17 +184,17 @@
                             </div>
                             <div class="panel-body">
                                 <h5>Created At:</h5>
-                                <p>{!! Carbon\Carbon::parse($cow->created_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                <p>{!! Carbon\Carbon::parse($cow->created_at)->format('jS M Y , h:i A') !!}</p>
                                 
                                 <h5>Last Updated At:</h5>
-                                <p>{!! Carbon\Carbon::parse($cow->updated_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                <p>{!! Carbon\Carbon::parse($cow->updated_at)->format('jS M Y , h:i A') !!}</p>
                                 
                                 
                             </div>
                             <div class="panel-footer">
                                 <div class="buttons">
-                                    <a href="{{ route('cow.index') }}" class="btn btn-primary">Go Back</a>
-                                    <a href="{{ route( 'cow.edit', array( 'id'=> $cow->id ) ) }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('cow.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
+                                    <a href="{{ route( 'cow.edit', array( 'id'=> $cow->id ) ) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
                                 </div>
                                 
                             </div>

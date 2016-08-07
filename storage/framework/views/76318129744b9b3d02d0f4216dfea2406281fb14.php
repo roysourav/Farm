@@ -129,11 +129,11 @@
 
                                         <div class="col-sm-9">
                                             <div class="buttons">
-                                                <a href="<?php echo e(route('doctor.index')); ?>" class="btn btn-primary">Go Back</a>
+                                                <a href="<?php echo e(route('doctor.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp Go Back</a>
                                                                 
-                                                <button type="reset" class="btn btn-danger">Reset All Fields</button>
+                                                <button type="reset" class="btn btn-danger">X Reset All Fields</button>
 
-                                                <?php echo Form::submit( 'Create New Doctor', array( 'class'=>'btn btn-success' ) ); ?>
+                                                <?php echo Form::submit( '&#10004; Create New Doctor', array( 'class'=>'btn btn-success' ) ); ?>
 
 
                                             </div>

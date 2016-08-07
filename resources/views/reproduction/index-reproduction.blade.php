@@ -71,16 +71,16 @@
                                             @endif
                                             </td>
 
-                                            <td><a class="label label-success" href="{{ route( 'reproduction.show', array( 'id'=> $reproduction->id ) ) }}">Show</a>
+                                            <td><a class="label label-success" href="{{ route( 'reproduction.show', array( 'id'=> $reproduction->id ) ) }}"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
 
 
-                                            <a class="label label-warning" href="{{ route( 'reproduction.edit', array( 'id'=> $reproduction->id ) ) }}">Edit</a>
+                                            <a class="label label-warning" href="{{ route( 'reproduction.edit', array( 'id'=> $reproduction->id ) ) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
                                          
                                                 
                                                 {!! Form::open( array( 'route' => array('reproduction.destroy', $reproduction->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
-                                                {!! Form::submit('Delete', array( 'class' => '' ) ) !!}
+                                                {!! Form::submit('X Delete', array( 'class' => '' ) ) !!}
                                               
                                                 {!! Form::close() !!}
 

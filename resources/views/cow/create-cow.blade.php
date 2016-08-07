@@ -285,11 +285,11 @@
 
                             <div class="col-sm-9">
                                 <div class="buttons">
-                                    <a href="{{ route('cow.index') }}" class="btn btn-primary">Go Back</a>
+                                    <a href="{{ route('cow.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp Go Back</a>
                                                         
-                                        <button type="reset" class="btn btn-danger">Reset All Fields</button>
+                                        <button type="reset" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Reset All Fields</button>
 
-                                        {!! Form::submit( 'Create New Cow', array( 'class'=>'btn btn-success' ) ) !!}
+                                        {!! Form::submit( '&#10004; Create New Cow', array( 'class'=>'btn btn-success', 'i class'=>'fa fa-check', 'aria-hidden'=>'true' ) ) !!}
                                 </div>
                                  
                            </div>

@@ -56,6 +56,17 @@
 
             <li class="treeview">
             
+              <a href="#"><i class="fa fa-plus-square"></i> <span>Medication</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+              <ul class="treeview-menu">
+                <li><a href="<?php echo e(route( 'cow-medicine.index' )); ?>">All Records</a></li>
+                <li><a href="<?php echo e(route( 'cow-medicine.create' )); ?>">Add New Record</a></li>
+              </ul>
+
+            </li>
+
+            <li class="treeview">
+            
               <a href="#"><i class="fa fa-thumbs-down"></i> <span>Cow Sell Register</span> <i class="fa fa-angle-left pull-right"></i></a>
 
               <ul class="treeview-menu">

@@ -66,15 +66,15 @@
 
                                              
 
-                                            <td><a class="label label-success" href="{{ route( 'supplier.show', array( 'id'=> $supplier->id ) ) }}">Show</a>
+                                            <td><a class="label label-success" href="{{ route( 'supplier.show', array( 'id'=> $supplier->id ) ) }}"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
 
-                                            <a class="label label-warning" href="{{ route( 'supplier.edit', array( 'id'=> $supplier->id ) ) }}">Edit</a>
+                                            <a class="label label-warning" href="{{ route( 'supplier.edit', array( 'id'=> $supplier->id ) ) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
                                           
                                                 
                                                 {!! Form::open( array( 'route' => array('supplier.destroy', $supplier->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
-                                                {!! Form::submit('Delete', array( 'class' => '' ) ) !!}
+                                                {!! Form::submit('X Delete', array( 'class' => '' ) ) !!}
                                               
                                                 {!! Form::close() !!}
 

@@ -49,14 +49,14 @@
                                             
                                             
                                             <td>
-                                            <a class="label label-warning" href="<?php echo e(route( 'medicine.edit', array( 'id'=> $medicine->id ) )); ?>">Edit</a>
+                                            <a class="label label-warning" href="<?php echo e(route( 'medicine.edit', array( 'id'=> $medicine->id ) )); ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
                                          
                                                 
                                                 <?php echo Form::open( array( 'route' => array('medicine.destroy', $medicine->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ); ?>
 
 
-                                                <?php echo Form::submit('Delete', array( 'class' => '' ) ); ?>
+                                                <?php echo Form::submit('X Delete', array( 'class' => '' ) ); ?>
 
                                               
                                                 <?php echo Form::close(); ?>

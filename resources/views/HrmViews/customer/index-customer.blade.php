@@ -53,16 +53,16 @@
 
                                              
 
-                                            <td><a class="label label-success" href="{{ route( 'customer.show', array( 'id'=> $customer->id ) ) }}">Show</a>
+                                            <td><a class="label label-success" href="{{ route( 'customer.show', array( 'id'=> $customer->id ) ) }}"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
 
 
-                                                <a class="label label-warning" href="{{ route( 'customer.edit', array( 'id'=> $customer->id ) ) }}">Edit</a>
+                                                <a class="label label-warning" href="{{ route( 'customer.edit', array( 'id'=> $customer->id ) ) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
                                           
                                                 
                                                 {!! Form::open( array( 'route' => array('customer.destroy', $customer->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
-                                                {!! Form::submit('Delete', array( 'class' => '' ) ) !!}
+                                                {!! Form::submit('X Delete', array( 'class' => '' ) ) !!}
                                               
                                                 {!! Form::close() !!}
 

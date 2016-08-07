@@ -97,9 +97,9 @@
 
                             <div class="col-sm-9">
                                 <div class="buttons">
-                                    <a href="<?php echo e(route('medicine.index')); ?>" class="btn btn-primary">Go Back</a>
+                                    <a href="<?php echo e(route('medicine.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp Go Back</a>
                                             
-                                        <?php echo Form::submit( 'Add New Medicine', array( 'class'=>'btn btn-success' ) ); ?>
+                                        <?php echo Form::submit( '&#10004; Add New Medicine', array( 'class'=>'btn btn-success' ) ); ?>
 
                                 </div>
                                  

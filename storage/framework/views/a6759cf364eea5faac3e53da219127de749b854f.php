@@ -40,14 +40,14 @@
                                             
 
 
-                                            <td><a class="label label-warning" href="<?php echo e(route( 'medicine-category.edit', array( 'id'=> $category->id ) )); ?>">Edit Category</a>
+                                            <td><a class="label label-warning" href="<?php echo e(route( 'medicine-category.edit', array( 'id'=> $category->id ) )); ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Category</a>
 
                                            
                                                 
                                                 <?php echo Form::open( array( 'route' => array('medicine-category.destroy', $category->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ); ?>
 
 
-                                                <?php echo Form::submit('Delete Category', array( 'class' => 'btn btn-danger' ) ); ?>
+                                                <?php echo Form::submit('X Delete Category', array( 'class' => 'btn btn-danger' ) ); ?>
 
                                               
                                                 <?php echo Form::close(); ?>
@@ -84,7 +84,7 @@
 
 
                                         <span class="input-group-btn">
-                                         <?php echo Form::submit( 'Add New Category', array( 'class'=>'btn btn-success btn-flat' ) ); ?>
+                                         <?php echo Form::submit( '&#10004; Add New Category', array( 'class'=>'btn btn-success btn-flat' ) ); ?>
 
                                           
                                         </span>

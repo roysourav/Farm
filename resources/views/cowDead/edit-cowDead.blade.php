@@ -73,7 +73,7 @@
 
                             <div class="col-sm-9">
                                 <div class="buttons">
-                                    <a href="{{ route('dead-cow.index') }}" class="btn btn-primary">Go Back</a>
+                                    <a href="{{ route('dead-cow.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
                                    
                                     {!! Form::submit( 'Update Record', array( 'class'=>'btn btn-warning' ) ) !!}
                                 </div>
@@ -89,17 +89,17 @@
 	                        </div>
 		                     <div class="panel-body">
                                 <h5>Created At:</h5>
-                                <p>{!! Carbon\Carbon::parse($dead_cow->created_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                <p>{!! Carbon\Carbon::parse($dead_cow->created_at)->format('jS M Y , h:i A') !!}</p>
                                 
                                 <h5>Last Updated At:</h5>
-                                <p>{!! Carbon\Carbon::parse($dead_cow->updated_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                <p>{!! Carbon\Carbon::parse($dead_cow->updated_at)->format('jS M Y , h:i A') !!}</p>
                                 
                                 
                             </div>
 	                        <div class="panel-footer">
                                 <div class="buttons">
-                                    <a href="{{ route('dead-cow.index') }}" class="btn btn-primary">Go Back</a>
-                                    <a href="{{ route( 'dead-cow.show', array( 'id'=> $dead_cow->id ) ) }}" class="btn btn-success">Show</a>
+                                    <a href="{{ route('dead-cow.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
+                                    <a href="{{ route( 'dead-cow.show', array( 'id'=> $dead_cow->id ) ) }}" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
                                 </div>
                                 
 	                        </div>

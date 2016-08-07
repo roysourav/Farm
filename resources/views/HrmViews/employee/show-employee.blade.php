@@ -88,16 +88,16 @@
                             </div>
                             <div class="panel-body">
                                 <h5>Created At:</h5>
-                                <p>{!! Carbon\Carbon::parse($employee->created_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                <p>{!! Carbon\Carbon::parse($employee->created_at)->format('jS M Y , h:i A') !!}</p>
                                 
                                 <h5>Last Updated At:</h5>
-                                <p>{!! Carbon\Carbon::parse($employee->updated_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                <p>{!! Carbon\Carbon::parse($employee->updated_at)->format('jS M Y , h:i A') !!}</p>
                                
                             </div>
                             <div class="panel-footer">
                             <div class="buttons">
-                                 <a href="{{ route('employee.index') }}" class="btn btn-primary">Go Back</a>
-                                <a href="{{ route( 'employee.edit', array( 'id'=> $employee->id ) ) }}" class="btn btn-warning">Edit</a>
+                                 <a href="{{ route('employee.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
+                                <a href="{{ route( 'employee.edit', array( 'id'=> $employee->id ) ) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
                             </div>
                                
                             </div>

@@ -59,16 +59,16 @@
                                             
                                             <td><?php echo e($dead_cow->reason); ?></td>
                                              
-                                            <td><a class="label label-success" href="<?php echo e(route( 'dead-cow.show', array( 'id'=> $dead_cow->id ) )); ?>">Show</a>
+                                            <td><a class="label label-success" href="<?php echo e(route( 'dead-cow.show', array( 'id'=> $dead_cow->id ) )); ?>"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
 
-                                            <a class="label label-warning" href="<?php echo e(route( 'dead-cow.edit', array( 'id'=> $dead_cow->id ) )); ?>">Edit</a>
+                                            <a class="label label-warning" href="<?php echo e(route( 'dead-cow.edit', array( 'id'=> $dead_cow->id ) )); ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
                                             
                                                 
                                                 <?php echo Form::open( array( 'route' => array('dead-cow.destroy', $dead_cow->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ); ?>
 
 
-                                                <?php echo Form::submit('Delete', array( 'class' => '' ) ); ?>
+                                                <?php echo Form::submit('X Delete', array( 'class' => '' ) ); ?>
 
                                               
                                                 <?php echo Form::close(); ?>

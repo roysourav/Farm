@@ -42,13 +42,13 @@
                                             
 
 
-                                            <td><a class="label label-warning" href="{{ route( 'medicine-category.edit', array( 'id'=> $category->id ) ) }}">Edit Category</a>
+                                            <td><a class="label label-warning" href="{{ route( 'medicine-category.edit', array( 'id'=> $category->id ) ) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Category</a>
 
                                            
                                                 
                                                 {!! Form::open( array( 'route' => array('medicine-category.destroy', $category->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
-                                                {!! Form::submit('Delete Category', array( 'class' => 'btn btn-danger' ) ) !!}
+                                                {!! Form::submit('X Delete Category', array( 'class' => 'btn btn-danger' ) ) !!}
                                               
                                                 {!! Form::close() !!}
 
@@ -81,7 +81,7 @@
                                         {!! Form::text( 'name', null, array( 'class'=>'form-control','placeholder'=>'Enter Medicine Category Name', 'required'=> '' ) ) !!}
 
                                         <span class="input-group-btn">
-                                         {!! Form::submit( 'Add New Category', array( 'class'=>'btn btn-success btn-flat' ) ) !!}
+                                         {!! Form::submit( '&#10004; Add New Category', array( 'class'=>'btn btn-success btn-flat' ) ) !!}
                                           
                                         </span>
 

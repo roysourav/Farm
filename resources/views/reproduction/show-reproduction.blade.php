@@ -13,12 +13,19 @@
 	<div class="row">
         <div class="col-lg-9">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Reproduction Details Of Cow : {{ $reproduction->cow->name  }}
+                    <div class="row">
+                        <div class="col-md-6">  
+                            <div class="panel-heading">
+                                Reproduction Details Of Cow : {{ $reproduction->cow->name  }}
+                            </div>
                         </div>
-                        <div class="image ">
+                        <div class="col-md-6">
+                            <div class="image ">
                             {{ Html::image($reproduction->cow->img, $reproduction->cow->name, array('class' => 'img-responsive img-thumbnail')) }}
                             </div>
+
+                        </div>
+                    </div>
                         
                         <div class="panel-body">
                             <div class="table-responsive text-float-left">
@@ -109,8 +116,8 @@
                 </div>
                 <div class="panel-footer">
                     <div class="buttons">
-                        <a href="{{ route('reproduction.index') }}" class="btn btn-primary">Go Back</a>
-                        <a href="{{ route( 'reproduction.edit', array( 'id'=> $reproduction->id ) ) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('reproduction.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
+                        <a href="{{ route( 'reproduction.edit', array( 'id'=> $reproduction->id ) ) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
                     </div>
                                 
                 </div>

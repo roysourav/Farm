@@ -1,10 +1,6 @@
 @extends('MilkViews.MilkMaster')
 
 
-
-
-
-
 @section('content')
 
 <!-- Content Header (Page header) -->
@@ -43,17 +39,17 @@
 
                                             <td>{{ $count }}</td>
                                             
-                                            <td>{{ $milk->cow->id }}  </td>
+                                            <td>C-{{ $milk->cow->id }}  </td>
                                             <td>{{ $milk->cow->name }} </td>
                                             
                                             <td>{{ $milk->morning }}</td>
 
                                             <td>{{ $milk->evening }}</td>
-                                            <td><a class="label label-warning" href="{{ route( 'milk.edit', array( 'id'=> $milk->id ) ) }}">Edit</a>
+                                            <td><a class="label label-warning" href="{{ route( 'milk.edit', array( 'id'=> $milk->id ) ) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
                                                 {!! Form::open( array( 'route' => array('milk.destroy', $milk->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
-                                                {!! Form::submit('Delete', array( 'class' => 'btn btn-danger' ) ) !!}
+                                                {!! Form::submit('X Delete', array( 'class' => 'btn btn-danger' ) ) !!}
                                               
                                                 {!! Form::close() !!}
 
@@ -110,7 +106,7 @@
 
                                             <td>{{ Form::selectRange( 'evening',0,15,null,['required'=> ''] ) }}</td>
 
-                                           <td>{!! Form::submit( 'Add', array( 'class'=>'label label-success' ) ) !!}</td>
+                                           <td>{!! Form::submit( '&#10004; Add', array( 'class'=>'label label-success' ) ) !!}</td>
 
                                         </tr>
                                         {!! Form::close() !!}

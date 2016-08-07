@@ -55,13 +55,13 @@
                                             
 
 
-                                            <td><a class="label label-warning" href="{{ route( 'vaccine.edit', array( 'id'=> $vaccine->id ) ) }}">Edit</a>
+                                            <td><a class="label label-warning" href="{{ route( 'vaccine.edit', array( 'id'=> $vaccine->id ) ) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
                                             
                                                 
                                                 {!! Form::open( array( 'route' => array('vaccine.destroy', $vaccine->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
-                                                {!! Form::submit('Delete', array( 'class' => '' ) ) !!}
+                                                {!! Form::submit('X Delete', array( 'class' => '' ) ) !!}
                                               
                                                 {!! Form::close() !!}
 

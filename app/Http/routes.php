@@ -39,6 +39,8 @@ Route::resource( 'medicine-category', 'medicineCategoryController' , ['except' =
 
 Route::resource( 'cow-vaccine', 'cowVaccineController', ['except' => ['edit','update','destroy'] ] );
 
+Route::resource( 'cow-medicine', 'cowMedicineController' );
+
 Route::get( 'vaccine/delete/{cow_id}/{vaccine_id}', 'cowVaccineController@delete' );
 
 Route::resource( 'consumption', 'consumptionController' );

@@ -164,9 +164,9 @@
 
                             <div class="col-sm-9">
                                 <div class="buttons">
-                                    <a href="<?php echo e(route('employee.index')); ?>" class="btn btn-primary">Go Back</a>
+                                    <a href="<?php echo e(route('employee.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
                                    
-                                    <?php echo Form::submit( 'Update Employee', array( 'class'=>'btn btn-warning' ) ); ?>
+                                    <?php echo Form::submit( '&#10004; Update Employee', array( 'class'=>'btn btn-warning' ) ); ?>
 
                                 </div>
                             
@@ -192,8 +192,8 @@
                             </div>
 	                        <div class="panel-footer">
                                 <div class="buttons">
-                                    <a href="<?php echo e(route('employee.index')); ?>" class="btn btn-primary">Go Back</a>
-                                    <a href="<?php echo e(route( 'employee.show', array( 'id'=> $employee->id ) )); ?>" class="btn btn-success">Show</a>
+                                    <a href="<?php echo e(route('employee.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
+                                    <a href="<?php echo e(route( 'employee.show', array( 'id'=> $employee->id ) )); ?>" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
                                 </div>
                                 
 	                        </div>

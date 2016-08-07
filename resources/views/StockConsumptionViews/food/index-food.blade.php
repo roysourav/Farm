@@ -13,10 +13,8 @@
         <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            
-                                    List Of All Foods
-                               
-                            
+                             List Of All Foods
+                             
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -42,13 +40,13 @@
                                             
 
 
-                                            <td><a class="label label-warning" href="{{ route( 'food.edit', array( 'id'=> $food->id ) ) }}">Edit Food</a>
+                                            <td><a class="label label-warning" href="{{ route( 'food.edit', array( 'id'=> $food->id ) ) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Food</a>
 
                                            
                                                 
                                                 {!! Form::open( array( 'route' => array('food.destroy', $food->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ) !!}
 
-                                                {!! Form::submit('Delete Food', array( 'class' => 'btn btn-danger' ) ) !!}
+                                                {!! Form::submit('X Delete Food', array( 'class' => 'btn btn-danger' ) ) !!}
                                               
                                                 {!! Form::close() !!}
 
@@ -81,7 +79,7 @@
                                         {!! Form::text( 'name', null, array( 'class'=>'form-control','placeholder'=>'Enter Food Name', 'required'=> '' ) ) !!}
 
                                         <span class="input-group-btn">
-                                         {!! Form::submit( 'Add New Food', array( 'class'=>'btn btn-success btn-flat' ) ) !!}
+                                         {!! Form::submit( '&#10004; Add New Food', array( 'class'=>'btn btn-success btn-flat' ) ) !!}
                                           
                                         </span>
 

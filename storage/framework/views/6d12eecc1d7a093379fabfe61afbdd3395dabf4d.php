@@ -36,18 +36,18 @@
 
                                             <td><?php echo e($count); ?></td>
                                             
-                                            <td><?php echo e($milk->cow->id); ?>  </td>
+                                            <td>C-<?php echo e($milk->cow->id); ?>  </td>
                                             <td><?php echo e($milk->cow->name); ?> </td>
                                             
                                             <td><?php echo e($milk->morning); ?></td>
 
                                             <td><?php echo e($milk->evening); ?></td>
-                                            <td><a class="label label-warning" href="<?php echo e(route( 'milk.edit', array( 'id'=> $milk->id ) )); ?>">Edit</a>
+                                            <td><a class="label label-warning" href="<?php echo e(route( 'milk.edit', array( 'id'=> $milk->id ) )); ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 
                                                 <?php echo Form::open( array( 'route' => array('milk.destroy', $milk->id), 'method' => 'DELETE' , 'onsubmit' => 'return ConfirmDelete()','style' => 'display: inline;') ); ?>
 
 
-                                                <?php echo Form::submit('Delete', array( 'class' => 'btn btn-danger' ) ); ?>
+                                                <?php echo Form::submit('X Delete', array( 'class' => 'btn btn-danger' ) ); ?>
 
                                               
                                                 <?php echo Form::close(); ?>
@@ -109,7 +109,7 @@
 
                                             <td><?php echo e(Form::selectRange( 'evening',0,15,null,['required'=> ''] )); ?></td>
 
-                                           <td><?php echo Form::submit( 'Add', array( 'class'=>'label label-success' ) ); ?></td>
+                                           <td><?php echo Form::submit( '&#10004; Add', array( 'class'=>'label label-success' ) ); ?></td>
 
                                         </tr>
                                         <?php echo Form::close(); ?>

@@ -30,6 +30,7 @@
 
               <ul class="treeview-menu">
                 
+                <li><a href="<?php echo e(route( 'milk.index' )); ?>">All Record</a></li>
                 <li><a href="<?php echo e(route( 'milk.date.get' )); ?>">Add Record</a></li>
                 
               </ul>

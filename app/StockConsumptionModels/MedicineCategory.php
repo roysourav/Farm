@@ -10,6 +10,6 @@ class MedicineCategory extends Model
 
     public function medicines()
     {
-    	return $this->hasMany('App\StockConsumptionModels\medicine','cat_id');
+    	return $this->hasMany('App\StockConsumptionModels\Medicine','cat_id');
     }
 }

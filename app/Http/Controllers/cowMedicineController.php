@@ -113,28 +113,7 @@ class cowMedicineController extends Controller
         return view('cowMedicine.show-cowMedicine')->withMedicine($medicine);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+  
 
     /**
      * Remove the specified resource from storage.
@@ -142,8 +121,17 @@ class cowMedicineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function delete($cow_id,$medicine_id)
+
+    {    
+        $cow = Cow::find( $cow_id );
+
+        $cow->medicines()->detach( $medicine_id );
+
+        Session::flash( 'success', 'Record Deleted Successfully !' );
+        
+        return Redirect::route( 'cow-medicine.show', [ 'id'=> $medicine_id ] );
+
+
     }
 }

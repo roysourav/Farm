@@ -52,7 +52,7 @@ class milkController extends Controller
 
     public function index()
     {
-        $milks = Milk::orderBy('date', 'DESC')->groupBy('date')->selectRaw('sum(morning) as morning, date')->selectRaw('sum(evening) as evening, date')->get();
+        $milks = Milk::orderBy('date', 'DESC')->groupBy('date')->selectRaw('sum(morning) as morning, date')->selectRaw('sum(evening) as evening, date')->take(60)->get();
         
         return view('MilkViews.milk.index-milk')->withMilks($milks);
     }
@@ -127,16 +127,7 @@ class milkController extends Controller
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.

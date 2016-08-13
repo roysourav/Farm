@@ -37,6 +37,19 @@
 
             </li>
 
+            <li class="treeview">
+            
+              <a href="#"><i class="fa fa-medkit"></i> <span>Distribution</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+              <ul class="treeview-menu">
+                
+                <li><a href="{{ route( 'distribution.index' ) }}">All Record</a></li>
+                <li><a href="{{ route( 'distribution.create' ) }}">Add Record</a></li>
+                
+              </ul>
+
+            </li>
+
 
 
           </ul><!-- /.sidebar-menu -->

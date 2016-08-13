@@ -189,10 +189,10 @@
                             </div>
                              <div class="panel-body">
                                 <h5>Created At:</h5>
-                                <p>{!! Carbon\Carbon::parse($reproduction->created_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                <p>{!! Carbon\Carbon::parse($reproduction->created_at)->format('jS M Y , h:i A') !!}</p>
                                 
                                 <h5>Last Updated At:</h5>
-                                <p>{!! Carbon\Carbon::parse($reproduction->updated_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A') !!}</p>
+                                <p>{!! Carbon\Carbon::parse($reproduction->updated_at)->format('jS M Y , h:i A') !!}</p>
                                 
                                 
                             </div>

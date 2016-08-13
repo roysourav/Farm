@@ -39,19 +39,24 @@ Route::resource( 'medicine-category', 'medicineCategoryController' , ['except' =
 
 Route::resource( 'cow-vaccine', 'cowVaccineController', ['except' => ['edit','update','destroy'] ] );
 
-Route::resource( 'cow-medicine', 'cowMedicineController' );
-
 Route::get( 'vaccine/delete/{cow_id}/{vaccine_id}', 'cowVaccineController@delete' );
+
+Route::resource( 'cow-medicine', 'cowMedicineController', ['except' => ['edit','update','destroy'] ] );
+
+Route::get( 'medicine/delete/{cow_id}/{vaccine_id}', 'cowMedicineController@delete' );
+
 
 Route::resource( 'consumption', 'consumptionController' );
 
 Route::resource( 'food', 'foodController' );
 
-Route::resource( 'milk', 'milkController' );
+Route::resource( 'milk', 'milkController', ['except' => ['show'] ] );
 
 Route::get( 'milk-date',  [ 'uses' => 'milkController@getdate', 'as' => 'milk.date.get'] );
 
 Route::post( 'milk-date', [ 'uses'=> 'milkController@storedate', 'as' => 'milk.date.store' ] );
+
+Route::resource( 'distribution', 'distributionController', ['except' => ['show'] ]  );
 
 
 

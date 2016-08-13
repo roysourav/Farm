@@ -253,6 +253,8 @@ class cowController extends Controller
        }else{
 
          $cow->vaccines()->detach();
+         
+         $cow->medicines()->detach();
 
          $cow->delete();
 

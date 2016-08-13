@@ -191,10 +191,10 @@
                             </div>
                             <div class="panel-body">
                                 <h5>Created At:</h5>
-                                <p><?php echo Carbon\Carbon::parse($cow->created_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A'); ?></p>
+                                <p><?php echo Carbon\Carbon::parse($cow->created_at)->format('jS M Y , h:i A'); ?></p>
                                 
                                 <h5>Last Updated At:</h5>
-                                <p><?php echo Carbon\Carbon::parse($cow->updated_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A'); ?></p>
+                                <p><?php echo Carbon\Carbon::parse($cow->updated_at)->format('jS M Y , h:i A'); ?></p>
                                 
                                 
                             </div>

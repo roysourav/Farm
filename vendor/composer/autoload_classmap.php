@@ -13,6 +13,7 @@ return array(
     'CreateCowVaccineTable' => $baseDir . '/database/migrations/2016_07_06_160619_create_cow_vaccine_table.php',
     'CreateCowsTable' => $baseDir . '/database/migrations/2016_06_04_184243_create_cows_table.php',
     'CreateCustomersTable' => $baseDir . '/database/migrations/2016_06_04_065210_create_customers_table.php',
+    'CreateDistributionsTable' => $baseDir . '/database/migrations/2016_08_12_152907_create_distributions_table.php',
     'CreateDoctorsTable' => $baseDir . '/database/migrations/2016_06_12_065712_create_doctors_table.php',
     'CreateEmployeesTable' => $baseDir . '/database/migrations/2016_05_21_161006_create_employees_table.php',
     'CreateFoodsTable' => $baseDir . '/database/migrations/2016_07_25_170220_create_foods_table.php',

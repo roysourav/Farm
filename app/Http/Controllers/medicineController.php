@@ -158,6 +158,8 @@ class medicineController extends Controller
     {
         $medicine = Medicine::find( $id );
 
+        $medicine->cows()->detach();
+        
         $medicine->delete();
 
         Session::flash( 'success', 'Medicine has been deleted successfully !' );

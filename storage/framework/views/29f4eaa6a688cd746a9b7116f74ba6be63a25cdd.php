@@ -10,9 +10,20 @@
 	<div class="row">
         <div class="col-lg-9">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Details Of <?php echo e($employee->name); ?>
+                         <div class="row">   
+                            <div class="col-md-6">  
+                                <div class="panel-heading">
+                                <h4>Details Of Employee - <?php echo e($employee->name); ?> </h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                 <div class="image">
+                                <?php echo e(Html::image($employee->img, $employee->name, array('class' => 'img-responsive img-thumbnail'))); ?>
 
+                                </div>
+
+                            </div>
+                           
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -29,6 +40,22 @@
                                          <tr>
                                             <td>Designation :</td>
                                             <td><?php echo e($employee->designation); ?></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Qualification :</td>
+                                            <td><?php echo e($employee->qualification); ?></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Skills :</td>
+                                            <td>
+                                            <?php if(isset($skills)): ?>
+                                            <?php foreach( $skills as $skill): ?>
+                                                <?php echo e($skill); ?> ,
+                                            <?php endforeach; ?>
+                                            <?php endif; ?>
+                                            </td>
                                             
                                         </tr>
                                         <tr>
@@ -52,19 +79,99 @@
                                             
                                         </tr>
                                         <tr>
-                                            <td>Address :</td>
+                                            <td>Emergency Mobile No :</td>
+                                            <td>
+                                            <?php if($employee->e_mobile): ?>
+                                            <a title=""  href="tel:<?php echo e($employee->e_mobile); ?>"> <?php echo e($employee->e_mobile); ?></a>
+                                            <?php else: ?> 
+                                            N/A
+                                            <?php endif; ?>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Email :</td>
+                                            <td>
+                                            <?php if($employee->email): ?>
+                                             <?php echo e($employee->email); ?>
+
+                                            <?php else: ?> 
+                                            N/A
+                                            <?php endif; ?>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Present Address :</td>
                                             <td><?php echo e($employee->address); ?></td>
                                             
                                         </tr>
                                         <tr>
+                                            <td>Permanent Address :</td>
+                                            <td>
+                                            <?php if($employee->p_address): ?>
+                                            <?php echo e($employee->p_address); ?>
+
+                                            <?php else: ?>
+                                            N/A
+                                            <?php endif; ?>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Reference :</td>
+                                            <td>
+                                            <?php if($employee->reference): ?>
+                                            <?php echo e($employee->reference); ?>
+
+                                            <?php else: ?>
+                                            N/A
+                                            <?php endif; ?>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Disability :</td>
+                                            <td>
+                                            <?php if($employee->disability): ?>
+                                            <?php echo e($employee->disability); ?>
+
+                                            <?php else: ?>
+                                            N/A
+                                            <?php endif; ?>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
                                             <td>Date Of Appointment :</td>
-                                            <td><?php echo e($employee->appointment_date); ?></td>
+                                            <td><?php echo e(Carbon\Carbon::parse($employee->appointment_date)->format('jS M Y ')); ?></td>
                                             
                                         </tr>
 
                                         <tr>
                                             <td>Monthly Salary :</td>
                                             <td>TK <?php echo e($employee->monthly_salary); ?></td>
+                                            
+                                        </tr>
+
+                                        <tr>
+                                            <td>Name On Bank Account :</td>
+                                            <td><?php echo e($employee->account_name); ?></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Bank Account No :</td>
+                                            <td><?php echo e($employee->account_no); ?></td>
+                                            
+                                        </tr>
+                                         <tr>
+                                            <td>Name Of Bank :</td>
+                                            <td><?php echo e($employee->bank_name); ?></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Name Of Branch :</td>
+                                            <td><?php echo e($employee->branch_name); ?></td>
                                             
                                         </tr>
 

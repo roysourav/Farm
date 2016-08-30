@@ -3,7 +3,7 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Add New Reproduction Record</h1>
+    <h1>Update Distribution Record</h1>
 </section>
 
 @include('partials._message')

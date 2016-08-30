@@ -12,8 +12,19 @@
 	<div class="row">
         <div class="col-lg-9">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Details Of {{ $employee->name }}
+                         <div class="row">   
+                            <div class="col-md-6">  
+                                <div class="panel-heading">
+                                <h4>Details Of Employee - {{ $employee->name }} </h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                 <div class="image">
+                                {{ Html::image($employee->img, $employee->name, array('class' => 'img-responsive img-thumbnail')) }}
+                                </div>
+
+                            </div>
+                           
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -30,6 +41,22 @@
                                          <tr>
                                             <td>Designation :</td>
                                             <td>{{ $employee->designation }}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Qualification :</td>
+                                            <td>{{ $employee->qualification }}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Skills :</td>
+                                            <td>
+                                            @if(isset($skills))
+                                            @foreach( $skills as $skill)
+                                                {{ $skill }} ,
+                                            @endforeach
+                                            @endif
+                                            </td>
                                             
                                         </tr>
                                         <tr>
@@ -53,19 +80,95 @@
                                             
                                         </tr>
                                         <tr>
-                                            <td>Address :</td>
+                                            <td>Emergency Mobile No :</td>
+                                            <td>
+                                            @if($employee->e_mobile)
+                                            <a title=""  href="tel:{{ $employee->e_mobile }}"> {{ $employee->e_mobile }}</a>
+                                            @else 
+                                            N/A
+                                            @endif
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Email :</td>
+                                            <td>
+                                            @if($employee->email)
+                                             {{ $employee->email }}
+                                            @else 
+                                            N/A
+                                            @endif
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Present Address :</td>
                                             <td>{{ $employee->address }}</td>
                                             
                                         </tr>
                                         <tr>
+                                            <td>Permanent Address :</td>
+                                            <td>
+                                            @if($employee->p_address)
+                                            {{ $employee->p_address }}
+                                            @else
+                                            N/A
+                                            @endif
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Reference :</td>
+                                            <td>
+                                            @if($employee->reference)
+                                            {{ $employee->reference }}
+                                            @else
+                                            N/A
+                                            @endif
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Disability :</td>
+                                            <td>
+                                            @if($employee->disability)
+                                            {{ $employee->disability }}
+                                            @else
+                                            N/A
+                                            @endif
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
                                             <td>Date Of Appointment :</td>
-                                            <td>{{ $employee->appointment_date }}</td>
+                                            <td>{{ Carbon\Carbon::parse($employee->appointment_date)->format('jS M Y ') }}</td>
                                             
                                         </tr>
 
                                         <tr>
                                             <td>Monthly Salary :</td>
                                             <td>TK {{ $employee->monthly_salary }}</td>
+                                            
+                                        </tr>
+
+                                        <tr>
+                                            <td>Name On Bank Account :</td>
+                                            <td>{{ $employee->account_name }}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Bank Account No :</td>
+                                            <td>{{ $employee->account_no }}</td>
+                                            
+                                        </tr>
+                                         <tr>
+                                            <td>Name Of Bank :</td>
+                                            <td>{{ $employee->bank_name }}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Name Of Branch :</td>
+                                            <td>{{ $employee->branch_name }}</td>
                                             
                                         </tr>
 

@@ -21,11 +21,13 @@
                                     <thead>
                                         <tr>
                                             <th>SL</th>
-                                            <th>Name</th>
+                                            <th>#</th>
                                             <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Age</th>
                                             <th>Designation</th>
                                             <th>Mobile</th>
-                                            <th>Date Of Appointment</th>
+                                            <th>Working Since</th>
                                             <th>Monthly Salary TK.</th>
                                             <th>Action</th>
                                             
@@ -37,13 +39,15 @@
 										<?php $count++  ?>
                                         <tr>
                                             <td>{{ $count }}</td>
-                                            <td>{{ $employee->name }}</td>
+                                            <td style="display: block;margin: 0 auto;width: 40px;"> {{ Html::image($employee->img, $employee->name, array('class' => 'img-responsive ')) }}</td>
                                             <td>{{'E-'.$employee->id }}</td>
+                                            <td>{{ $employee->name }}</td>
+                                            <td>{!! Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->date_of_birth) )->format('%y Y') !!}</td>
                                             <td>{{ $employee->designation }}</td>
                                             <td>
                                             <a title=""  href="tel:{{ $employee->mobile }}"> {{ $employee->mobile }}</a>
                                             </td>
-                                            <td>{{ $employee->appointment_date }}</td>
+                                            <td>{!! Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->appointment_date) )->format('%y Y, %m M, %d D') !!}</td>
                                             <td>{{ $employee->monthly_salary }}</td>
 
                                              

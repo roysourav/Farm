@@ -24,6 +24,11 @@
 
     <!-- Date Picker -->
 
+    <?php echo Html::script('assets/js/select2.min.js'); ?>
+
+
+    <!-- Date Picker -->
+
     <?php echo Html::script('assets/js/datepicker.js'); ?>
 
 

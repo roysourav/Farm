@@ -1,6 +1,12 @@
+
+$('.select').select2();
+$('.select_multi').select2({
+	placeholder: "Select Skill (Multiple Allowed)",
+});
 //date picker
  $('#datepicker').datepicker({
       autoclose: true
+      
     });
 
  $('#datepicker2').datepicker({

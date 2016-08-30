@@ -10,6 +10,8 @@ use App\HrmModels\Customer;
 
 use App\MilkModels\Distribution;
 
+use App\MilkModels\Milk;
+
 use Session;
 
 use Redirect;
@@ -67,9 +69,34 @@ class distributionController extends Controller
         {
             Session::flash('error', 'Record of that same date was already added !');
 
-            return redirect::route('distribution.create');
+            return redirect::route('distribution.create')->withInput();
 
         }
+
+        $has_production = Milk::where( 'date', $request->date )->count();
+
+        if( $has_production < 1 )
+         {
+            Session::flash('error', 'No production record found of that date, please add milk production first.');
+
+            return redirect::route('distribution.create')->withInput();
+         }  
+
+         $morning_production =  Milk::where( 'date', $request->date )->sum('morning');
+
+         $evening_production =  Milk::where( 'date', $request->date )->sum('evening');
+        
+         $total_production = $morning_production + $evening_production;
+         
+
+         $about_to_dist = $request->morning + $request->evening + $request->waste;
+
+         if( $total_production != $about_to_dist  )
+         {
+            Session::flash('error', 'Total distribution (morning + evening + waste) must be equal to production of the day (Total production is '.$total_production.' Ltr )');
+
+            return redirect::route('distribution.create')->withInput();
+         }
 
         $distribution = new Distribution;
 
@@ -123,6 +150,51 @@ class distributionController extends Controller
             'waste'       => 'numeric ',
 
             ) );
+
+         $is_exists = Distribution::where( 'date', $request->date )->count();
+
+         $distribution =  Distribution::find( $id );
+
+         
+
+        if(  $is_exists > 0 )   
+        {
+            if( $distribution->date != $request->date )
+            {
+                Session::flash('error', 'Record of that same date was already added !');
+
+                return redirect::route('distribution.edit' ,['id'=> $distribution->id] );
+            } 
+        }
+
+
+
+        $has_production = Milk::where( 'date', $request->date )->count();
+
+        if( $has_production < 1 )
+         {
+            Session::flash('error', 'No production record found of that date, please add milk production first.');
+
+            return redirect::route('distribution.edit' ,['id'=> $distribution->id] );
+         } 
+
+
+
+         $morning_production =  Milk::where( 'date', $request->date )->sum('morning');
+
+         $evening_production =  Milk::where( 'date', $request->date )->sum('evening');
+        
+         $total_production = $morning_production + $evening_production;
+         
+
+         $about_to_dist = $request->morning + $request->evening + $request->waste;
+
+         if( $total_production != $about_to_dist  )
+         {
+            Session::flash('error', 'Total distribution (morning + evening + waste) must be equal to production of the day (Total production is '.$total_production.' Ltr )');
+
+            return redirect::route('distribution.edit' ,['id'=> $distribution->id] );
+         }
 
         $distribution =  Distribution::find( $id );
 

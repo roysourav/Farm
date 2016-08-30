@@ -21,6 +21,10 @@
    
     {!! Html::style( 'assets/css/ionicons.css' ) !!}
 
+    <!-- Parsley CSS -->
+
+    {!! Html::style( 'assets/css/select2.min.css' ) !!}
+
     <!-- main CSS -->
     {!! Html::style( 'assets/css/AdminLTE.css' ) !!}
     

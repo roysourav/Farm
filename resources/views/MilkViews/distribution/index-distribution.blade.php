@@ -27,10 +27,10 @@
                                             <th>Price/Ltr.(Tk.)</th>
                                             <th>Morning(Ltr.)</th>
                                             <th>Evening(Ltr.)</th>
-                                            
+                                            <th>Waste(Ltr.)</th>
                                             <th>Total(Ltr.)</th>
                                             <th>Earning(Tk.)</th>
-                                            <th>Waste(Ltr.)</th>
+                                            
                                             <th>Action</th>
                                         
                                         </tr>
@@ -49,10 +49,10 @@
                                             <td>{{ $distribution->price }} Tk.</td>
                                             <td>{{ $distribution->morning }} Ltr.</td>
                                             <td>{{ $distribution->evening }} Ltr.</td>
-                                            
+                                            <td>{{ $distribution->waste }} Ltr.</td>
                                             <td>{{ $distribution->morning+$distribution->evening+$distribution->waste }} Ltr.</td>
                                             <td>{{ ($distribution->morning+$distribution->evening)*$distribution->price }} Tk.</td>
-                                            <td>{{ $distribution->waste }} Ltr.</td>
+                                            
                                             <td>
                                                 <a class="label label-warning" href="{{ route( 'distribution.edit', array( 'id'=> $distribution->id ) ) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 

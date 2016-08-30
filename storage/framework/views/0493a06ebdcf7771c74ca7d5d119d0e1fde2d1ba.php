@@ -19,11 +19,13 @@
                                     <thead>
                                         <tr>
                                             <th>SL</th>
-                                            <th>Name</th>
+                                            <th>#</th>
                                             <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Age</th>
                                             <th>Designation</th>
                                             <th>Mobile</th>
-                                            <th>Date Of Appointment</th>
+                                            <th>Working Since</th>
                                             <th>Monthly Salary TK.</th>
                                             <th>Action</th>
                                             
@@ -35,13 +37,15 @@
 										<?php $count++  ?>
                                         <tr>
                                             <td><?php echo e($count); ?></td>
-                                            <td><?php echo e($employee->name); ?></td>
+                                            <td style="display: block;margin: 0 auto;width: 40px;"> <?php echo e(Html::image($employee->img, $employee->name, array('class' => 'img-responsive '))); ?></td>
                                             <td><?php echo e('E-'.$employee->id); ?></td>
+                                            <td><?php echo e($employee->name); ?></td>
+                                            <td><?php echo Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->date_of_birth) )->format('%y Y'); ?></td>
                                             <td><?php echo e($employee->designation); ?></td>
                                             <td>
                                             <a title=""  href="tel:<?php echo e($employee->mobile); ?>"> <?php echo e($employee->mobile); ?></a>
                                             </td>
-                                            <td><?php echo e($employee->appointment_date); ?></td>
+                                            <td><?php echo Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->appointment_date) )->format('%y Y, %m M, %d D'); ?></td>
                                             <td><?php echo e($employee->monthly_salary); ?></td>
 
                                              

@@ -159,9 +159,16 @@ class customerController extends Controller
     {
         $customer = Customer::find($id);
 
-        $customer->delete();
+        $has_dist_record = $customer->distribution;
 
-        Session::flash( 'success', 'Customer Has Been Deleted Successfully !' );
+        if( count( $has_dist_record ) > 0 )
+        {
+            Session::flash( 'error', 'That Customer already in use, You must delete all records related with that customer first !( e.g. Distribution etc)' );
+        }else{
+            $customer->delete();
+
+             Session::flash( 'success', 'Customer Has Been Deleted Successfully !' );
+        }
 
         return Redirect::route('customer.index');
     }

@@ -2,7 +2,7 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Add New Reproduction Record</h1>
+    <h1>Update Distribution Record</h1>
 </section>
 
 <?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -22,6 +22,10 @@
 
     <!-- Date Picker -->
 
+    {!!Html::script('assets/js/select2.min.js')!!}
+
+    <!-- Date Picker -->
+
     {!!Html::script('assets/js/datepicker.js')!!}
 
      <!-- parsley form validation -->

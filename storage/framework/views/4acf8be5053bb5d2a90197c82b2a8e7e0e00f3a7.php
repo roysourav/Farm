@@ -25,6 +25,11 @@
     <?php echo Html::style( 'assets/css/ionicons.css' ); ?>
 
 
+    <!-- Parsley CSS -->
+
+    <?php echo Html::style( 'assets/css/select2.min.css' ); ?>
+
+
     <!-- main CSS -->
     <?php echo Html::style( 'assets/css/AdminLTE.css' ); ?>
 

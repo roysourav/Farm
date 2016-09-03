@@ -2,8 +2,22 @@
 
 @section('content')
 
-<section class="content-header">
-    <h1>All Employees</h1>
+<section class="content-header m_bottom_10">
+<div class="row">
+    <div class="col-md-6 no_mergin">
+        <h3>All Employees</h3>
+    </div>
+    <div class="col-md-6">
+        <div class="pull-right">
+        <a href="{{ route('employee.create') }}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+        <a href="{{ route('employee.list.pdf') }}" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+        
+            
+        </div>
+        
+    </div>
+</div>
+    
 </section>
 
 @include('partials._message')
@@ -14,6 +28,7 @@
                         <div class="box-header">
                             List Of All Employee
                         </div>
+
                         <!-- /.panel-heading -->
                         <div class="boxy-body">
                             <div class="table-responsive">

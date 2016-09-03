@@ -204,7 +204,7 @@
                     </div>
                     <!-- /.panel -->
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-4">
                         <div class="panel panel-primary m_top_25">
                             <div class="panel-heading">
                                 Log Information
@@ -219,8 +219,9 @@
                             </div>
                             <div class="panel-footer">
                             <div class="buttons">
-                                 <a href="<?php echo e(route('employee.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
+                                 <a href="<?php echo e(route('employee.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Back</a>
                                 <a href="<?php echo e(route( 'employee.edit', array( 'id'=> $employee->id ) )); ?>" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                                 <a href="<?php echo e(route('show.employee.pdf', ['id'=>$employee->id] )); ?>" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
                             </div>
                                
                             </div>

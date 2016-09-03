@@ -1,7 +1,21 @@
 <?php $__env->startSection('content'); ?>
 
-<section class="content-header">
-    <h1>All Employees</h1>
+<section class="content-header m_bottom_10">
+<div class="row">
+    <div class="col-md-6 no_mergin">
+        <h3>All Employees</h3>
+    </div>
+    <div class="col-md-6">
+        <div class="pull-right">
+        <a href="<?php echo e(route('employee.create')); ?>" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+        <a href="<?php echo e(route('employee.list.pdf')); ?>" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+        
+            
+        </div>
+        
+    </div>
+</div>
+    
 </section>
 
 <?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -12,6 +26,7 @@
                         <div class="box-header">
                             List Of All Employee
                         </div>
+
                         <!-- /.panel-heading -->
                         <div class="boxy-body">
                             <div class="table-responsive">

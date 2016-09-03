@@ -4858,3 +4858,22 @@ height: 115px;
 margin-bottom: 10px;
 width: 115px;
 }
+
+.pdf_img_fix{
+  display: block; overflow: hidden;
+}
+.pdf_img_fix img{
+  display: block; 
+  overflow: hidden;
+   padding: 0;
+    margin: 0 auto;
+    width: 40px;
+    height: auto;
+}
+.no_mergin{}
+.no_mergin h3{
+  margin: 0px;
+}
+.m_bottom_10{
+  margin-bottom: 10px;
+}

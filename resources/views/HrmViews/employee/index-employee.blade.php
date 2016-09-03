@@ -47,7 +47,7 @@
                                             <td>
                                             <a title=""  href="tel:{{ $employee->mobile }}"> {{ $employee->mobile }}</a>
                                             </td>
-                                            <td>{!! Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->appointment_date) )->format('%y Y, %m M, %d D') !!}</td>
+                                            <td>{!! Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->appointment_date) )->format('%y Y, %m M') !!}</td>
                                             <td>{{ $employee->monthly_salary }}</td>
 
                                              

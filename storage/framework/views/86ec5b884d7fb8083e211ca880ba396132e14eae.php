@@ -50,8 +50,10 @@
                                 <label class="col-sm-3 control-label">Image</label>
 
                                 <div class="col-sm-9">
+                                    <?php echo e(Html::image($employee->img, null, array('id' => 'preview-container','class' => 'img-responsive img-thumbnail'))); ?>
 
-                                    <?php echo Form::file('img'); ?> 
+                                    <?php echo Form::file('img', ['id' =>'imgInp'] ); ?>
+
 
                                 </div>
 

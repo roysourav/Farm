@@ -12,6 +12,7 @@ use Session;
 use Carbon\Carbon;
 use Redirect;
 use Image;
+use Storage;
 
 class employeeController extends Controller
 {
@@ -119,10 +120,11 @@ class employeeController extends Controller
 
             $img_path = public_path( 'images/'.$img_name );
 
-            Image::make($img)->resize(350,350)->save( $img_path );
+            Image::make($img)->resize(150,150)->save( $img_path );
 
             $employee->img = $img_path;
         }else{
+
             $employee->img = '/images/avatar-supplier.png';
         }
 
@@ -240,11 +242,13 @@ class employeeController extends Controller
 
             $img_path = public_path( 'images/'.$img_name );
 
-            Image::make($img)->resize(350,350)->save( $img_path );
+            Image::make($img)->resize(150,150)->save( $img_path );
+            //delete old image from images folder
+            Storage::delete ($employee->img );
 
             $employee->img = '/images/'.$img_name;
-        }else{
-            $employee->img = '/images/avatar-supplier.png';
+
+            
         }
 
             $employee->save();
@@ -267,6 +271,9 @@ class employeeController extends Controller
     public function destroy($id)
     {
         $employee = Employee::find( $id );
+
+        //delete employee image from images folder
+        Storage::delete ($employee->img );
 
         $employee->delete();
 

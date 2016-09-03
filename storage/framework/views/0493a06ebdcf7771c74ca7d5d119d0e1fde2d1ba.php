@@ -45,7 +45,7 @@
                                             <td>
                                             <a title=""  href="tel:<?php echo e($employee->mobile); ?>"> <?php echo e($employee->mobile); ?></a>
                                             </td>
-                                            <td><?php echo Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->appointment_date) )->format('%y Y, %m M, %d D'); ?></td>
+                                            <td><?php echo Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->appointment_date) )->format('%y Y, %m M'); ?></td>
                                             <td><?php echo e($employee->monthly_salary); ?></td>
 
                                              

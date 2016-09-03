@@ -50,12 +50,14 @@
                                 <label class="col-sm-3 control-label">Image</label>
 
                                 <div class="col-sm-9">
-
-                                    {!! Form::file('img') !!} 
+                                    {{ Html::image('/images/avater.jpg', null, array('id' => 'preview-container','class' => 'img-responsive img-thumbnail')) }}
+                                    {!! Form::file('img', ['id' =>'imgInp'] ) !!}
 
                                 </div>
 
                             </div>
+
+                           
 
                             <div class="form-group ">
 

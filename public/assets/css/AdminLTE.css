@@ -4751,10 +4751,9 @@ table.text-center th {
 }
 .image{
  float: right;
-height: 150px;
 overflow: hidden;
 padding: 10px;
-width: 150px;
+
 }
 .image img{
 float: right;
@@ -4851,4 +4850,11 @@ color: #c1c1c1;
 display: block;
 margin: 0;
 padding: 5px 5px 5px 10px;
+}
+
+#preview-container{
+  border: 1px solid #ddd;
+height: 115px;
+margin-bottom: 10px;
+width: 115px;
 }

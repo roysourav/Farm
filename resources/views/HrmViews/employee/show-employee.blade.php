@@ -10,7 +10,7 @@
 @include('partials._message')
 
 	<div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-8">
                     <div class="panel panel-default">
                          <div class="row">   
                             <div class="col-md-6">  
@@ -43,20 +43,14 @@
                                             <td>{{ $employee->designation }}</td>
                                             
                                         </tr>
-                                        <tr>
-                                            <td>Qualification :</td>
-                                            <td>{{ $employee->qualification }}</td>
+                                         <tr>
+                                            <td>Date of Birth :</td>
+                                            <td>{!! Carbon\Carbon::parse( $employee->date_of_birth )->format('jS M Y ') !!}</td>
                                             
                                         </tr>
                                         <tr>
-                                            <td>Skills :</td>
-                                            <td>
-                                            @if(isset($skills))
-                                            @foreach( $skills as $skill)
-                                                {{ $skill }} ,
-                                            @endforeach
-                                            @endif
-                                            </td>
+                                            <td>Age :</td>
+                                            <td>{!! Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->date_of_birth) )->format('%y Years, %m Months') !!} (As On {{ Carbon\Carbon::today()->format('jS M Y ') }})</td>
                                             
                                         </tr>
                                         <tr>
@@ -118,6 +112,33 @@
                                             
                                         </tr>
                                         <tr>
+                                            <td>Qualification :</td>
+                                            <td>{{ $employee->qualification }}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Skills :</td>
+                                            <td>
+                                            @if(isset($skills))
+                                            @foreach( $skills as $skill)
+                                                {{ $skill }} ,
+                                            @endforeach
+                                            @endif
+                                            </td>
+                                            
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>Date Of Appointment :</td>
+                                            <td>{{ Carbon\Carbon::parse($employee->appointment_date)->format('jS M Y ') }}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Working For :</td>
+                                            <td>{!! Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->appointment_date) )->format('%y Y, %m M') !!} (As On {{ Carbon\Carbon::today()->format('jS M Y ') }})</td>
+                                            
+                                        </tr>
+                                        <tr>
                                             <td>Reference :</td>
                                             <td>
                                             @if($employee->reference)
@@ -139,11 +160,7 @@
                                             </td>
                                             
                                         </tr>
-                                        <tr>
-                                            <td>Date Of Appointment :</td>
-                                            <td>{{ Carbon\Carbon::parse($employee->appointment_date)->format('jS M Y ') }}</td>
-                                            
-                                        </tr>
+                                        
 
                                         <tr>
                                             <td>Monthly Salary :</td>

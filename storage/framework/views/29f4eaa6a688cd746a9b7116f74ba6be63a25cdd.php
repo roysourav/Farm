@@ -8,7 +8,7 @@
 <?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 	<div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-8">
                     <div class="panel panel-default">
                          <div class="row">   
                             <div class="col-md-6">  
@@ -42,20 +42,14 @@
                                             <td><?php echo e($employee->designation); ?></td>
                                             
                                         </tr>
-                                        <tr>
-                                            <td>Qualification :</td>
-                                            <td><?php echo e($employee->qualification); ?></td>
+                                         <tr>
+                                            <td>Date of Birth :</td>
+                                            <td><?php echo Carbon\Carbon::parse( $employee->date_of_birth )->format('jS M Y '); ?></td>
                                             
                                         </tr>
                                         <tr>
-                                            <td>Skills :</td>
-                                            <td>
-                                            <?php if(isset($skills)): ?>
-                                            <?php foreach( $skills as $skill): ?>
-                                                <?php echo e($skill); ?> ,
-                                            <?php endforeach; ?>
-                                            <?php endif; ?>
-                                            </td>
+                                            <td>Age :</td>
+                                            <td><?php echo Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->date_of_birth) )->format('%y Years, %m Months'); ?> (As On <?php echo e(Carbon\Carbon::today()->format('jS M Y ')); ?>)</td>
                                             
                                         </tr>
                                         <tr>
@@ -119,6 +113,33 @@
                                             
                                         </tr>
                                         <tr>
+                                            <td>Qualification :</td>
+                                            <td><?php echo e($employee->qualification); ?></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Skills :</td>
+                                            <td>
+                                            <?php if(isset($skills)): ?>
+                                            <?php foreach( $skills as $skill): ?>
+                                                <?php echo e($skill); ?> ,
+                                            <?php endforeach; ?>
+                                            <?php endif; ?>
+                                            </td>
+                                            
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>Date Of Appointment :</td>
+                                            <td><?php echo e(Carbon\Carbon::parse($employee->appointment_date)->format('jS M Y ')); ?></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Working For :</td>
+                                            <td><?php echo Carbon\Carbon::now()->diff(Carbon\Carbon::parse($employee->appointment_date) )->format('%y Y, %m M'); ?> (As On <?php echo e(Carbon\Carbon::today()->format('jS M Y ')); ?>)</td>
+                                            
+                                        </tr>
+                                        <tr>
                                             <td>Reference :</td>
                                             <td>
                                             <?php if($employee->reference): ?>
@@ -142,11 +163,7 @@
                                             </td>
                                             
                                         </tr>
-                                        <tr>
-                                            <td>Date Of Appointment :</td>
-                                            <td><?php echo e(Carbon\Carbon::parse($employee->appointment_date)->format('jS M Y ')); ?></td>
-                                            
-                                        </tr>
+                                        
 
                                         <tr>
                                             <td>Monthly Salary :</td>

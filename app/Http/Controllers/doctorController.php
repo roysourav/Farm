@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Credential\CheckExistenceController;
 use App\Http\Requests;
-
 use App\HrmModels\Doctor;
-
 use App\Reproduction;
-
 use Session;
-
 use Redirect;
+use Image;
+use Storage;
 
 class doctorController extends Controller
 {
@@ -58,10 +56,13 @@ class doctorController extends Controller
         $this->validate($request, array(
 
                 'name'        => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
-                'img'         => 'image | max:500 | min:50',
+                'img'         => 'image | max:800 | min:30',
                 'mobile'      => 'required | digits:11 | unique:doctors,mobile',
                 'email'       => 'required | email | unique:doctors,email',
                 'address'     => 'required | min:10 |',
+                'qualification' => 'required',
+                's_status'    => 'required | regex:/^[\pL\s\-]+$/u',
+                'account_name'  => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'account_no'  => 'required | numeric | unique:doctors,account_no',
                 'bank_name'   => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'branch_name' => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
@@ -76,26 +77,33 @@ class doctorController extends Controller
         $doctor->mobile   = $request->mobile;
         $doctor->email    = $request->email;
         $doctor->address  = $request->address;
-        $doctor->account_no  = $request->account_no;
-        $doctor->bank_name = $request->bank_name;
-        $doctor->branch_name = $request->branch_name;
+        $doctor->qualification  = $request->qualification;
+        $doctor->s_status       = $request->s_status;
+        $doctor->account_name   = $request->account_name;
+        $doctor->account_no     = $request->account_no;
+        $doctor->bank_name      = $request->bank_name;
+        $doctor->branch_name    = $request->branch_name;
 
+        
+         //Doctor image upload
         if( $request->hasFile('img') ){
 
             $img = $request->file('img');
 
-            $original_name = $img->getClientOriginalName();
+            $original_ext = $img->getClientOriginalExtension();
 
-            $img_name = time().'-'.$original_name;
+            $img_name = time().'.'.$original_ext;
 
-            $img->move('images' , $img_name);
+            $img_path = 'images/'.$img_name;
 
-            $img_path = '/images/'.$img_name;
+            Image::make($img)->resize(150,150)->save( $img_path );
 
             $doctor->img = $img_path;
         }else{
+
             $doctor->img = '/images/doctor-avatar.png';
         }
+
 
         $doctor->save();
 
@@ -144,10 +152,12 @@ class doctorController extends Controller
         $this->validate($request, array(
 
                 'name'        => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
-                'img'         => 'image | max:500 | min:50',
+                'img'         => 'image | max:800 | min:30',
                 'mobile'      => 'required | digits:11 | unique:doctors,mobile,'.$id,
                 'email'       => 'required | email | unique:doctors,email,'.$id,
                 'address'     => 'required | min:10 |',
+                'qualification' => 'required',
+                's_status'    => 'required | regex:/^[\pL\s\-]+$/u',
                 'account_no'  => 'required | numeric | unique:doctors,account_no,'.$id,
                 'bank_name'   => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'branch_name' => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
@@ -161,27 +171,32 @@ class doctorController extends Controller
             $doctor->mobile   = $request->mobile;
             $doctor->email    = $request->email;
             $doctor->address  = $request->address;
-            $doctor->account_no  = $request->account_no;
-            $doctor->bank_name = $request->bank_name;
-            $doctor->branch_name = $request->branch_name;
+            $doctor->qualification  = $request->qualification;
+            $doctor->s_status       = $request->s_status;
+            $doctor->account_name   = $request->account_name;
+            $doctor->account_no     = $request->account_no;
+            $doctor->bank_name      = $request->bank_name;
+            $doctor->branch_name    = $request->branch_name;
 
+                //Doctor image update
             if( $request->hasFile('img') ){
 
-            $img = $request->file('img');
+                $img = $request->file('img');
 
-            $original_name = $img->getClientOriginalName();
+                $original_ext = $img->getClientOriginalExtension();
 
-            $img_name = time().'-'.$original_name;
+                $img_name = time().'.'.$original_ext;
 
-            $img->move('images' , $img_name);
+                $img_path = 'images/'.$img_name;
 
-            $img_path = '/images/'.$img_name;
+                Image::make($img)->resize(150,150)->save( $img_path );
+                //delete old image from images folder
+                Storage::delete ($doctor->img );
 
-            $doctor->img = $img_path;
-        }else{
-            $doctor->img = '/images/doctor-avatar.png';
-        }
+                $doctor->img = '/images/'.$img_name;
 
+                
+            }
 
             $doctor->save();
 
@@ -209,6 +224,9 @@ class doctorController extends Controller
 
             Session::flash( 'error', 'That Doctor already in use, You must delete all records related with that doctor first !( e.g. reproduction etc)' );
         }else{
+
+             //delete doctor image from images folder
+            Storage::delete ($doctor->img );
 
             $doctor->delete();
 

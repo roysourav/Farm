@@ -9,13 +9,12 @@
 <?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 	<div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="panel-heading">
-                                    Details Of Doctor : <?php echo e($doctor->name); ?>
-
+                                    <h4> Details Of Doctor : <?php echo e($doctor->name); ?></h4>    
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -39,6 +38,22 @@
                                         </tr>
 
                                         <tr>
+                                            <td>Doctor ID:</td>
+                                            <td><?php echo e('D-'.$doctor->id); ?></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Qualification:</td>
+                                            <td><?php echo e($doctor->qualification); ?></td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>Present Service Status:</td>
+                                            <td><?php echo e($doctor->s_status); ?></td>
+                                            
+                                        </tr>
+
+                                        <tr>
                                             <td>Mobile No :</td>
                                             <td><a title=""  href="tel:<?php echo e($doctor->mobile); ?>"> <?php echo e($doctor->mobile); ?></a></td>
                                             
@@ -51,6 +66,11 @@
                                         </tr>
 
                                         <tr>
+                                            <td>Name On Bank Account :</td>
+                                            <td><?php echo e($doctor->account_name); ?></td>
+                                            
+                                        </tr>
+                                         <tr>
                                             <td>Bank Account No :</td>
                                             <td><?php echo e($doctor->account_no); ?></td>
                                             
@@ -78,7 +98,7 @@
                     </div>
                     <!-- /.panel -->
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="panel panel-primary m_top_25">
                 <div class="panel-heading">
                     Log Information
@@ -94,6 +114,7 @@
                     <div class="buttons">
                         <a href="<?php echo e(route('doctor.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
                         <a href="<?php echo e(route( 'doctor.edit', array( 'id'=> $doctor->id ) )); ?>" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                        <a href="<?php echo e(route('doctor.show', ['id' => $doctor->id])); ?>" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                                 
                 </div>

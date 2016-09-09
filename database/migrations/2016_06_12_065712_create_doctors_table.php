@@ -19,6 +19,9 @@ class CreateDoctorsTable extends Migration
             $table->string('mobile');
             $table->string('email');
             $table->text('address');
+            $table->string('qualification');
+            $table->string('s_status');
+            $table->string('account_name');
             $table->string('account_no');
             $table->string('bank_name');
             $table->string('branch_name');

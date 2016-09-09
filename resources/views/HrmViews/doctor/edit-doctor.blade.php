@@ -37,8 +37,8 @@
                                             <label class="col-sm-3 control-label">Image</label>
 
                                             <div class="col-sm-9">
-
-                                                {!! Form::file('img') !!} 
+                                                {{ Html::image($doctor->img, null, array('id' => 'preview-container','class' => 'img-responsive img-thumbnail')) }}
+                                                {!! Form::file('img', ['id' =>'imgInp'] ) !!}
 
                                             </div>
 
@@ -50,9 +50,14 @@
                                             <label class="col-sm-3 control-label">Mobile No. *</label>
 
                                             <div class="col-sm-9">
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                                    </div>
 
                                                 {!! Form::text( 'mobile', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','required'=> '','data-parsley-type'=>'number','data-parsley-length'=>'[11, 11]','data-parsley-length-message'=>'This value should be exactly 11 characters long' ) ) !!} 
                                                         
+                                                </div>
                                             </div>
 
                                         </div>
@@ -64,9 +69,14 @@
                                             <label class="col-sm-3 control-label">Email *</label>
 
                                             <div class="col-sm-9">
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                    </div>
 
                                                 {!! Form::text( 'email', null, array( 'class'=>'form-control','placeholder'=>'Enter Email Id','data-parsley-type'=>'email','required'=> '' ) ) !!}
                            
+                                                </div>
                                             </div>
 
                                         </div>
@@ -84,14 +94,67 @@
 
                                         </div> 
                                         <div class="fix"></div>
+
                                         <div class="form-group">
+
+                                            <label class="col-sm-3 control-label">Qualification. *</label>
+
+                                            <div class="col-sm-9">
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                                    </div>
+                                                {!! Form::text( 'qualification', null, array( 'class'=>'form-control','placeholder'=>'Enter Qualification','required'=> ''  ) ) !!} 
+                                            
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <label class="col-sm-3 control-label">Service Status. *</label>
+
+                                            <div class="col-sm-9">
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                                    </div>
+                                                {!! Form::text( 's_status', null, array( 'class'=>'form-control','placeholder'=>'Enter Present Service Status','required'=> ''  ) ) !!} 
+                                            
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <label class="col-sm-3 control-label">Name In Bank Account *</label>
+
+                                                <div class="col-sm-9">
+                                                    <div class="input-group date">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                        </div>     
+                                                    {!! Form::text( 'account_name', null, array( 'class'=>'form-control','placeholder'=>'Enter Name As It Appears In Bank Account.','required'=> '','minlength'=>'3'  ) ) !!} 
+                                                        
+                                                    </div>
+                                                </div>
+
+                                        </div>
+                                        
+                                         <div class="form-group">
 
                                             <label class="col-sm-3 control-label">Bank Account No. *</label>
 
                                             <div class="col-sm-9">
-                                            
-                                                {!! Form::text( 'account_no', null, array( 'class'=>'form-control','placeholder'=>'Enter Bank Account No.','required'=> '','data-parsley-type'=>'number'  ) ) !!} 
-                                            
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                                    </div> 
+                                                    {!! Form::text( 'account_no', null, array( 'class'=>'form-control','placeholder'=>'Enter Bank Account No.','required'=> '','data-parsley-type'=>'number'  ) ) !!} 
+                                                    
+                                                </div>
                                             </div>
 
                                         </div>
@@ -101,9 +164,13 @@
                                             <label class="col-sm-3 control-label">Name Of Bank *</label>
 
                                             <div class="col-sm-9">
-
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                       <i class="fa fa-university" aria-hidden="true"></i>
+                                                    </div>
                                                 {!! Form::text( 'bank_name', null, array( 'class'=>'form-control','placeholder'=>'Enter Bank Name', 'required'=> '' ) ) !!}
 
+                                                </div>
                                             </div>
 
                                         </div>
@@ -113,9 +180,14 @@
                                             <label class="col-sm-3 control-label">Name Of Branch *</label>
 
                                             <div class="col-sm-9">
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                       <i class="fa fa-building-o" aria-hidden="true"></i>
+                                                    </div>
 
                                                 {!! Form::text( 'branch_name', null, array( 'class'=>'form-control','placeholder'=>'Enter Branch Name', 'required'=> '' ) ) !!}
 
+                                                </div>
                                             </div>
 
                                         </div>

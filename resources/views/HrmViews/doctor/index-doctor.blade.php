@@ -2,9 +2,22 @@
 
 @section('content')
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>All Doctors</h1>
+<section class="content-header m_bottom_10">
+<div class="row">
+    <div class="col-md-6 no_mergin">
+        <h3>All Doctors</h3>
+    </div>
+    <div class="col-md-6">
+        <div class="pull-right">
+        <a href="{{ route('doctor.create') }}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+        <a href="{{ route('doctor.list.pdf') }}" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+        
+            
+        </div>
+        
+    </div>
+</div>
+    
 </section>
 
 @include('partials._message')
@@ -23,8 +36,9 @@
                                         <tr>
                                             <th>Sl</th>
                                             <th>#</th>
-                                            <th>Name Of Doctor</th>
                                             <th>Id</th>
+                                            <th>Name Of Doctor</th>
+                                            <th>Qualification</th>
                                             <th>Mobile</th>
                                             <th>Email</th>
                                             <th>Bank Account No.</th>
@@ -41,8 +55,10 @@
                                         <tr>
                                             <td>{{ $count }}</td>
                                             <td style="display: block;margin: 0 auto;width: 40px;"> {{ Html::image($doctor->img, $doctor->name, array('class' => 'img-responsive ')) }}</td>
-                                            <td>{{ $doctor->name }}</td>
                                             <td>{{ 'D-'.$doctor->id }}</td>
+                                            <td>{{ $doctor->name }}</td>
+                                            <td>{{ $doctor->qualification }}</td>
+                                            
                                             <td>
                                             <a title=""  href="tel:{{ $doctor->mobile }}"> {{ $doctor->mobile }}</a>
                                             </td>

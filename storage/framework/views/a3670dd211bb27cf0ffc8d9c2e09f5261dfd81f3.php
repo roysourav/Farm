@@ -1,8 +1,21 @@
 <?php $__env->startSection('content'); ?>
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>All Doctors</h1>
+<section class="content-header m_bottom_10">
+<div class="row">
+    <div class="col-md-6 no_mergin">
+        <h3>All Doctors</h3>
+    </div>
+    <div class="col-md-6">
+        <div class="pull-right">
+        <a href="<?php echo e(route('doctor.create')); ?>" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+        <a href="<?php echo e(route('doctor.list.pdf')); ?>" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+        
+            
+        </div>
+        
+    </div>
+</div>
+    
 </section>
 
 <?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -21,8 +34,9 @@
                                         <tr>
                                             <th>Sl</th>
                                             <th>#</th>
-                                            <th>Name Of Doctor</th>
                                             <th>Id</th>
+                                            <th>Name Of Doctor</th>
+                                            <th>Qualification</th>
                                             <th>Mobile</th>
                                             <th>Email</th>
                                             <th>Bank Account No.</th>
@@ -39,8 +53,10 @@
                                         <tr>
                                             <td><?php echo e($count); ?></td>
                                             <td style="display: block;margin: 0 auto;width: 40px;"> <?php echo e(Html::image($doctor->img, $doctor->name, array('class' => 'img-responsive '))); ?></td>
-                                            <td><?php echo e($doctor->name); ?></td>
                                             <td><?php echo e('D-'.$doctor->id); ?></td>
+                                            <td><?php echo e($doctor->name); ?></td>
+                                            <td><?php echo e($doctor->qualification); ?></td>
+                                            
                                             <td>
                                             <a title=""  href="tel:<?php echo e($doctor->mobile); ?>"> <?php echo e($doctor->mobile); ?></a>
                                             </td>

@@ -118,7 +118,7 @@ class employeeController extends Controller
 
             $img_name = time().'.'.$original_ext;
 
-            $img_path = public_path( 'images/'.$img_name );
+            $img_path = 'images/'.$img_name;
 
             Image::make($img)->resize(150,150)->save( $img_path );
 
@@ -240,7 +240,7 @@ class employeeController extends Controller
 
             $img_name = time().'.'.$original_ext;
 
-            $img_path = public_path( 'images/'.$img_name );
+            $img_path = 'images/'.$img_name;
 
             Image::make($img)->resize(150,150)->save( $img_path );
             //delete old image from images folder

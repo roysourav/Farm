@@ -1,36 +1,25 @@
-@extends('HrmViews.HrmMaster')
+@extends('PdfViews.pdfMaster')
 
 @section('content')
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>Doctor : {{ $doctor->name }}</h1>
-</section>
-
-
-@include('partials._message')
-
-	<div class="row">
+<div class="row">
         <div class="col-lg-8">
                     <div class="panel panel-default">
-                        <div class="row">
-                            <div class="col-md-6">
+                         <div class="row">   
+                            <div class="col-md-6">  
                                 <div class="panel-heading">
-                                    <h4> Details Of Doctor : {{ $doctor->name }}</h4>    
+                                <h4>Details Of Doctor - {{ $doctor->name }} (As On {{ Carbon\Carbon::today()->format('jS M Y ') }})</h4>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="image ">
-                                {{ Html::image($doctor->img, $doctor->name, array('class' => 'img-responsive img-thumbnail')) }}
-                                </div>
-                            </div>
+                            
+                           
                         </div>
-                        
+                        <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive text-float-left">
                                 <table class="table table-striped table-bordered table-hover">
                                     
-                                    <tbody>
+                                   <tbody>
                                     
                                         <tr>
                                             <td>Name Of Doctor :</td>
@@ -90,37 +79,17 @@
                                     </tbody>
 
                                 </table>
-                                    
-                                 
+                                
+                                  
                             </div>
-                            <!-- /.table-responsive -->
+                           
                         </div>
-                        <!-- /.panel-body -->
+                       
                     </div>
-                    <!-- /.panel -->
+                   
         </div>
-        <div class="col-lg-4">
-            <div class="panel panel-primary m_top_25">
-                <div class="panel-heading">
-                    Log Information
-                </div>
-                 <div class="panel-body">
-                    <h5>Created At:</h5>
-                        <p>{!! Carbon\Carbon::parse($doctor->created_at)->format('jS M Y , h:i A') !!}</p>
-                                
-                    <h5>Last Updated At:</h5>
-                        <p>{!! Carbon\Carbon::parse($doctor->updated_at)->format('jS M Y , h:i A') !!}</p>
-                </div>
-                <div class="panel-footer">
-                    <div class="buttons">
-                        <a href="{{ route('doctor.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
-                        <a href="{{ route( 'doctor.edit', array( 'id'=> $doctor->id ) ) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-                        <a href="{{ route('doctor.show', ['id' => $doctor->id]) }}" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                    </div>
-                                
-                </div>
-            </div>
-        </div>
+        
     </div>
-
+	
 @stop
+

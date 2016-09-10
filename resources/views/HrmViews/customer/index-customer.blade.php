@@ -2,12 +2,23 @@
 
 @section('content')
 
+<section class="content-header m_bottom_10">
 <div class="row">
-    <div class="col-lg-12">
-        <h3 class="page-header">All Customers</h3>
+    <div class="col-md-6 no_mergin">
+        <h3>All Customers</h3>
     </div>
-                
-</div> 
+    <div class="col-md-6">
+        <div class="pull-right">
+        <a href="{{ route('customer.create') }}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+        <a href="{{ route('customer.list.pdf') }}" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+        
+            
+        </div>
+        
+    </div>
+</div>
+    
+</section>
 
 @include('partials._message')
 
@@ -23,12 +34,13 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
+                                            <th>Sl</th>
                                             <th>#</th>
+                                            <th>Id</th>
                                             <th>Name Of Customer</th>
-                                            <th> Id</th>
                                             <th>Mobile</th>
                                             <th>Email</th>
-                                            <th>Bank Account No.</th>
+                                            <th>Account No.</th>
                                             <th>Bank</th>
                                             <th>Branch</th>
                                             <th>Action</th>
@@ -41,8 +53,10 @@
 										<?php $count++  ?>
                                         <tr>
                                             <td>{{ $count }}</td>
-                                            <td>{{ $customer->name }}</td>
+                                            <td style="display: block;margin: 0 auto;width: 40px;"> {{ Html::image($customer->img, $customer->name, array('class' => 'img-responsive ')) }}</td>
                                             <td>{{ 'CUST-'.$customer->id }}</td>
+                                            <td>{{ $customer->name }}</td>
+                                            
                                             <td>
                                             <a title=""  href="tel:{{ $customer->mobile }}"> {{ $customer->mobile }}</a>
                                             </td>

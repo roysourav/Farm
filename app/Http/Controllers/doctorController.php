@@ -101,7 +101,7 @@ class doctorController extends Controller
             $doctor->img = $img_path;
         }else{
 
-            $doctor->img = '/images/doctor-avatar.png';
+            $doctor->img = '/images/avater.jpg';
         }
 
 

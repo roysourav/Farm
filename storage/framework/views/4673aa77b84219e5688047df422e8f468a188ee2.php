@@ -1,11 +1,22 @@
 <?php $__env->startSection('content'); ?>
 
+<section class="content-header m_bottom_10">
 <div class="row">
-    <div class="col-lg-12">
-        <h3 class="page-header">All Customers</h3>
+    <div class="col-md-6 no_mergin">
+        <h3>All Customers</h3>
     </div>
-                
-</div> 
+    <div class="col-md-6">
+        <div class="pull-right">
+        <a href="<?php echo e(route('customer.create')); ?>" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+        <a href="<?php echo e(route('customer.list.pdf')); ?>" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+        
+            
+        </div>
+        
+    </div>
+</div>
+    
+</section>
 
 <?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
@@ -21,12 +32,13 @@
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
+                                            <th>Sl</th>
                                             <th>#</th>
+                                            <th>Id</th>
                                             <th>Name Of Customer</th>
-                                            <th> Id</th>
                                             <th>Mobile</th>
                                             <th>Email</th>
-                                            <th>Bank Account No.</th>
+                                            <th>Account No.</th>
                                             <th>Bank</th>
                                             <th>Branch</th>
                                             <th>Action</th>
@@ -39,8 +51,10 @@
 										<?php $count++  ?>
                                         <tr>
                                             <td><?php echo e($count); ?></td>
-                                            <td><?php echo e($customer->name); ?></td>
+                                            <td style="display: block;margin: 0 auto;width: 40px;"> <?php echo e(Html::image($customer->img, $customer->name, array('class' => 'img-responsive '))); ?></td>
                                             <td><?php echo e('CUST-'.$customer->id); ?></td>
+                                            <td><?php echo e($customer->name); ?></td>
+                                            
                                             <td>
                                             <a title=""  href="tel:<?php echo e($customer->mobile); ?>"> <?php echo e($customer->mobile); ?></a>
                                             </td>

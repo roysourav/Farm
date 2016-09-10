@@ -38,6 +38,11 @@
                                             
                                         </tr>
                                          <tr>
+                                            <td>Employee ID :</td>
+                                            <td><?php echo e('E-'.$employee->id); ?></td>
+                                            
+                                        </tr>
+                                         <tr>
                                             <td>Designation :</td>
                                             <td><?php echo e($employee->designation); ?></td>
                                             

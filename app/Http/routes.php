@@ -124,5 +124,8 @@ Route::delete( 'species/{id}' , [ 'uses'=>'speciesController@destroy' , 'as'=>'s
         Route::get('/doctor', [ 'as' => 'doctor.list.pdf', 'uses' => 'pdfController@doctorList' ] );
         Route::get('/doctor/{id}', [ 'as' => 'show.doctor.pdf', 'uses' => 'pdfController@doctorShow' ] );
 
+        Route::get('/customer', [ 'as' => 'customer.list.pdf', 'uses' => 'pdfController@customerList' ] );
+        Route::get('/customer/{id}', [ 'as' => 'show.customer.pdf', 'uses' => 'pdfController@customerShow' ] );
+
 
     } );

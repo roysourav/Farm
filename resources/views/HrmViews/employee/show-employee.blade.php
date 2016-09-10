@@ -39,6 +39,11 @@
                                             
                                         </tr>
                                          <tr>
+                                            <td>Employee ID :</td>
+                                            <td>{{ 'E-'.$employee->id }}</td>
+                                            
+                                        </tr>
+                                         <tr>
                                             <td>Designation :</td>
                                             <td>{{ $employee->designation }}</td>
                                             

@@ -115,7 +115,7 @@
                     <div class="buttons">
                         <a href="{{ route('doctor.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
                         <a href="{{ route( 'doctor.edit', array( 'id'=> $doctor->id ) ) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-                        <a href="{{ route('doctor.show', ['id' => $doctor->id]) }}" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                        <a href="{{ route('show.doctor.pdf', ['id' => $doctor->id]) }}" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
                     </div>
                                 
                 </div>

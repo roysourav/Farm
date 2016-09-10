@@ -41,7 +41,7 @@
                                             <th>Qualification</th>
                                             <th>Mobile</th>
                                             <th>Email</th>
-                                            <th>Bank Account No.</th>
+                                            <th>Account No.</th>
                                             <th>Bank</th>
                                             <th>Branch</th>
                                             <th>Action</th>

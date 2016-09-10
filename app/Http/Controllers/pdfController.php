@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\HrmModels\Employee;
 use App\HrmModels\Doctor;
+use App\HrmModels\Customer;
 use PDF;
 
 class pdfController extends Controller
@@ -43,6 +44,22 @@ class pdfController extends Controller
 
         $pdf = PDF::loadview('PdfViews.doctor.show-doctor',['doctor' =>  $doctor] )->setPaper('a4', 'portrait');
         return $pdf->download('doctor.pdf');
+    }
+
+    public function customerList()
+    {   
+        $customers = Customer::all();
+
+        $pdf = PDF::loadview('PdfViews.customer.list-customer',['customers' =>  $customers] )->setPaper('a4', 'landscape');
+        return $pdf->download('customers.pdf');
+    }
+
+    public function customerShow($id)
+    {
+        $customer = Customer::find($id);
+
+        $pdf = PDF::loadview('PdfViews.customer.show-customer',['customer' =>  $customer] )->setPaper('a4', 'portrait');
+        return $pdf->download('customer.pdf');
     }
 
 

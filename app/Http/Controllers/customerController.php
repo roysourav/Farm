@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\HrmModels\Customer;
-
 use Session;
-
 use Redirect;
+use Image;
+use Storage;
 
 class customerController extends Controller
 {
@@ -53,32 +51,60 @@ class customerController extends Controller
         $this->validate( $request, array(
 
                 'name'        => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
+                'img'         => 'image | max:800 | min:30',
                 'mobile'      => 'required | digits:11 | unique:customers,mobile',
-                'email'       => 'required | email | unique:customers,email',
+                'a_mobile'    => 'digits:11 | unique:customers,mobile',
+                'email'       => 'email | unique:customers,email',
                 'address'     => 'required | min:10 |',
+                'account_name'=> 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'account_no'  => 'required | numeric | unique:customers,account_no',
+                'a_account_no'=> 'numeric | unique:customers,account_no',
                 'bank_name'   => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'branch_name' => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
+                'agreement'   => ' Min:2',
                 
 
             ) );
 
         $customer = new Customer;
 
-        $customer->name        = $request->name;
-        $customer->mobile      = $request->mobile;
-        $customer->email       = $request->email;
-        $customer->address     = $request->address;
-        $customer->account_no  = $request->account_no;
-        $customer->bank_name  = $request->bank_name;
+        $customer->name         = $request->name;
+        $customer->mobile       = $request->mobile;
+        $customer->a_mobile     = $request->a_mobile;
+        $customer->email        = $request->email;
+        $customer->address      = $request->address;
+        $customer->account_name = $request->account_name;
+        $customer->account_no   = $request->account_no;
+        $customer->a_account_no = $request->a_account_no;
+        $customer->bank_name    = $request->bank_name;
         $customer->branch_name  = $request->branch_name;
+        $customer->agreement    = $request->agreement;
+
+        //Customer image upload
+        if( $request->hasFile('img') ){
+
+            $img = $request->file('img');
+
+            $original_ext = $img->getClientOriginalExtension();
+
+            $img_name = time().'.'.$original_ext;
+
+            $img_path = 'images/'.$img_name;
+
+            Image::make($img)->resize(150,150)->save( $img_path );
+
+            $customer->img = $img_path;
+        }else{
+
+            $customer->img = '/images/avater.jpg';
+        }
         
 
         $customer->save();
 
         Session::flash( 'success', 'New customer has been saved successfully!' );
 
-        return view( 'HrmViews.customer.edit-customer' )->with( 'customer', $customer );
+        return redirect::route( 'customer.edit', [ 'id' => $customer->id ] );
     }
 
     /**
@@ -120,12 +146,17 @@ class customerController extends Controller
         $this->validate( $request, array(
 
                 'name'        => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
-                'mobile'      => 'required | digits:11 | unique:suppliers,mobile,'.$id,
-                'email'       => 'required | email | unique:suppliers,email,'.$id,
+                'img'         => 'image | max:800 | min:30',
+                'mobile'      => 'required | digits:11 | unique:customers,mobile,'.$id,
+                'a_mobile'    => 'digits:11 | unique:customers,mobile,'.$id,
+                'email'       => 'email | unique:customers,email,'.$id,
                 'address'     => 'required | min:10 |',
-                'account_no'  => 'required | numeric | unique:suppliers,account_no,'.$id,
+                'account_name'=> 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
+                'account_no'  => 'required | numeric | unique:customers,account_no,'.$id,
+                'a_account_no'=> 'numeric | unique:customers,account_no,'.$id,
                 'bank_name'   => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'branch_name' => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
+                'agreement'   => 'Min:2',
               
             ) );
 
@@ -133,20 +164,44 @@ class customerController extends Controller
 
         $customer = Customer::find( $id );
 
-        $customer->name        = $request->name;
-        $customer->mobile      = $request->mobile;
-        $customer->email       = $request->email;
-        $customer->address     = $request->address;
-        $customer->account_no  = $request->account_no;
-        $customer->bank_name  = $request->bank_name;
+        $customer->name         = $request->name;
+        $customer->mobile       = $request->mobile;
+        $customer->a_mobile     = $request->a_mobile;
+        $customer->email        = $request->email;
+        $customer->address      = $request->address;
+        $customer->account_name = $request->account_name;
+        $customer->account_no   = $request->account_no;
+        $customer->a_account_no = $request->a_account_no;
+        $customer->bank_name    = $request->bank_name;
         $customer->branch_name  = $request->branch_name;
+        $customer->agreement    = $request->agreement;
+
+        //Customer image update
+            if( $request->hasFile('img') ){
+
+                $img = $request->file('img');
+
+                $original_ext = $img->getClientOriginalExtension();
+
+                $img_name = time().'.'.$original_ext;
+
+                $img_path = 'images/'.$img_name;
+
+                Image::make($img)->resize(150,150)->save( $img_path );
+                //delete old image from images folder
+                Storage::delete ($customer->img );
+
+                $customer->img = '/images/'.$img_name;
+
+                
+            }   
         
 
         $customer->save();
 
         Session::flash( 'success' , 'Customer has been updated successfully!' );
 
-        return view( 'HrmViews.customer.edit-customer' )->with( 'customer', $customer );
+        return redirect::route( 'customer.edit', [ 'id' => $customer->id ] );
     }
 
     /**
@@ -165,6 +220,10 @@ class customerController extends Controller
         {
             Session::flash( 'error', 'That Customer already in use, You must delete all records related with that customer first !( e.g. Distribution etc)' );
         }else{
+
+            //delete doctor image from images folder
+            Storage::delete ($customer->img );
+            
             $customer->delete();
 
              Session::flash( 'success', 'Customer Has Been Deleted Successfully !' );

@@ -125,7 +125,7 @@ class employeeController extends Controller
             $employee->img = $img_path;
         }else{
 
-            $employee->img = '/images/avatar-supplier.png';
+            $employee->img = '/images/avater.jpg';
         }
 
         $employee->save();
@@ -244,7 +244,9 @@ class employeeController extends Controller
 
             Image::make($img)->resize(150,150)->save( $img_path );
             //delete old image from images folder
-            Storage::delete ($employee->img );
+            if ( $employee->img != '/images/avater.jpg' ) {
+                   Storage::delete ($employee->img );
+                }
 
             $employee->img = '/images/'.$img_name;
 
@@ -273,7 +275,9 @@ class employeeController extends Controller
         $employee = Employee::find( $id );
 
         //delete employee image from images folder
-        Storage::delete ($employee->img );
+        if ( $employee->img != '/images/avater.jpg' ) {
+                Storage::delete ($employee->img );
+            }
 
         $employee->delete();
 

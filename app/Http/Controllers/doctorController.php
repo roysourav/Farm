@@ -191,7 +191,9 @@ class doctorController extends Controller
 
                 Image::make($img)->resize(150,150)->save( $img_path );
                 //delete old image from images folder
-                Storage::delete ($doctor->img );
+                if ( $doctor->img != '/images/avater.jpg' ) {
+                   Storage::delete ($doctor->img );
+                }
 
                 $doctor->img = '/images/'.$img_name;
 
@@ -226,7 +228,9 @@ class doctorController extends Controller
         }else{
 
              //delete doctor image from images folder
-            Storage::delete ($doctor->img );
+            if ( $doctor->img != '/images/avater.jpg' ) {
+                   Storage::delete ($doctor->img );
+                }
 
             $doctor->delete();
 

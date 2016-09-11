@@ -218,8 +218,12 @@ class supplierController extends Controller
                 $img_path = 'images/'.$img_name;
 
                 Image::make($img)->resize(150,150)->save( $img_path );
+
                 //delete old image from images folder
-                Storage::delete ($supplier->img );
+                if ( $supplier->img != '/images/avater.jpg' ) {
+                   Storage::delete ($supplier->img );
+                }
+                
 
                 $supplier->img = '/images/'.$img_name;
 
@@ -259,7 +263,9 @@ class supplierController extends Controller
           }else{
 
             //delete supplier image from images folder
-            Storage::delete ($supplier->img );
+            if ( $supplier->img != '/images/avater.jpg' ) {
+                   Storage::delete ($supplier->img );
+                }
 
             $supplier->delete();
 

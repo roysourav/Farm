@@ -189,7 +189,9 @@ class customerController extends Controller
 
                 Image::make($img)->resize(150,150)->save( $img_path );
                 //delete old image from images folder
-                Storage::delete ($customer->img );
+                if ( $customer->img != '/images/avater.jpg' ) {
+                   Storage::delete ($customer->img );
+                }
 
                 $customer->img = '/images/'.$img_name;
 
@@ -222,8 +224,10 @@ class customerController extends Controller
         }else{
 
             //delete doctor image from images folder
-            Storage::delete ($customer->img );
-            
+            if ( $customer->img != '/images/avater.jpg' ) {
+                   Storage::delete ($customer->img );
+                }
+
             $customer->delete();
 
              Session::flash( 'success', 'Customer Has Been Deleted Successfully !' );

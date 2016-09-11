@@ -22,9 +22,11 @@ class CreateSuppliersTable extends Migration
             $table->string('additional_mobile_two');
             $table->string('email');
             $table->text('address');
+            $table->string('account_name');
             $table->string('account_no');
             $table->string('bank_name');
             $table->string('branch_name');
+            $table->text('agreement');
             $table->timestamps();
         });
     }

@@ -1,44 +1,26 @@
-@extends('HrmViews.HrmMaster')
+@extends('PdfViews.pdfMaster')
 
 @section('content')
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>Supplier : {{ $supplier->name }}</h1>
-</section>
-
-
-@include('partials._message')
-
-	<div class="row">
+<div class="row">
         <div class="col-lg-8">
                     <div class="panel panel-default">
-                        <div class="row">
-                            <div class="col-md-6">
-                               <div class="panel-heading">
-                                <h4>Details Of Supplier : {{ $supplier->name }}</h4> 
-                                </div> 
-
-                            </div>
-                            <div class="col-md-6">
-                                <div class="image ">
-                                {{ Html::image($supplier->img, $supplier->name, array('class' => 'img-responsive img-thumbnail')) }}
+                         <div class="row">   
+                            <div class="col-md-6">  
+                                <div class="panel-heading">
+                                <h4>Details Of Supplier - {{ $supplier->name }} (As On {{ Carbon\Carbon::today()->format('jS M Y ') }})</h4>
                                 </div>
-
-                            </div>
-                        </div>                        
+                            </div>                           
+                        </div>
                         <div class="panel-body">
                             <div class="table-responsive text-float-left">
                                 <table class="table table-striped table-bordered table-hover">
-                                    
-                                    <tbody>
-                                    
+                                    <tbody>                                   
                                         <tr>
                                             <td>Name Of Supplier :</td>
                                             <td>{{ $supplier->name }}</td>
                                             
                                         </tr>
-
                                         <tr>
                                             <td>Category :</td>
                                             @if( $supplier->cat == 'cow' )
@@ -51,22 +33,19 @@
                                             <td>{{ 'Seed Supplier' }}</td>
                                             @endif
                                         </tr>
-
                                         <tr>
                                             <td>Mobile No :</td>
-                                            <td><a title=""  href="tel:{{ $supplier->mobile }}"> {{ $supplier->mobile }}</a></td>
+                                            <td>{{ $supplier->mobile }}</td>
                                             
                                         </tr>
-
                                         <tr>
                                             <td>Add. Mobile No. One:</td>
-                                            <td><a title=""  href="tel:{{ $supplier->additional_mobile_one }}"> {!! $supplier->additional_mobile_one?$supplier->additional_mobile_one:'N/A' !!}</a></td>
+                                            <td> {!! $supplier->additional_mobile_one?$supplier->additional_mobile_one:'N/A' !!}</td>
                                             
                                         </tr>
-
                                         <tr>
                                             <td>Add. Mobile No. One:</td>
-                                            <td><a title=""  href="tel:{{ $supplier->additional_mobile_two }}"> {!! $supplier->additional_mobile_two?$supplier->additional_mobile_two:'N/A' !!}</a></td>
+                                            <td>{!! $supplier->additional_mobile_two?$supplier->additional_mobile_two:'N/A' !!}</td>
                                             
                                         </tr>
                                         
@@ -120,37 +99,16 @@
                                             </td>
                                             
                                         </tr>
-                                    </tbody>
-                                </table>                                
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-        </div>
-        <div class="col-lg-4">
-            <div class="panel panel-primary m_top_25">
-                <div class="panel-heading">
-                    Log Information
-                </div>
-                 <div class="panel-body">
-                    <h5>Created At:</h5>
-                        <p>{!! Carbon\Carbon::parse($supplier->created_at)->format('jS M Y , h:i A') !!}</p>
-                                
-                    <h5>Last Updated At:</h5>
-                        <p>{!! Carbon\Carbon::parse($supplier->updated_at)->format('jS M Y , h:i A') !!}</p>
-                </div>
-                <div class="panel-footer">
-                    <div class="buttons">
-                        <a href="{{ route('supplier.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
-                        <a href="{{ route( 'supplier.edit', array( 'id'=> $supplier->id ) ) }}" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-                        <a href="{{ route('show.supplier.pdf', [ 'id' => $supplier->id ] ) }}" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                    </div>
-                                
-                </div>
-            </div>
-        </div>
-    </div>
 
+                                    </tbody>
+
+                                </table>               
+                            </div>                       
+                        </div>                   
+                    </div>           
+        </div>
+        
+    </div>
+	
 @stop
+

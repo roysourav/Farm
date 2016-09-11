@@ -6,14 +6,12 @@ use App\Reproduction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Credential\CheckExistenceController;
 use App\Http\Requests;
-
 use App\HrmModels\Supplier;
-
 use App\Cow;
-
 use Session;
-
 use Redirect;
+use Image;
+use Storage;
 
 class supplierController extends Controller
 {
@@ -68,11 +66,13 @@ class supplierController extends Controller
                 'mobile'      => 'required | digits:11 | unique:suppliers,mobile',
                 'additional_mobile_one' => ' digits:11 | unique:suppliers,mobile',
                 'additional_mobile_two' => 'digits:11 | unique:suppliers,mobile',
-                'email'       => 'required | email | unique:suppliers,email',
+                'email'       => 'email | unique:suppliers,email',
                 'address'     => 'required | min:10 |',
+                'account_name'=> 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'account_no'  => 'required | numeric | unique:suppliers,account_no',
                 'bank_name'   => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'branch_name' => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
+                'agreement'   => ' Min:2',
                 
 
             ) );
@@ -88,25 +88,29 @@ class supplierController extends Controller
         $supplier->additional_mobile_two = $request->additional_mobile_two;
         $supplier->email       = $request->email;
         $supplier->address     = $request->address;
+        $supplier->account_name = $request->account_name;
         $supplier->account_no  = $request->account_no;
         $supplier->bank_name   = $request->bank_name;
         $supplier->branch_name = $request->branch_name;
+        $supplier->agreement   = $request->agreement;
         
+       //Supplier image upload
         if( $request->hasFile('img') ){
 
             $img = $request->file('img');
 
-            $original_name = $img->getClientOriginalName();
+            $original_ext = $img->getClientOriginalExtension();
 
-            $img_name = time().'-'.$original_name;
+            $img_name = time().'.'.$original_ext;
 
-            $img->move('images' , $img_name);
+            $img_path = 'images/'.$img_name;
 
-            $img_path = '/images/'.$img_name;
+            Image::make($img)->resize(150,150)->save( $img_path );
 
             $supplier->img = $img_path;
         }else{
-            $supplier->img = '/images/avatar-supplier.png';
+
+            $supplier->img = '/images/avater.jpg';
         }
 
 
@@ -116,7 +120,7 @@ class supplierController extends Controller
 
         return Redirect::route( 'supplier.edit', ['id' => $supplier->id] );
 
-        //return view( 'supplier.edit-supplier' )->with( 'supplier', $supplier );
+       
     }
 
 
@@ -171,13 +175,15 @@ class supplierController extends Controller
                 'cat'         => 'required ',
                 'img'         => 'image | max:500 | min:50',
                 'mobile'      => 'required | digits:11 | unique:suppliers,mobile,'.$id,
-                'additional_mobile_one' => ' digits:11 | unique:suppliers,mobile,'.$id,
+                'additional_mobile_one' => 'digits:11 | unique:suppliers,mobile,'.$id,
                 'additional_mobile_two' => 'digits:11 | unique:suppliers,mobile,'.$id,
-                'email'       => 'required | email | unique:suppliers,email,'.$id,
+                'email'       => 'email | unique:suppliers,email,'.$id,
                 'address'     => 'required | min:10 |',
+                'account_name'=> 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'account_no'  => 'required | numeric | unique:suppliers,account_no,'.$id,
                 'bank_name'   => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
                 'branch_name' => 'required | regex:/^[\pL\s\-]+$/u | Min:3 | max:100',
+                'agreement'   => ' Min:2',
                 
 
             ) );
@@ -188,33 +194,38 @@ class supplierController extends Controller
         $supplier = Supplier::find( $id );
 
         $supplier->name        = $request->name;
-        $supplier->cat        = $request->cat;
+        $supplier->cat         = $request->cat;
         $supplier->mobile      = $request->mobile;
         $supplier->additional_mobile_one = $request->additional_mobile_one;
         $supplier->additional_mobile_two = $request->additional_mobile_two;
         $supplier->email       = $request->email;
         $supplier->address     = $request->address;
+        $supplier->account_name = $request->account_name;
         $supplier->account_no  = $request->account_no;
-        $supplier->bank_name  = $request->bank_name;
-        $supplier->branch_name  = $request->branch_name;
+        $supplier->bank_name   = $request->bank_name;
+        $supplier->branch_name = $request->branch_name;
+        $supplier->agreement   = $request->agreement;
         
-        if( $request->hasFile('img') ){
+        //Supplier image update
+            if( $request->hasFile('img') ){
 
-            $img = $request->file('img');
+                $img = $request->file('img');
 
-            $original_name = $img->getClientOriginalName();
+                $original_ext = $img->getClientOriginalExtension();
 
-            $img_name = time().'-'.$original_name;
+                $img_name = time().'.'.$original_ext;
 
-            $img->move('images' , $img_name);
+                $img_path = 'images/'.$img_name;
 
-            $img_path = '/images/'.$img_name;
+                Image::make($img)->resize(150,150)->save( $img_path );
+                //delete old image from images folder
+                Storage::delete ($supplier->img );
 
-            $supplier->img = $img_path;
-        }else{
-            $supplier->img = '/images/avatar-supplier.png';
-        }
+                $supplier->img = '/images/'.$img_name;
 
+                
+            }   
+        
         $supplier->save();
 
         Session::flash( 'success' , 'Supplier has been updated successfully!' );
@@ -237,16 +248,18 @@ class supplierController extends Controller
         
            $supplier = Supplier::find( $id );
 
-           $has_related_records[] = $supplier->cows;
+           $has_supplier_records = $supplier->cows;
 
-           $has_related_records[] = $supplier->reproduction;
+           $has_reproduction_records = $supplier->reproduction;
 
-           if( count( $has_related_records ) > 0 ){
+           if( count( $has_supplier_records )  || count( $has_reproduction_records ) > 0 ){
 
             Session::flash('error', 'That Supplier is in use. You Must Delete related records First !(e.g. cow,reproduction etc)');
             
-
           }else{
+
+            //delete supplier image from images folder
+            Storage::delete ($supplier->img );
 
             $supplier->delete();
 

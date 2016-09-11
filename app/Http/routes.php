@@ -127,5 +127,8 @@ Route::delete( 'species/{id}' , [ 'uses'=>'speciesController@destroy' , 'as'=>'s
         Route::get('/customer', [ 'as' => 'customer.list.pdf', 'uses' => 'pdfController@customerList' ] );
         Route::get('/customer/{id}', [ 'as' => 'show.customer.pdf', 'uses' => 'pdfController@customerShow' ] );
 
+        Route::get('/supplier', [ 'as' => 'supplier.list.pdf', 'uses' => 'pdfController@supplierList' ] );
+        Route::get('/supplier/{id}', [ 'as' => 'show.supplier.pdf', 'uses' => 'pdfController@supplierShow' ] );
+
 
     } );

@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\HrmModels\Employee;
 use App\HrmModels\Doctor;
 use App\HrmModels\Customer;
+use App\HrmModels\Supplier;
 use PDF;
 
 class pdfController extends Controller
@@ -60,6 +61,22 @@ class pdfController extends Controller
 
         $pdf = PDF::loadview('PdfViews.customer.show-customer',['customer' =>  $customer] )->setPaper('a4', 'portrait');
         return $pdf->download('customer.pdf');
+    }
+
+    public function supplierList()
+    {   
+        $suppliers = Supplier::all();
+
+        $pdf = PDF::loadview('PdfViews.supplier.list-supplier',['suppliers' =>  $suppliers] )->setPaper('a4', 'landscape');
+        return $pdf->download('suppliers.pdf');
+    }
+
+    public function supplierShow($id)
+    {
+        $supplier = Supplier::find($id);
+
+        $pdf = PDF::loadview('PdfViews.supplier.show-supplier',['supplier' =>  $supplier] )->setPaper('a4', 'portrait');
+        return $pdf->download('supplier.pdf');
     }
 
 

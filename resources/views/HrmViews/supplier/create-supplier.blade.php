@@ -34,18 +34,11 @@
 
                                         <div class="form-group">
 
-                                            <label class="col-sm-3 control-label">Category *</label>
+                                            <label class="col-sm-3 control-label">Image</label>
 
                                             <div class="col-sm-9">
-
-                                                {!! Form::select('cat', [
-                                                   'cow' => 'Cow Supplier',
-                                                   'food' => 'Food Supplier',
-                                                   'medicine' => 'Medicine Supplier',
-                                                   'seed' => 'Seed Supplier',
-                                                   ],'cow',
-                                                   ['class'=>'form-control','required'=> '']
-                                                ) !!}
+                                                {{ Html::image('/images/avater.jpg', null, array('id' => 'preview-container','class' => 'img-responsive img-thumbnail')) }}
+                                                {!! Form::file('img', ['id' =>'imgInp'] ) !!}
 
                                             </div>
 
@@ -53,25 +46,35 @@
 
                                         <div class="form-group">
 
-                                            <label class="col-sm-3 control-label">Image</label>
+                                            <label class="col-sm-3 control-label">Category *</label>
 
                                             <div class="col-sm-9">
 
-                                                {!! Form::file('img') !!} 
+                                                <select name="cat" class="form-control select" required="">
+                                                    <option  value="" selected="Please Select">Please Select</option>
+                                                    <option value="cow">Cow Supplier</option>
+                                                    <option value="food">Food Supplier</option>
+                                                    <option value="medicine">Medicine Supplier</option>
+                                                    <option value="seed">Seed Supplier</option>
+                                                </select>
 
                                             </div>
 
                                         </div>
-
                                         
                                         <div class="form-group">
 
                                             <label class="col-sm-3 control-label">Mobile No. *</label>
 
                                             <div class="col-sm-9">
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                                    </div>
 
                                                 {!! Form::text( 'mobile', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','required'=> '','data-parsley-type'=>'number','data-parsley-length'=>'[11, 11]','data-parsley-length-message'=>'This value should be exactly 11 characters long' ) ) !!} 
                                                         
+                                                </div>
                                             </div>
 
                                         </div>
@@ -81,9 +84,13 @@
                                             <label class="col-sm-3 control-label">Additional Mobile </label>
 
                                             <div class="col-sm-9">
-
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                                    </div>
                                                 {!! Form::text( 'additional_mobile_one', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','data-parsley-type'=>'number','data-parsley-length'=>'[11, 11]','data-parsley-length-message'=>'This value should be exactly 11 characters long' ) ) !!} 
                                                         
+                                                </div>
                                             </div>
 
                                          </div>
@@ -93,9 +100,13 @@
                                             <label class="col-sm-3 control-label"></label>
 
                                             <div class="col-sm-9">
-
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                                    </div>
                                                 {!! Form::text( 'additional_mobile_two', null, array( 'class'=>'form-control','placeholder'=>'Enter Mobile No.','data-parsley-type'=>'number','data-parsley-length'=>'[11, 11]','data-parsley-length-message'=>'This value should be exactly 11 characters long' ) ) !!} 
                                                         
+                                                </div>
                                             </div>
 
                                          </div>
@@ -104,12 +115,16 @@
 
                                         <div class="form-group">
 
-                                            <label class="col-sm-3 control-label">Email *</label>
+                                            <label class="col-sm-3 control-label">Email </label>
 
                                             <div class="col-sm-9">
-
-                                                {!! Form::text( 'email', null, array( 'class'=>'form-control','placeholder'=>'Enter Email Id','data-parsley-type'=>'email','required'=> '' ) ) !!}
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                    </div>
+                                                {!! Form::text( 'email', null, array( 'class'=>'form-control','placeholder'=>'Enter Email Id','data-parsley-type'=>'email' ) ) !!}
                            
+                                                </div>
                                             </div>
 
                                         </div>
@@ -127,14 +142,35 @@
 
                                         </div> 
                                         <div class="fix"></div>
+
+                                        <div class="form-group">
+
+                                            <label class="col-sm-3 control-label">Name In Bank Account *</label>
+
+                                                <div class="col-sm-9">
+                                                    <div class="input-group date">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                        </div>     
+                                                    {!! Form::text( 'account_name', null, array( 'class'=>'form-control','placeholder'=>'Enter Name As It Appears In Bank Account.','required'=> '','minlength'=>'3'  ) ) !!} 
+                                                        
+                                                    </div>
+                                                </div>
+
+                                        </div>
+
                                         <div class="form-group">
 
                                             <label class="col-sm-3 control-label">Bank Account No. *</label>
 
                                             <div class="col-sm-9">
-                                            
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                                    </div> 
                                                 {!! Form::text( 'account_no', null, array( 'class'=>'form-control','placeholder'=>'Enter Bank Account No.','required'=> '','data-parsley-type'=>'number'  ) ) !!} 
                                             
+                                                </div>
                                             </div>
 
                                         </div>
@@ -144,9 +180,13 @@
                                             <label class="col-sm-3 control-label">Name Of Bank *</label>
 
                                             <div class="col-sm-9">
-
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                       <i class="fa fa-university" aria-hidden="true"></i>
+                                                    </div>
                                                 {!! Form::text( 'bank_name', null, array( 'class'=>'form-control','placeholder'=>'Enter Bank Name', 'required'=> '' ) ) !!}
 
+                                                </div>
                                             </div>
 
                                         </div>
@@ -156,12 +196,30 @@
                                             <label class="col-sm-3 control-label">Name Of Branch *</label>
 
                                             <div class="col-sm-9">
-
+                                                <div class="input-group date">
+                                                    <div class="input-group-addon">
+                                                       <i class="fa fa-building-o" aria-hidden="true"></i>
+                                                    </div>
                                                 {!! Form::text( 'branch_name', null, array( 'class'=>'form-control','placeholder'=>'Enter Branch Name', 'required'=> '' ) ) !!}
 
+                                                </div>
                                             </div>
 
                                         </div>
+
+                                        <div class="form-group ">
+
+                                            <label class="col-sm-3 control-label">Agreement (If Any)</label>
+
+                                            <div class="col-sm-9">
+
+                                                {!! Form::textarea( 'agreement', null, array( 'class'=>'form-control','placeholder'=>'Enter agreement','rows'=>'3' ) ) !!}
+                                            
+                                            </div> 
+
+                                        </div> 
+
+                                        <div class="fix"></div>
 
                                         
                                         <div class="col-sm-3"></div>

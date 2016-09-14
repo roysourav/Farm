@@ -20,8 +20,7 @@
                     <div class="col-lg-9">
                         {!! Form::open( array( 'route'=>'cow.store', 'id'=>'form', 'files'=> true ) ) !!}
 
-
-                            <div class="form-group">
+                           <div class="form-group">
 
                                 <label class="col-sm-3 control-label">Name *</label>
 
@@ -35,40 +34,48 @@
 
                             <div class="form-group">
 
+                                <label class="col-sm-3 control-label">Image</label>
+
+                                    <div class="col-sm-9">
+                                        {{ Html::image('/images/avater.jpg', null, array('id' => 'preview-container','class' => 'img-responsive img-thumbnail')) }}
+                                        {!! Form::file('img', ['id' =>'imgInp'] ) !!}
+
+                                    </div>
+
+                            </div>
+
+                            <div class="form-group">
+
                                 <label class="col-sm-3 control-label">Sex *</label>
                                 
                                 <div class="col-sm-9">
 
                                 {!! Form::select('sex', [
-                                   'female' => 'Female',
-                                   'male' => 'Male',
-                                   ],'female',
-                                   ['class'=>'form-control','required'=> '']
+                                   'Female' => 'Female',
+                                   'Male' => 'Male',
+                                   ],'Female',
+                                   ['class'=>'form-control select','required'=> '']
                                 ) !!}
 
                                </div>
                                             
                             </div>
-
+                           
                             <div class="form-group">
 
                                 <label class="col-sm-3 control-label">Color *</label>
 
                                 <div class="col-sm-9">
-
-                                    {!! Form::text( 'color', null, array( 'class'=>'form-control','placeholder'=>'Enter Color', 'required'=> '','minlength'=>'3' ) ) !!} 
-
-                                </div>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <label class="col-sm-3 control-label">Image</label>
-
-                                <div class="col-sm-9">
-
-                                    {!! Form::file('img') !!} 
+                                
+                                    <select name="color" class="form-control select" required="">
+                                        <option  value="" selected="Please Select">Please Select</option>
+                                        <option value="White">White</option>
+                                        <option value="Brown">Brown</option>
+                                        <option value="Black">Black</option>
+                                        <option value="Red">Red</option>
+                                        <option value="Gray">Gray</option>
+                                        <option value="Cream">Cream</option>
+                                    </select>
 
                                 </div>
 
@@ -99,7 +106,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="species_id" class="form-control" required="">
+                                    <select name="species_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($species as $spec)
                                             <option value="{{$spec->id}}">{{ $spec->name }}</option>
@@ -110,11 +117,9 @@
 
                             </div>
 
-
                             <div class="form-group m_bottom_30">
                                 <label class="col-sm-3 control-label">Cow Percentage(Seed) *</label> 
-                            
-                            
+                                                        
                                 <div class="col-sm-9">
 
                                     <div class=" input-group">
@@ -154,8 +159,7 @@
 
                             <div class="form-group m_bottom_30">
                                 <label class="col-sm-3 control-label">Price *</label> 
-                            
-                            
+                                                        
                                 <div class="col-sm-9">
 
                                     <div class=" input-group">
@@ -196,7 +200,7 @@
 
                                 <div class="col-sm-9">
 
-                                    <select name="supplier_id" class="form-control" required="">
+                                    <select name="supplier_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($suppliers as $supplier)
                                             <option value="{{$supplier->id}}">{{ $supplier->name }}</option>
@@ -208,7 +212,6 @@
 
                             </div>
 
-
                            <div class="form-group">
 
                                 <label class="col-sm-3 control-label">Milking Channels *</label>
@@ -219,11 +222,9 @@
                                     '1' => '1',
                                     '2' => '2',
                                     '3' => '3',
-                                    '4' => '4'],'4',['class' => 'form-control','required'=> '']
+                                    '4' => '4'],'4',['class' => 'form-control select','required'=> '']
 
-                                    ) !!} 
-                                
-                                     
+                                    ) !!}                                     
                                 
                                 </div>
 
@@ -278,9 +279,7 @@
                                 </div>
 
                             </div>
-                            
-
-                           
+                                                
                             <div class="col-sm-3"></div>
 
                             <div class="col-sm-9">
@@ -297,8 +296,7 @@
                             
                         {!! Form::close() !!}
                     </div>
-                    
-                                
+                                                  
                     <div class="col-lg-3">
                         <div class="panel panel-primary">
 	                        <div class="panel-heading">

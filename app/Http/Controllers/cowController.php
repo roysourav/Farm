@@ -12,6 +12,8 @@ use Session;
 use Redirect;
 use Carbon\Carbon;
 use App\Http\Controllers\Credential\CheckExistenceController;
+use Image;
+use Storage;
 
 class cowController extends Controller
 {
@@ -65,7 +67,7 @@ class cowController extends Controller
                 'name'          => 'required |  Min:3 | max:100 | unique:cows,name',
                 'sex'           => 'required | string' ,
                 'color'         => 'required | string' ,
-                'img'           => 'image | max:500 | min:50',
+                'img'           => 'image | max:800 | min:30',
                 'date_of_birth' => 'required | date | before:'.Carbon::today(),
                 'species_id'    => 'required | numeric',
                 'percentage'    => 'required | numeric | between:0,100',
@@ -103,21 +105,23 @@ class cowController extends Controller
         $cow->disease          = $request->disease;
         $cow->active          = 1;
 
+        //cow image upload
         if( $request->hasFile('img') ){
 
             $img = $request->file('img');
 
-            $original_name = $img->getClientOriginalName();
+            $original_ext = $img->getClientOriginalExtension();
 
-            $img_name = time().'-'.$original_name;
+            $img_name = time().'.'.$original_ext;
 
-            $img->move('images' , $img_name);
+            $img_path = 'images/'.$img_name;
 
-            $img_path = '/images/'.$img_name;
+            Image::make($img)->resize(150,150)->save( $img_path );
 
             $cow->img = $img_path;
         }else{
-            $cow->img = '/images/avatar.jpg';
+
+            $cow->img = '/images/avater.jpg';
         }
 
         $cow->save();
@@ -176,17 +180,17 @@ class cowController extends Controller
                 'sex'           => 'required | string' ,
                 'color'         => 'required | string' ,
                 'img'           => 'image | max:500 | min:50',
-                'date_of_birth' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'date_of_birth' => 'required | date | before:'.Carbon::today(),
                 'species_id'    => 'required | numeric',
                 'percentage'    => 'required | numeric | between:0,100',
                 'weight'        => 'required | digits_between:2,3',
                 'significant_sign' => 'regex:/^[\pL\s\-]+$/u',
                 'price'         => 'required | digits_between:4,6',
-                'date_of_purchase' => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'date_of_purchase' => 'required | date | before:'.Carbon::today(),
                 'supplier_id'     => 'required | numeric',
                 'milking_channels' => 'required | digits:1',
-                'date_of_milking' => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
-                'date_of_dryness' => 'date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'date_of_milking' => 'date | before:'.Carbon::today(),
+                'date_of_dryness' => 'date | before:'.Carbon::today(),
                 'disease'       => 'regex:/^[\pL\s\-]+$/u',
                 
             ) );
@@ -211,21 +215,25 @@ class cowController extends Controller
         $cow->date_of_dryness  = $request->date_of_dryness;
         $cow->disease          = $request->disease;
 
+        //cow image upload
         if( $request->hasFile('img') ){
 
             $img = $request->file('img');
 
-            $original_name = $img->getClientOriginalName();
+            $original_ext = $img->getClientOriginalExtension();
 
-            $img_name = time().'-'.$original_name;
+            $img_name = time().'.'.$original_ext;
 
-            $img->move('images' , $img_name);
+            $img_path = 'images/'.$img_name;
 
-            $img_path = '/images/'.$img_name;
+            Image::make($img)->resize(150,150)->save( $img_path );
+            //delete old image from images folder
+            if ( $cow->img != '/images/avater.jpg' ) {
+                   Storage::delete ($cow->img );
+                }
 
-            $cow->img = $img_path;
-        }else{
-            $cow->img = '/images/avatar.jpg';
+            $cow->img = '/images/'.$img_name; 
+
         }
 
         $cow->save();
@@ -255,6 +263,11 @@ class cowController extends Controller
          $cow->vaccines()->detach();
          
          $cow->medicines()->detach();
+
+         //delete employee image from images folder
+        if ( $cow->img != '/images/avater.jpg' ) {
+                Storage::delete ($cow->img );
+            }
 
          $cow->delete();
 

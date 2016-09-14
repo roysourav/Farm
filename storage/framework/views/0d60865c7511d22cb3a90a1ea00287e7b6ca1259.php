@@ -1,37 +1,23 @@
 <?php $__env->startSection('content'); ?>
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>Cow : <?php echo e($cow->name); ?></h1>
-</section>
-
-<?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-
-	<div class="row">
+<div class="row">
         <div class="col-lg-8">
                     <div class="panel panel-default">
-                        <div class="row">   
+                         <div class="row">   
                             <div class="col-md-6">  
                                 <div class="panel-heading">
-                                Details Of Cow - <?php echo e($cow->name); ?> 
+                                <h4>Details Of Cow - <?php echo e($cow->name); ?> (As On <?php echo e(Carbon\Carbon::today()->format('jS M Y ')); ?>)</h4>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                 <div class="image">
-                                <?php echo e(Html::image($cow->img, $cow->name, array('class' => 'img-responsive img-thumbnail'))); ?>
-
-                                </div>
-
-                            </div>
+                            
                            
                         </div>
-                        
-                       <!-- /.panel-heading -->
+                        <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive text-float-left">
                                 <table class="table table-striped table-bordered table-hover">
                                     
-                                    <tbody class="text-align-left">
+                                  <tbody class="text-align-left">
                                     
                                         <tr>
                                             <td>Name Of Cow :</td>
@@ -113,6 +99,11 @@
                                             <td><?php echo Carbon\Carbon::parse($cow->date_of_purchase)->format('jS M Y '); ?></td>
                                             
                                         </tr>
+                                          <tr>
+                                            <td>Active In Farm:</td>
+                                            <td><?php echo Carbon\Carbon::now()->diff(Carbon\Carbon::parse($cow->date_of_purchase) )->format('%y Y, %m M '); ?></td>
+                                            
+                                        </tr>
 
                                         <tr>
                                             <td>Supplier :</td>
@@ -167,41 +158,27 @@
                                             <?php echo e('N/A'); ?>
 
                                             <?php endif; ?>
-                                            </td>                                            
+                                            </td>
+                                            
                                         </tr>
 
-                                    </tbody>
-                                </table>                                 
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-        </div>
-        <div class="col-lg-4">
-            <div class="panel panel-primary m_top_25">
-                <div class="panel-heading">
-                    Log Information
-                </div>
-                <div class="panel-body">
-                    <h5>Created At:</h5>
-                        <p><?php echo Carbon\Carbon::parse($cow->created_at)->format('jS M Y , h:i A'); ?></p>
-                                
-                        <h5>Last Updated At:</h5>
-                        <p><?php echo Carbon\Carbon::parse($cow->updated_at)->format('jS M Y , h:i A'); ?></p>
-               </div>
-                <div class="panel-footer">
-                    <div class="buttons">
-                        <a href="<?php echo e(route('cow.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
-                        <a href="<?php echo e(route( 'cow.edit', array( 'id'=> $cow->id ) )); ?>" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-                        <a href="<?php echo e(route( 'show.cow.pdf', ['id'=> $cow->id ] )); ?>" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
-                    </div>
-                                
-                </div>
-            </div>
-        </div>
-    </div>
 
+                                    </tbody>
+
+                                </table>
+                                
+                                  
+                            </div>
+                           
+                        </div>
+                       
+                    </div>
+                   
+        </div>
+        
+    </div>
+	
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+<?php echo $__env->make('PdfViews.pdfMaster', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

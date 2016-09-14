@@ -9,6 +9,7 @@ use App\HrmModels\Employee;
 use App\HrmModels\Doctor;
 use App\HrmModels\Customer;
 use App\HrmModels\Supplier;
+use App\Cow;
 use PDF;
 
 class pdfController extends Controller
@@ -77,6 +78,22 @@ class pdfController extends Controller
 
         $pdf = PDF::loadview('PdfViews.supplier.show-supplier',['supplier' =>  $supplier] )->setPaper('a4', 'portrait');
         return $pdf->download('supplier.pdf');
+    }
+
+    public function cowList()
+    {   
+        $cows = Cow::all();
+
+        $pdf = PDF::loadview('PdfViews.cow.list-cow',['cows' =>  $cows] )->setPaper('a4', 'landscape');
+        return $pdf->download('cows.pdf');
+    }
+
+    public function cowShow($id)
+    {
+        $cow = Cow::find($id);
+
+        $pdf = PDF::loadview('PdfViews.cow.show-cow',['cow' =>  $cow] )->setPaper('a4', 'portrait');
+        return $pdf->download('cow.pdf');
     }
 
 

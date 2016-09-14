@@ -19,8 +19,7 @@
                 <div class="row">
                     <div class="col-lg-9">
                         {!! Form::model( $cow, array( 'method'=>'put', 'route'=> array( 'cow.update', $cow->id ),'id'=>'form','files'=>true ) ) !!}
-
-                               
+                              
                             <div class="form-group">
 
                                 <label class="col-sm-3 control-label">Name *</label>
@@ -35,19 +34,31 @@
 
                             <div class="form-group">
 
+                                <label class="col-sm-3 control-label">Image</label>
+
+                                <div class="col-sm-9">
+                                    {{ Html::image($cow->img, null, array('id' => 'preview-container','class' => 'img-responsive img-thumbnail')) }}
+                                    {!! Form::file('img', ['id' =>'imgInp'] ) !!}
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+
                                 <label class="col-sm-3 control-label">Sex *</label>
-                                
+
                                 <div class="col-sm-9">
 
-                                {!! Form::select('sex', [
-                                   'female' => 'Female',
-                                   'male' => 'Male',
-                                   ],'female',
-                                   ['class'=>'form-control','required'=> '']
-                                ) !!}
+                                {{ Form::select('sex',
 
-                               </div>
-                                            
+                                [
+                                'female' => 'Female',
+                                'male' => 'Male',
+                                 ],$cow->sex, ['class' => 'form-control select','required'=>''] ) }}
+
+                                </div>
+
                             </div>
 
                             <div class="form-group">
@@ -56,19 +67,16 @@
 
                                 <div class="col-sm-9">
 
-                                    {!! Form::text( 'color', null, array( 'class'=>'form-control','placeholder'=>'Enter Color', 'required'=> '','minlength'=>'3' ) ) !!} 
+                                {{ Form::select('color',
 
-                                </div>
-
-                            </div>
-
-                             <div class="form-group">
-
-                                <label class="col-sm-3 control-label">Image</label>
-
-                                <div class="col-sm-9">
-
-                                    {!! Form::file('img') !!} 
+                                [
+                                'White' => 'White',
+                                'Brown' => 'Brown',
+                                'Black' => 'Black',
+                                'Red'   => 'Red',
+                                'Gray'  => 'Gray',
+                                'Cream' => 'Cream',
+                                 ],$cow->color, ['class' => 'form-control select','required'=>''] ) }}
 
                                 </div>
 
@@ -101,7 +109,7 @@
                                 
                                    
                                     {!! Form::select('species_id',$species,
-                                    $cow->species_id,[ 'class' => 'form-control','required'=> '']
+                                    $cow->species_id,[ 'class' => 'form-control select','required'=> '']
 
                                     ) !!}  
                                 
@@ -196,7 +204,7 @@
                                 
                                    
                                     {!! Form::select('supplier_id',$suppliers,
-                                    $cow->supplier->id,[ 'class' => 'form-control','required'=> '']
+                                    $cow->supplier->id,[ 'class' => 'form-control select','required'=> '']
 
                                     ) !!}  
                                 
@@ -217,7 +225,7 @@
                                     '1' => '1',
                                     '2' => '2',
                                     '3' => '3',
-                                    '4' => '4'],$cow->milking_channels,['class' => 'form-control','required'=> '']
+                                    '4' => '4'],$cow->milking_channels,['class' => 'form-control select','required'=> '']
 
                                     ) !!} 
                                 
@@ -275,14 +283,13 @@
 
                             </div>         
  
-
                             <div class="col-sm-3"></div>
 
                             <div class="col-sm-9">
                                 <div class="buttons">
                                     <a href="{{ route('cow.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
                                    
-                                    {!! Form::submit( 'Update Cow', array( 'class'=>'btn btn-warning' ) ) !!}
+                                    {!! Form::submit( '&#10004; Update Cow', array( 'class'=>'btn btn-warning' ) ) !!}
                                 </div>
                                       
                             {!! Form::close() !!}

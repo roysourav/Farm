@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\HrmModels\Employee;
-
 use Session;
 use Carbon\Carbon;
 use Redirect;

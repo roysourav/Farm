@@ -13,7 +13,7 @@
                         <div class="row">   
                             <div class="col-md-6">  
                                 <div class="panel-heading">
-                                Details Of Cow - <?php echo e($cow->name); ?> 
+                                <h4> Details Of Cow - <?php echo e($cow->name); ?> </h4>
                                 </div>
                             </div>
                             <div class="col-md-6">

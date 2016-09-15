@@ -75,7 +75,7 @@
                                 <div class="buttons">
                                     <a href="{{ route('dead-cow.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
                                    
-                                    {!! Form::submit( 'Update Record', array( 'class'=>'btn btn-warning' ) ) !!}
+                                    {!! Form::submit( '&#10004; Update Record', array( 'class'=>'btn btn-warning' ) ) !!}
                                 </div>
                                       
                             {!! Form::close() !!}

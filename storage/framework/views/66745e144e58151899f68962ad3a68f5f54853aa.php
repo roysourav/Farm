@@ -76,7 +76,7 @@
                                 <div class="buttons">
                                     <a href="<?php echo e(route('dead-cow.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
                                    
-                                    <?php echo Form::submit( 'Update Record', array( 'class'=>'btn btn-warning' ) ); ?>
+                                    <?php echo Form::submit( '&#10004; Update Record', array( 'class'=>'btn btn-warning' ) ); ?>
 
                                 </div>
                                       

@@ -3,17 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\Cow;
-
 use App\CowDead;
-
 use Session;
-
 use Redirect;
-
 use Carbon\Carbon;
 
 
@@ -100,7 +94,7 @@ class cowDeadController extends Controller
     public function show($id)
     {
        $dead_cow = CowDead::find($id);
-
+       
        return view('cowDead.show-cowDead')->withDead_cow($dead_cow);
     }
 

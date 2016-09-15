@@ -26,7 +26,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="cow_id" class="form-control" required="">
+                                    <select name="cow_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         <?php foreach($cows as $cow): ?>
                                             <option value="<?php echo e($cow->id); ?>"><?php echo e($cow->name); ?> (C-<?php echo e($cow->id); ?>)</option>
@@ -77,9 +77,9 @@
                             <div class="col-sm-9">
 
                             <div class="buttons">
-                                 <a href="<?php echo e(route('dead-cow.index')); ?>" class="btn btn-primary">Go Back</a>
+                                 <a href="<?php echo e(route('dead-cow.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp Go Back</a>
                                             
-                                <?php echo Form::submit( 'Register Death', array( 'class'=>'btn btn-success' ) ); ?>
+                                <?php echo Form::submit( '&#10004; Register Death', array( 'class'=>'btn btn-success' ) ); ?>
 
                             </div>
                                

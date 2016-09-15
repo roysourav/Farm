@@ -124,8 +124,7 @@
 
                             <div class="form-group m_bottom_30">
                                 <label class="col-sm-3 control-label">Cow Percentage(Seed) *</label> 
-                            
-                            
+
                                 <div class="col-sm-9">
 
                                     <div class=" input-group">
@@ -228,8 +227,6 @@
 
                                 <div class="col-sm-9">
                                 
-                                    
-
                                     <?php echo Form::select('milking_channels',[
                                     '1' => '1',
                                     '2' => '2',

@@ -10,6 +10,7 @@ use App\HrmModels\Doctor;
 use App\HrmModels\Customer;
 use App\HrmModels\Supplier;
 use App\Cow;
+use App\CowDead;
 use PDF;
 
 class pdfController extends Controller
@@ -94,6 +95,22 @@ class pdfController extends Controller
 
         $pdf = PDF::loadview('PdfViews.cow.show-cow',['cow' =>  $cow] )->setPaper('a4', 'portrait');
         return $pdf->download('cow.pdf');
+    }
+
+    public function deadCowList()
+    {   
+        $dead_cows = CowDead::all();
+
+        $pdf = PDF::loadview('PdfViews.deadCow.list-deadCow',['dead_cows' =>  $dead_cows] )->setPaper('a4', 'landscape');
+        return $pdf->download('dead-cows.pdf');
+    }
+
+    public function deadCowShow($id)
+    {
+        $dead_cow = CowDead::find($id);
+
+        $pdf = PDF::loadview('PdfViews.deadCow.show-deadCow',['dead_cow' =>  $dead_cow] )->setPaper('a4', 'portrait');
+        return $pdf->download('dead-cow.pdf');
     }
 
 

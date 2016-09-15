@@ -27,7 +27,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="cow_id" class="form-control" required="">
+                                    <select name="cow_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($cows as $cow)
                                             <option value="{{$cow->id}}">{{ $cow->name }} (C-{{ $cow->id }})</option>
@@ -76,9 +76,9 @@
                             <div class="col-sm-9">
 
                             <div class="buttons">
-                                 <a href="{{ route('dead-cow.index') }}" class="btn btn-primary">Go Back</a>
+                                 <a href="{{ route('dead-cow.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp Go Back</a>
                                             
-                                {!! Form::submit( 'Register Death', array( 'class'=>'btn btn-success' ) ) !!}
+                                {!! Form::submit( '&#10004; Register Death', array( 'class'=>'btn btn-success' ) ) !!}
                             </div>
                                
                            </div>

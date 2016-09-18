@@ -12,6 +12,7 @@ use App\HrmModels\Supplier;
 use App\Cow;
 use App\CowDead;
 use App\CowSell;
+use App\Reproduction;
 use PDF;
 
 class pdfController extends Controller
@@ -34,6 +35,9 @@ class pdfController extends Controller
     	return $pdf->download('employee.pdf');
     }
 
+
+
+
     public function doctorList()
     {   
         $doctors = Doctor::all();
@@ -49,6 +53,9 @@ class pdfController extends Controller
         $pdf = PDF::loadview('PdfViews.doctor.show-doctor',['doctor' =>  $doctor] )->setPaper('a4', 'portrait');
         return $pdf->download('doctor.pdf');
     }
+
+
+
 
     public function customerList()
     {   
@@ -66,6 +73,9 @@ class pdfController extends Controller
         return $pdf->download('customer.pdf');
     }
 
+
+
+
     public function supplierList()
     {   
         $suppliers = Supplier::all();
@@ -81,6 +91,9 @@ class pdfController extends Controller
         $pdf = PDF::loadview('PdfViews.supplier.show-supplier',['supplier' =>  $supplier] )->setPaper('a4', 'portrait');
         return $pdf->download('supplier.pdf');
     }
+
+
+
 
     public function cowList()
     {   
@@ -98,6 +111,9 @@ class pdfController extends Controller
         return $pdf->download('cow.pdf');
     }
 
+
+
+
     public function deadCowList()
     {   
         $dead_cows = CowDead::all();
@@ -114,6 +130,8 @@ class pdfController extends Controller
         return $pdf->download('dead-cow.pdf');
     }
 
+
+
      public function soldCowList()
     {   
         $sold_cows = CowSell::all();
@@ -128,6 +146,25 @@ class pdfController extends Controller
 
         $pdf = PDF::loadview('PdfViews.soldCow.show-soldCow',['sold_cow' =>  $sold_cow] )->setPaper('a4', 'portrait');
         return $pdf->download('sold-cow.pdf');
+    }
+
+
+     public function reproductionList()
+    {   
+        $reproductions = Reproduction::whereHas('cow', function ($query) {
+        $query->where('active', 1 );
+        })->get();
+
+        $pdf = PDF::loadview('PdfViews.reproduction.list-reproduction',['reproductions' =>  $reproductions] )->setPaper('a4', 'landscape');
+        return $pdf->download('reproductions.pdf');
+    }
+
+    public function reproductionShow($id)
+    {
+       $reproduction = Reproduction::find( $id );
+
+        $pdf = PDF::loadview('PdfViews.reproduction.show-reproduction',['reproduction' =>  $reproduction] )->setPaper('a4', 'portrait');
+        return $pdf->download('reproduction.pdf');
     }
 
 

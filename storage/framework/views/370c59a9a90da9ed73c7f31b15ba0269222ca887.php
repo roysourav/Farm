@@ -26,7 +26,7 @@
                                 <div class="col-sm-9">
 
                                     <?php echo Form::select('cow_id',$cows,
-                                    null,[ 'class' => 'form-control','required'=> '']
+                                    null,[ 'class' => 'form-control select','required'=> '']
 
                                     ); ?> 
                                 
@@ -83,7 +83,7 @@
                                     
 
                                     <?php echo Form::select('supplier_id',$suppliers,
-                                    $reproduction->supplier_id,[ 'class' => 'form-control','required'=> '']
+                                    $reproduction->supplier_id,[ 'class' => 'form-control select','required'=> '']
 
                                     ); ?> 
                                 
@@ -100,7 +100,7 @@
                                     
 
                                     <?php echo Form::select('doctor_id',$doctors,
-                                    $reproduction->doctor_id,[ 'class' => 'form-control','required'=> '']
+                                    $reproduction->doctor_id,[ 'class' => 'form-control select','required'=> '']
 
                                     ); ?> 
                                 
@@ -140,7 +140,7 @@
                                 <?php echo Form::select('pregnancy',[
                                     '0' => 'No',
                                     '1' => 'Yes',
-                                     ],$reproduction->pregnancy,['class' => 'form-control']
+                                     ],$reproduction->pregnancy,['class' => 'form-control select']
 
                                     ); ?> 
                                 
@@ -159,7 +159,7 @@
                                     
 
                                     <?php echo Form::select('preg_confirm_doctor_id',$doctors,
-                                    $reproduction->preg_confirm_doctor_id,[ 'class' => 'form-control']
+                                    $reproduction->preg_confirm_doctor_id,[ 'class' => 'form-control select']
 
                                     ); ?> 
                                 
@@ -193,10 +193,10 @@
                             </div>
                              <div class="panel-body">
                                 <h5>Created At:</h5>
-                                <p><?php echo Carbon\Carbon::parse($reproduction->created_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A'); ?></p>
+                                <p><?php echo Carbon\Carbon::parse($reproduction->created_at)->format('jS M Y , h:i A'); ?></p>
                                 
                                 <h5>Last Updated At:</h5>
-                                <p><?php echo Carbon\Carbon::parse($reproduction->updated_at)->tz('Asia/Kolkata')->format('jS M Y , h:i A'); ?></p>
+                                <p><?php echo Carbon\Carbon::parse($reproduction->updated_at)->format('jS M Y , h:i A'); ?></p>
                                 
                                 
                             </div>

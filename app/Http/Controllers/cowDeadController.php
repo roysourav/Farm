@@ -9,6 +9,8 @@ use App\CowDead;
 use Session;
 use Redirect;
 use Carbon\Carbon;
+use Image;
+use Storage;
 
 
 class cowDeadController extends Controller
@@ -59,7 +61,7 @@ class cowDeadController extends Controller
         $this->validate( $request, array(
 
                 'cow_id' => 'required | numeric',
-                'date'   => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'date'   => 'required | date | before:'.Carbon::today(),
                 'reason' => 'required | min:3 | max:15',
                 
             ) );
@@ -128,7 +130,7 @@ class cowDeadController extends Controller
         $this->validate( $request, array(
 
                 'cow_id' => 'required | numeric',
-                'date'   => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'date'   => 'required | date | before:'.Carbon::today(),
                 'reason' => 'required | min:3 | max:15',
                 
             ) );
@@ -159,14 +161,37 @@ class cowDeadController extends Controller
 
         $cow_id = $dead_cow->cow->id;
 
-        $dead_cow->delete();
+        $cow = Cow::find( $cow_id );
 
-        $cow = Cow::find($cow_id);
+       $has_reproduction = $cow->reproduction;
+
+       if( count( $has_reproduction ) > 0 ){
+
+        Session::flash( 'error', 'Cow already in use, You must delete all records related with that cow first.(e.g. reproduction etc.)' );
+       }else{
+
+         $cow->vaccines()->detach();
+         
+         $cow->medicines()->detach();
+
+         //delete cow image from images folder
+        if ( $cow->img != '/images/avater.jpg' ) {
+                Storage::delete ($cow->img );
+            }
+
+        $dead_cow->delete();
 
         $cow->delete();
 
-        Session::flash( 'success','Cow has been deleted successfully !' );
+        Session::flash( 'success', 'Cow Deleted Successfully !' );
 
         return Redirect::route('dead-cow.index');
+       }
+
+
+
     }
+
+
 }
+

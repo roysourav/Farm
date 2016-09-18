@@ -26,7 +26,7 @@
 
                                 <div class="col-sm-9">
 
-                                    <select name="cow_id" class="form-control" required="">
+                                    <select name="cow_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($cows as $cow)
                                             <option value="{{$cow->id}}">{{ $cow->name }} (C-{{ $cow->id }})</option>
@@ -81,7 +81,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="supplier_id" class="form-control" required="">
+                                    <select name="supplier_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($suppliers as $supplier)
                                             <option value="{{$supplier->id}}">{{ $supplier->name }} (S-{{ $supplier->id }})</option>
@@ -98,7 +98,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="doctor_id" class="form-control" required="">
+                                    <select name="doctor_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($doctors as $doctor)
                                             <option value="{{$doctor->id}}">{{ $doctor->name }} (D-{{ $doctor->id }})</option>
@@ -140,7 +140,7 @@
                                 {!! Form::select('pregnancy',[
                                     '0' => 'No',
                                     '1' => 'Yes',
-                                     ],'0',['class' => 'form-control']
+                                     ],'0',['class' => 'form-control select']
 
                                     ) !!}  
                                 
@@ -154,7 +154,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="preg_confirm_doctor_id" class="form-control" required="">
+                                    <select name="preg_confirm_doctor_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($doctors as $doctor)
                                             <option value="{{$doctor->id}}">{{ $doctor->name }} (D-{{ $doctor->id }})</option>
@@ -170,11 +170,9 @@
 
                             <div class="col-sm-9">
                                 <div class="buttons">
-                                    <a href="{{ route('reproduction.index') }}" class="btn btn-primary">Go Back</a>
-                                                        
-                                        <button type="reset" class="btn btn-danger">Reset All Fields</button>
-
-                                        {!! Form::submit( 'Create New Record', array( 'class'=>'btn btn-success' ) ) !!}
+                                    <a href="{{ route('reproduction.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp Go Back</a>
+                                        
+                                        {!! Form::submit( '&#10004; Create New Record', array( 'class'=>'btn btn-success' ) ) !!}
                                 </div>
                                         
                            </div>

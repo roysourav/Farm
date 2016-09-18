@@ -17,6 +17,7 @@ class CreateCowSellsTable extends Migration
             $table->integer('cow_id');
             $table->string('date');
             $table->integer('price');
+            $table->string('reason');
             $table->timestamps();
         });
     }

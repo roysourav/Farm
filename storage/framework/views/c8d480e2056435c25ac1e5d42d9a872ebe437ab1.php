@@ -1,13 +1,11 @@
-@extends('main')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Update Record Of Sold Cow : {{ $sell_cow->cow->name }}</h1>
+    <h1>Update Record Of Sold Cow : <?php echo e($sell_cow->cow->name); ?></h1>
 </section>
 
-@include('partials._message')
+<?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <div class="row">
     <div class="col-lg-12">
@@ -19,7 +17,8 @@
                 <div class="row">
                     <div class="col-lg-9">
 
-                        {!! Form::model( $sell_cow, array( 'method'=>'put', 'route'=> array( 'sell-cow.update', $sell_cow->id ),'id'=>'form' ) ) !!}
+                        <?php echo Form::model( $sell_cow, array( 'method'=>'put', 'route'=> array( 'sell-cow.update', $sell_cow->id ),'id'=>'form' ) ); ?>
+
 
                               <div class="form-group">
 
@@ -27,10 +26,10 @@
 
                                 <div class="col-sm-9">
                                 
-                                    {!! Form::select('cow_id',$cow,
+                                    <?php echo Form::select('cow_id',$cow,
                                     null,[ 'class' => 'form-control','required'=> '']
 
-                                    ) !!} 
+                                    ); ?> 
                                 
                                 </div>
 
@@ -47,7 +46,8 @@
                                             <i class="fa fa-calendar"></i>
                                         </div>
                                         
-                                        {!! Form::text( 'date', null, array( 'class'=>'form-control pull-right', 'id' => 'datepicker4','required'=> '') ) !!}
+                                        <?php echo Form::text( 'date', null, array( 'class'=>'form-control pull-right', 'id' => 'datepicker4','required'=> '') ); ?>
+
                                         
                                     </div>
 
@@ -65,7 +65,8 @@
 
                                         <span class="input-group-addon">Tk:</span>
                                         
-                                        {!! Form::text( 'price', null, array( 'class'=>'form-control','placeholder'=>'Enter Sell Price','required'=> '','data-parsley-type'=>'number','minlength'=>'4','maxlength'=>'6' ) ) !!}
+                                        <?php echo Form::text( 'price', null, array( 'class'=>'form-control','placeholder'=>'Enter Sell Price','required'=> '','data-parsley-type'=>'number','minlength'=>'4','maxlength'=>'6' ) ); ?>
+
 
                                         <span class="input-group-addon">.00</span>
 
@@ -80,7 +81,8 @@
 
                                 <div class="col-sm-9">
 
-                                    {!! Form::text( 'reason', null, array( 'class'=>'form-control','placeholder'=>'max. 50 words', 'required'=> '','minlength'=>'3','maxlength'=>'50' ) ) !!}
+                                    <?php echo Form::text( 'reason', null, array( 'class'=>'form-control','placeholder'=>'max. 50 words', 'required'=> '','minlength'=>'3','maxlength'=>'50' ) ); ?>
+
 
                                 </div>
 
@@ -90,12 +92,14 @@
 
                             <div class="col-sm-9">
                                 <div class="buttons">
-                                    <a href="{{ route('sell-cow.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
+                                    <a href="<?php echo e(route('sell-cow.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
                                    
-                                    {!! Form::submit( '&#10004; Update Record', array( 'class'=>'btn btn-warning' ) ) !!}
+                                    <?php echo Form::submit( '&#10004; Update Record', array( 'class'=>'btn btn-warning' ) ); ?>
+
                                 </div>
                                       
-                            {!! Form::close() !!}
+                            <?php echo Form::close(); ?>
+
                             </div>
                     </div>
                                 
@@ -106,17 +110,17 @@
 	                        </div>
 		                     <div class="panel-body">
                                 <h5>Created At:</h5>
-                                <p>{!! Carbon\Carbon::parse($sell_cow->created_at)->format('jS M Y , h:i A') !!}</p>
+                                <p><?php echo Carbon\Carbon::parse($sell_cow->created_at)->format('jS M Y , h:i A'); ?></p>
                                 
                                 <h5>Last Updated At:</h5>
-                                <p>{!! Carbon\Carbon::parse($sell_cow->updated_at)->format('jS M Y , h:i A') !!}</p>
+                                <p><?php echo Carbon\Carbon::parse($sell_cow->updated_at)->format('jS M Y , h:i A'); ?></p>
                                 
                                 
                             </div>
 	                        <div class="panel-footer">
                                 <div class="buttons">
-                                    <a href="{{ route('sell-cow.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
-                                    <a href="{{ route( 'sell-cow.show', array( 'id'=> $sell_cow->id ) ) }}" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i>Show</a>
+                                    <a href="<?php echo e(route('sell-cow.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
+                                    <a href="<?php echo e(route( 'sell-cow.show', array( 'id'=> $sell_cow->id ) )); ?>" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i>Show</a>
                                 </div>
                                 
 	                        </div>
@@ -132,4 +136,5 @@
     </div>
                
 </div>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

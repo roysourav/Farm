@@ -1,8 +1,19 @@
 <?php $__env->startSection('content'); ?>
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>All Sold Cows</h1>
+<section class="content-header m_bottom_10">
+    <div class="row">
+        <div class="col-md-6 no_mergin">
+            <h3>All Sold Cows</h3>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <a href="<?php echo e(route('sell-cow.create')); ?>" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+                <a href="<?php echo e(route('sold-cow.list.pdf')); ?>" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>   
+            </div>
+            
+        </div>
+    </div>
 </section>
 
 <?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -21,8 +32,8 @@
                                         <tr>
                                             <th>Sl</th>
                                             <th>#</th>
-                                            <th>Name Of Cow</th>
                                             <th> Id</th>
+                                            <th>Name Of Cow</th>                                            
                                             <th>Purchased On</th>
                                             <th>Sold On</th>
                                             <th>Age when Sold</th>
@@ -43,9 +54,9 @@
 
                                             <td style="display: block;margin: 0 auto;width: 40px;"> <?php echo e(Html::image($sold_cow->cow->img, $sold_cow->cow->name, array('class' => 'img-responsive '))); ?></td>
 
-                                            <td><?php echo e($sold_cow->cow->name); ?></td>
-
                                             <td><?php echo e('C-'.$sold_cow->cow->id); ?></td>
+
+                                            <td><?php echo e($sold_cow->cow->name); ?></td>
 
                                             <td><?php echo e(Carbon\Carbon::parse($sold_cow->cow->date_of_purchase )->format('jS M Y ')); ?></td>
 
@@ -73,7 +84,6 @@
 
 
                                             </td>
-
                                             
                                         </tr>
 

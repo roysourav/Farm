@@ -11,6 +11,7 @@ use App\HrmModels\Customer;
 use App\HrmModels\Supplier;
 use App\Cow;
 use App\CowDead;
+use App\CowSell;
 use PDF;
 
 class pdfController extends Controller
@@ -111,6 +112,22 @@ class pdfController extends Controller
 
         $pdf = PDF::loadview('PdfViews.deadCow.show-deadCow',['dead_cow' =>  $dead_cow] )->setPaper('a4', 'portrait');
         return $pdf->download('dead-cow.pdf');
+    }
+
+     public function soldCowList()
+    {   
+        $sold_cows = CowSell::all();
+
+        $pdf = PDF::loadview('PdfViews.soldCow.list-soldCow',['sold_cows' =>  $sold_cows] )->setPaper('a4', 'landscape');
+        return $pdf->download('sold-cows.pdf');
+    }
+
+    public function soldCowShow($id)
+    {
+        $sold_cow = CowSell::find($id);
+
+        $pdf = PDF::loadview('PdfViews.soldCow.show-soldCow',['sold_cow' =>  $sold_cow] )->setPaper('a4', 'portrait');
+        return $pdf->download('sold-cow.pdf');
     }
 
 

@@ -25,7 +25,7 @@
 
                                 <div class="col-sm-9">
 
-                                    <select name="cow_id" class="form-control" required="">
+                                    <select name="cow_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         <?php foreach($cows as $cow): ?>
                                             <option value="<?php echo e($cow->id); ?>"><?php echo e($cow->name); ?> (C-<?php echo e($cow->id); ?>)</option>
@@ -82,7 +82,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="supplier_id" class="form-control" required="">
+                                    <select name="supplier_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         <?php foreach($suppliers as $supplier): ?>
                                             <option value="<?php echo e($supplier->id); ?>"><?php echo e($supplier->name); ?> (S-<?php echo e($supplier->id); ?>)</option>
@@ -99,7 +99,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="doctor_id" class="form-control" required="">
+                                    <select name="doctor_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         <?php foreach($doctors as $doctor): ?>
                                             <option value="<?php echo e($doctor->id); ?>"><?php echo e($doctor->name); ?> (D-<?php echo e($doctor->id); ?>)</option>
@@ -142,7 +142,7 @@
                                 <?php echo Form::select('pregnancy',[
                                     '0' => 'No',
                                     '1' => 'Yes',
-                                     ],'0',['class' => 'form-control']
+                                     ],'0',['class' => 'form-control select']
 
                                     ); ?>  
                                 
@@ -156,7 +156,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="preg_confirm_doctor_id" class="form-control" required="">
+                                    <select name="preg_confirm_doctor_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         <?php foreach($doctors as $doctor): ?>
                                             <option value="<?php echo e($doctor->id); ?>"><?php echo e($doctor->name); ?> (D-<?php echo e($doctor->id); ?>)</option>
@@ -172,11 +172,9 @@
 
                             <div class="col-sm-9">
                                 <div class="buttons">
-                                    <a href="<?php echo e(route('reproduction.index')); ?>" class="btn btn-primary">Go Back</a>
-                                                        
-                                        <button type="reset" class="btn btn-danger">Reset All Fields</button>
-
-                                        <?php echo Form::submit( 'Create New Record', array( 'class'=>'btn btn-success' ) ); ?>
+                                    <a href="<?php echo e(route('reproduction.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp Go Back</a>
+                                        
+                                        <?php echo Form::submit( '&#10004; Create New Record', array( 'class'=>'btn btn-success' ) ); ?>
 
                                 </div>
                                         

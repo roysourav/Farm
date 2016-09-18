@@ -136,5 +136,8 @@ Route::delete( 'species/{id}' , [ 'uses'=>'speciesController@destroy' , 'as'=>'s
         Route::get('/dead-cow', [ 'as' => 'dead-cow.list.pdf', 'uses' => 'pdfController@deadCowList' ] );
         Route::get('/dead-cow/{id}', [ 'as' => 'show.dead-cow.pdf', 'uses' => 'pdfController@deadCowShow' ] );
 
+        Route::get('/sold-cow', [ 'as' => 'sold-cow.list.pdf', 'uses' => 'pdfController@soldCowList' ] );
+        Route::get('/sold-cow/{id}', [ 'as' => 'show.sold-cow.pdf', 'uses' => 'pdfController@soldCowShow' ] );
+
 
     } );

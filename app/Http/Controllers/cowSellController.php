@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\Cow;
-
 use App\CowSell;
-
 use Session;
-
 use Redirect;
-
 use Carbon\Carbon;
+use Image;
+use Storage;
 
 class cowSellController extends Controller
 {
@@ -63,8 +59,9 @@ class cowSellController extends Controller
         $this->validate( $request, array(
 
                 'cow_id' => 'required | numeric',
-                'date'   => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'date'   => 'required | date | before:'.Carbon::today(),
                 'price'  => 'required | digits_between:4,6',
+                'reason' => 'required | min:3 | max:50',
                 
             ) );
 
@@ -73,6 +70,7 @@ class cowSellController extends Controller
         $sell_cow->cow_id   =   $request->cow_id;
         $sell_cow->date     =   $request->date;
         $sell_cow->price    =   $request->price;
+        $sell_cow->reason   =   $request->reason;
 
         $sell_cow->save();
 
@@ -96,7 +94,9 @@ class cowSellController extends Controller
      */
     public function show($id)
     {
-        //
+        $sell_cow = CowSell::find($id);
+        
+        return view('cowSell.show-cowSell')->withSell_cow($sell_cow);
     }
 
     /**
@@ -128,8 +128,9 @@ class cowSellController extends Controller
         $this->validate( $request, array(
 
                 'cow_id' => 'required | numeric',
-                'date'   => 'required | date | before:'.Carbon::today()->tz('Asia/Kolkata'),
+                'date'   => 'required | date | before:'.Carbon::today(),
                 'price'  => 'required | digits_between:4,6',
+                'reason' => 'required | min:3 | max:50',
                 
             ) );
 
@@ -138,6 +139,7 @@ class cowSellController extends Controller
         $sold_cow->cow_id   =   $request->cow_id;
         $sold_cow->date     =   $request->date;
         $sold_cow->price    =   $request->price;
+        $sold_cow->reason   =   $request->reason;
 
         $sold_cow->save();
 
@@ -161,14 +163,32 @@ class cowSellController extends Controller
 
         $cow_id = $sold_cow->cow->id;
 
-        $sold_cow->delete();
-
         $cow = Cow::find( $cow_id );
+
+       $has_reproduction = $cow->reproduction;
+
+       if( count( $has_reproduction ) > 0 ){
+
+        Session::flash( 'error', 'Cow already in use, You must delete all records related with that cow first.(e.g. reproduction etc.)' );
+       }else{
+
+         $cow->vaccines()->detach();
+         
+         $cow->medicines()->detach();
+
+         //delete cow image from images folder
+        if ( $cow->img != '/images/avater.jpg' ) {
+                Storage::delete ($cow->img );
+            }
+
+        $sold_cow->delete();
 
         $cow->delete();
 
         Session::flash( 'success', 'Cow Deleted Successfully !' );
 
         return Redirect::route('sell-cow.index');
+       }
+
     }
 }

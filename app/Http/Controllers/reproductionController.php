@@ -3,21 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\Cow;
-
 use App\HrmModels\Supplier;
-
 use App\HrmModels\Doctor;
-
 use App\Reproduction;
-
 use Session;
-
 use Redirect;
-
 use Carbon\Carbon;
 
 class reproductionController extends Controller
@@ -36,7 +28,10 @@ class reproductionController extends Controller
 
     public function index()
     {
-        $reproductions = Reproduction::all();
+         
+        $reproductions = Reproduction::whereHas('cow', function ($query) {
+        $query->where('active', 1 );
+        })->get();
 
         return view( 'reproduction.index-reproduction' )->withReproductions( $reproductions );
     }

@@ -27,7 +27,7 @@
                                 <div class="col-sm-9">
 
                                     {!! Form::select('cow_id',$cows,
-                                    null,[ 'class' => 'form-control','required'=> '']
+                                    null,[ 'class' => 'form-control select','required'=> '']
 
                                     ) !!} 
                                 
@@ -82,7 +82,7 @@
                                     
 
                                     {!! Form::select('supplier_id',$suppliers,
-                                    $reproduction->supplier_id,[ 'class' => 'form-control','required'=> '']
+                                    $reproduction->supplier_id,[ 'class' => 'form-control select','required'=> '']
 
                                     ) !!} 
                                 
@@ -99,7 +99,7 @@
                                     
 
                                     {!! Form::select('doctor_id',$doctors,
-                                    $reproduction->doctor_id,[ 'class' => 'form-control','required'=> '']
+                                    $reproduction->doctor_id,[ 'class' => 'form-control select','required'=> '']
 
                                     ) !!} 
                                 
@@ -138,7 +138,7 @@
                                 {!! Form::select('pregnancy',[
                                     '0' => 'No',
                                     '1' => 'Yes',
-                                     ],$reproduction->pregnancy,['class' => 'form-control']
+                                     ],$reproduction->pregnancy,['class' => 'form-control select']
 
                                     ) !!} 
                                 
@@ -157,7 +157,7 @@
                                     
 
                                     {!! Form::select('preg_confirm_doctor_id',$doctors,
-                                    $reproduction->preg_confirm_doctor_id,[ 'class' => 'form-control']
+                                    $reproduction->preg_confirm_doctor_id,[ 'class' => 'form-control select']
 
                                     ) !!} 
                                 

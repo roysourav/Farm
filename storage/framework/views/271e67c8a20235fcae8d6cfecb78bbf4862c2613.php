@@ -1,8 +1,20 @@
 <?php $__env->startSection('content'); ?>
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>Reproductions Details</h1>
+
+<section class="content-header m_bottom_10">
+<div class="row">
+    <div class="col-md-6 no_mergin">
+        <h3>Reproductions Details</h3>
+    </div>
+    <div class="col-md-6">
+        <div class="pull-right">
+        <a href="<?php echo e(route('reproduction.create')); ?>" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+        <a href="#" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+     
+        </div>
+        
+    </div>
+</div>
 </section>
 
 <?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -65,7 +77,8 @@
                                              
                                             <td>
                                             <?php if($reproduction->pregnancy > 0 ): ?>
-                                            <?php echo e(Carbon\Carbon::parse($reproduction->date_of_ai)->addDays(283)->format('jS M Y ')); ?>
+                                            <?php echo e(Carbon\Carbon::parse($reproduction->date_of_ai)->addDays(278)->format('jS')); ?> To 
+                                            <?php echo e(Carbon\Carbon::parse($reproduction->date_of_ai)->addDays(288)->format('jS M Y ')); ?>
 
                                             <?php else: ?>
                                             <?php echo e('N/A'); ?>

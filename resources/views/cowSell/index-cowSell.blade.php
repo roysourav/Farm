@@ -3,8 +3,19 @@
 @section('content')
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>All Sold Cows</h1>
+<section class="content-header m_bottom_10">
+    <div class="row">
+        <div class="col-md-6 no_mergin">
+            <h3>All Sold Cows</h3>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <a href="{{ route('sell-cow.create') }}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+                <a href="{{ route('sold-cow.list.pdf') }}" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>   
+            </div>
+            
+        </div>
+    </div>
 </section>
 
 @include('partials._message')
@@ -23,8 +34,8 @@
                                         <tr>
                                             <th>Sl</th>
                                             <th>#</th>
-                                            <th>Name Of Cow</th>
                                             <th> Id</th>
+                                            <th>Name Of Cow</th>                                            
                                             <th>Purchased On</th>
                                             <th>Sold On</th>
                                             <th>Age when Sold</th>
@@ -45,9 +56,9 @@
 
                                             <td style="display: block;margin: 0 auto;width: 40px;"> {{ Html::image($sold_cow->cow->img, $sold_cow->cow->name, array('class' => 'img-responsive ')) }}</td>
 
-                                            <td>{{ $sold_cow->cow->name }}</td>
-
                                             <td>{{ 'C-'.$sold_cow->cow->id }}</td>
+
+                                            <td>{{ $sold_cow->cow->name }}</td>
 
                                             <td>{{ Carbon\Carbon::parse($sold_cow->cow->date_of_purchase )->format('jS M Y ') }}</td>
 
@@ -72,7 +83,6 @@
                                                 {!! Form::close() !!}
 
                                             </td>
-
                                             
                                         </tr>
 

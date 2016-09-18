@@ -264,7 +264,7 @@ class cowController extends Controller
          
          $cow->medicines()->detach();
 
-         //delete employee image from images folder
+         //delete cow image from images folder
         if ( $cow->img != '/images/avater.jpg' ) {
                 Storage::delete ($cow->img );
             }

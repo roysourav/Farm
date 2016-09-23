@@ -1,10 +1,20 @@
   
 
 <?php $__env->startSection('content'); ?>
-
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>Medicine : <?php echo e($medicine->name); ?></h1>
+<section class="content-header m_bottom_10">
+    <div class="row">
+        <div class="col-md-6 no_mergin">
+            <h3>Medicine : <?php echo e($medicine->name); ?></h3>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <a href="<?php echo e(route('cow-medicine.index')); ?>" class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
+
+                <a href="<?php echo e(route( 'show.cow-medicine.pdf', ['id' => $medicine->id ] )); ?>" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>     
+            </div>        
+        </div>
+    </div>
 </section>
 
 <?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
@@ -16,13 +26,8 @@
                             <div class="row">
                                 <div class="col-md-10">
                                    <b>Details Of Medicine : <?php echo e($medicine->name); ?></b>
-                                </div>
-                                <div class="col-md-2">
-                                    <a href="<?php echo e(route('cow-medicine.index')); ?>" class="btn btn-info pull-right btn-block"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
-                                </div>
-                                
-                            </div>
-                            
+                                </div>                                
+                            </div>                            
                         </div>
                         <!-- /.panel-heading -->
                         <div class="boxy-body">
@@ -67,9 +72,7 @@
                                                 </td>
                                                
                                             </tr>
-                                        <?php endforeach; ?>
-                                    
-                                       
+                                        <?php endforeach; ?>                                                                         
                                     </tbody>
                                 </table>
                                 
@@ -80,9 +83,7 @@
                     </div>
                     <!-- /.panel -->
                 </div>
-        
-            </div>
-
+           </div>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

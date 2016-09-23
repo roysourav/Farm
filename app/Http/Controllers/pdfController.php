@@ -13,6 +13,7 @@ use App\CowDead;
 use App\CowSell;
 use App\Reproduction;
 use App\StockConsumptionModels\Vaccine;
+use App\StockConsumptionModels\Medicine;
 use PDF;
 
 class pdfController extends Controller
@@ -176,6 +177,16 @@ class pdfController extends Controller
 
         $pdf = PDF::loadview('PdfViews.cowVaccine.show-cow-vaccine', ['vaccine' =>  $vaccine] )->setPaper('a4', 'portrait');
         return $pdf->download('cow-vaccine.pdf');
+    }
+
+
+
+    public function cowMedicineShow($id)
+    {
+       $medicine = Medicine::find($id);
+
+        $pdf = PDF::loadview('PdfViews.cowMedicine.show-cow-medicine', ['medicine' =>  $medicine] )->setPaper('a4', 'portrait');
+        return $pdf->download('cow-medicine.pdf');
     }
 
 

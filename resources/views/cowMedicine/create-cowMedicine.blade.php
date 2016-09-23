@@ -25,14 +25,12 @@
                                 <label class="col-sm-3 control-label">Name Of Cow *</label>
 
                                 <div class="col-sm-9">
-
-                                    <select name="cow_id" class="form-control" required="">
+                                    <select name="cow_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($cows as $cow)
                                             <option value="{{$cow->id}}">{{ $cow->name }} (C-{{ $cow->id }})</option>
                                         @endforeach
-                                    </select> 
-                                
+                                    </select>                                 
                                 </div>
 
                             </div>
@@ -44,7 +42,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="medicine_id" class="form-control" required="">
+                                    <select name="medicine_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($medicines as $medicine)
                                             <option value="{{$medicine->id}}">{{ $medicine->name }} </option>
@@ -61,7 +59,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="dose" class="form-control" required="">
+                                    <select name="dose" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         <option value="1">1 </option>
                                         <option value="2">2 </option>
@@ -82,7 +80,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="days" class="form-control" required="">
+                                    <select name="days" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         <option value="1">1 </option>
                                         <option value="2">2 </option>
@@ -127,9 +125,9 @@
 
                             <div class="col-sm-9">
                                 <div class="buttons">
-                                    <a href="{{ route('cow-medicine.index') }}" class="btn btn-primary">Go Back</a>
+                                    <a href="{{ route('cow-medicine.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp Go Back</a>
 
-                                    {!! Form::submit( 'Add New Record', array( 'class'=>'btn btn-success' ) ) !!}
+                                    {!! Form::submit( '&#10004; Add New Record', array( 'class'=>'btn btn-success' ) ) !!}
                                 </div>
                                         
                            </div>

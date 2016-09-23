@@ -142,5 +142,6 @@ Route::delete( 'species/{id}' , [ 'uses'=>'speciesController@destroy' , 'as'=>'s
         Route::get('/reproduction', [ 'as' => 'reproduction.list.pdf', 'uses' => 'pdfController@reproductionList' ] );
         Route::get('/reproduction/{id}', [ 'as' => 'show.reproduction.pdf', 'uses' => 'pdfController@reproductionShow' ] );
 
+        Route::get('/cow-vaccine/{id}', [ 'as' => 'show.cow-vaccine.pdf', 'uses' => 'pdfController@cowVaccineShow' ] );
 
     } );

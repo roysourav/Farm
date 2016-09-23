@@ -26,7 +26,7 @@
 
                                 <div class="col-sm-9">
 
-                                    <select name="cow_id" class="form-control" required="">
+                                    <select name="cow_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($cows as $cow)
                                             <option value="{{$cow->id}}">{{ $cow->name }} (C-{{ $cow->id }})</option>
@@ -44,7 +44,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="vaccine_id" class="form-control" required="">
+                                    <select name="vaccine_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($vaccines as $vaccine)
                                             <option value="{{$vaccine->id}}">{{ $vaccine->name }} </option>
@@ -79,9 +79,9 @@
 
                             <div class="col-sm-9">
                                 <div class="buttons">
-                                    <a href="{{ route('cow-vaccine.index') }}" class="btn btn-primary">Go Back</a>
+                                    <a href="{{ route('cow-vaccine.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i>&nbsp Go Back</a>
 
-                                    {!! Form::submit( 'Add New Record', array( 'class'=>'btn btn-success' ) ) !!}
+                                    {!! Form::submit( '&#10004; Add New Record', array( 'class'=>'btn btn-success' ) ) !!}
                                 </div>
                                         
                            </div>

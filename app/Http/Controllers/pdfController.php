@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\HrmModels\Employee;
 use App\HrmModels\Doctor;
@@ -13,6 +12,7 @@ use App\Cow;
 use App\CowDead;
 use App\CowSell;
 use App\Reproduction;
+use App\StockConsumptionModels\Vaccine;
 use PDF;
 
 class pdfController extends Controller
@@ -149,6 +149,7 @@ class pdfController extends Controller
     }
 
 
+
      public function reproductionList()
     {   
         $reproductions = Reproduction::whereHas('cow', function ($query) {
@@ -166,6 +167,18 @@ class pdfController extends Controller
         $pdf = PDF::loadview('PdfViews.reproduction.show-reproduction',['reproduction' =>  $reproduction] )->setPaper('a4', 'portrait');
         return $pdf->download('reproduction.pdf');
     }
+
+
+
+    public function cowVaccineShow($id)
+    {
+       $vaccine = Vaccine::find($id);
+
+        $pdf = PDF::loadview('PdfViews.cowVaccine.show-cow-vaccine', ['vaccine' =>  $vaccine] )->setPaper('a4', 'portrait');
+        return $pdf->download('cow-vaccine.pdf');
+    }
+
+
 
 
 

@@ -3,19 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\Cow;
-
 use App\StockConsumptionModels\Vaccine;
-
 use Session;
-
 use Redirect;
-
 use Carbon\Carbon;
-
 use DB;
 
 class cowVaccineController extends Controller

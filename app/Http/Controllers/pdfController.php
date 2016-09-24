@@ -14,6 +14,7 @@ use App\CowSell;
 use App\Reproduction;
 use App\StockConsumptionModels\Vaccine;
 use App\StockConsumptionModels\Medicine;
+use App\MilkModels\Milk;
 use PDF;
 
 class pdfController extends Controller
@@ -190,7 +191,25 @@ class pdfController extends Controller
     }
 
 
+     public function milkList()
+    {   
+        $milks = Milk::orderBy('date', 'DESC')->groupBy('date')->selectRaw('sum(morning) as morning, date')->selectRaw('sum(evening) as evening, date')->take(60)->get();
 
+        $pdf = PDF::loadview('PdfViews.milk.list-milk',['milks' =>  $milks] )->setPaper('a4', 'landscape');
+        return $pdf->download('milks.pdf');
+    }
+
+
+     public function milkDetails($date)
+    {   
+        $date = date('m/d/Y', $date);
+        
+        $milks = Milk::where('date',$date)->orderBy('cow_id', 'ASC')->get();
+
+         $pdf = PDF::loadview('PdfViews.milk.milk-details', [ 'milks'=>$milks, 'date'=>$date  ] )->setPaper('a4', 'landscape');
+        return $pdf->download('milk-details.pdf');
+       
+    }
 
 
 }

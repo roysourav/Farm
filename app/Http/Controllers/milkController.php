@@ -3,16 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\Cow;
-
 use App\MilkModels\Milk;
-
 use Session;
-
 use Redirect;
+
 
 
 
@@ -49,6 +45,18 @@ class milkController extends Controller
        
         return redirect::route('milk.create');
     }
+
+    public function details($date)
+    {   
+        $date = date('m/d/Y', $date);
+        
+        $milks = Milk::where('date',$date)->orderBy('cow_id', 'ASC')->get();
+
+        return view( 'MilkViews.milk.milk-details' )->withMilks( $milks )->withDate( $date );
+       
+    }
+
+
 
     public function index()
     {

@@ -1,8 +1,17 @@
 <?php $__env->startSection('content'); ?>
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>Select Date For Milk Entry</h1>
+<section class="content-header m_bottom_10">
+    <div class="row">
+        <div class="col-md-6 no_mergin">
+            <h3>Select Date For Milk Entry</h3>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <a href="<?php echo e(route('milk.index')); ?>" class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>            
+            </div>        
+        </div>
+    </div>    
 </section>
 
 <?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

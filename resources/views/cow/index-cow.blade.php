@@ -3,21 +3,17 @@
 @section('content')
 
 <section class="content-header m_bottom_10">
-<div class="row">
-    <div class="col-md-6 no_mergin">
-        <h3>All Cows</h3>
-    </div>
-    <div class="col-md-6">
-        <div class="pull-right">
-        <a href="{{ route('cow.create') }}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
-        <a href="{{ route('cow.list.pdf') }}" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
-        
-            
+    <div class="row">
+        <div class="col-md-6 no_mergin">
+            <h3>All Cows</h3>
         </div>
-        
-    </div>
-</div>
-    
+        <div class="col-md-6">
+            <div class="pull-right">
+                <a href="{{ route('cow.create') }}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+                <a href="{{ route('cow.list.pdf') }}" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>            
+            </div>        
+        </div>
+    </div>    
 </section>
 
 @include('partials._message')

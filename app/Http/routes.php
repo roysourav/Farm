@@ -53,8 +53,9 @@ Route::resource( 'food', 'foodController' );
 Route::resource( 'milk', 'milkController', ['except' => ['show'] ] );
 
 Route::get( 'milk-date',  [ 'uses' => 'milkController@getdate', 'as' => 'milk.date.get'] );
-
 Route::post( 'milk-date', [ 'uses'=> 'milkController@storedate', 'as' => 'milk.date.store' ] );
+
+Route::get( 'milk-details/{date}', [ 'uses'=> 'milkController@details', 'as' => 'milk.details' ] );
 
 Route::resource( 'distribution', 'distributionController', ['except' => ['show'] ]  );
 
@@ -145,5 +146,8 @@ Route::delete( 'species/{id}' , [ 'uses'=>'speciesController@destroy' , 'as'=>'s
         Route::get('/cow-vaccine/{id}', [ 'as' => 'show.cow-vaccine.pdf', 'uses' => 'pdfController@cowVaccineShow' ] );
 
         Route::get('/cow-medicine/{id}', [ 'as' => 'show.cow-medicine.pdf', 'uses' => 'pdfController@cowmedicineShow' ] );
+
+        Route::get('/milk', [ 'as' => 'milk.list.pdf', 'uses' => 'pdfController@milkList' ] );
+        Route::get('/milk-details/{date}', [ 'as' => 'milk.details.pdf', 'uses' => 'pdfController@milkDetails' ] );
 
     } );

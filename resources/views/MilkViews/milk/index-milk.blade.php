@@ -3,8 +3,18 @@
 @section('content')
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>Milk Record (60 Days)</h1>
+<section class="content-header m_bottom_10">
+    <div class="row">
+        <div class="col-md-6 no_mergin">
+            <h3>Milk Record (60 Days)</h3>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <a href="{{ route( 'milk.date.get' ) }}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+                <a href="{{ route( 'milk.list.pdf' ) }}" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>            
+            </div>        
+        </div>
+    </div>    
 </section>
 
 @include('partials._message')
@@ -22,33 +32,27 @@
                                     <thead>
                                         <tr>
                                             <th>Sl</th>
-                                            
                                             <th>Date</th>
-                                            <th>Morning</th>
-                                            <th>Evening</th>
-                                            <th>Total</th>
-                                        
+                                            <th>Morning(Ltr.)</th>
+                                            <th>Evening(Ltr.)</th>
+                                            <th>Total(Ltr.)</th>
+                                            <th>View</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-									<?php $count = 0;?>
+    									<?php $count = 0;?>
 
-                                    @foreach( $milks as $milk )
-										<?php $count++  ?>
-                                        <tr>
-
-                                            <td>{{ $count }}</td>
-                                            <td>{{ Carbon\Carbon::parse($milk->date)->format('jS M Y ') }}</td>
-                                            
-                                            <td>{{ $milk->morning }}</td>
-                                            <td>{{ $milk->evening }}</td>
-                                            <td>{{ $milk->morning+$milk->evening }}</td>
-                                          
-                                        </tr>
-
-                                    @endforeach  
-                                      
-                                       
+                                        @foreach( $milks as $milk )
+    										<?php $count++  ?>
+                                            <tr>
+                                                <td>{{ $count }}</td>
+                                                <td>{{ Carbon\Carbon::parse($milk->date)->format('jS M Y ') }}</td>
+                                                <td>{{ $milk->morning }}</td>
+                                                <td>{{ $milk->evening }}</td>
+                                                <td>{{ $milk->morning+$milk->evening }}</td>
+                                                <td><a class="label label-success" href="{{ route('milk.details', ['date'=>strtotime($milk->date) ] ) }}"><i class="fa fa-eye" aria-hidden="true"></i> Details</a></td>
+                                            </tr>
+                                        @endforeach                                         
                                     </tbody>
                                 </table>
                             </div>

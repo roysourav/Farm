@@ -27,7 +27,7 @@
                 <div class="icon">
                   <i class="fa fa-flask"></i>
                 </div>
-                <a class="small-box-footer" href="<?php echo e(route('milk.create')); ?>">
+                <a class="small-box-footer" href="<?php echo e(route('milk.index')); ?>">
                   Enter &nbsp <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>

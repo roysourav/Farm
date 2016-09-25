@@ -150,4 +150,6 @@ Route::delete( 'species/{id}' , [ 'uses'=>'speciesController@destroy' , 'as'=>'s
         Route::get('/milk', [ 'as' => 'milk.list.pdf', 'uses' => 'pdfController@milkList' ] );
         Route::get('/milk-details/{date}', [ 'as' => 'milk.details.pdf', 'uses' => 'pdfController@milkDetails' ] );
 
+        Route::get('/distribution', [ 'as' => 'distribution.list.pdf', 'uses' => 'pdfController@distributionList' ] );
+
     } );

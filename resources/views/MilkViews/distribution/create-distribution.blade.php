@@ -26,7 +26,7 @@
 
                                             <div class="col-sm-9">
 
-                                                <select name="customer_id" class="form-control" required="">
+                                                <select name="customer_id" class="form-control select" required="">
                                                     <option  value="" selected="Please Select">Please Select</option>
                                                     @foreach( $customers as $customer )
                                                         <option value="{{$customer->id}}">{{ $customer->name }}</option>
@@ -135,7 +135,7 @@
                                             <div class="buttons">
                                                 <a href="{{ route('distribution.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
 
-                                                {!! Form::submit( '&#10004; Create New Vaccine', array( 'class'=>'btn btn-success' ) ) !!}
+                                                {!! Form::submit( '&#10004; Create New', array( 'class'=>'btn btn-success' ) ) !!}
                                             </div>
                                            
                                         </div>

@@ -15,6 +15,7 @@ use App\Reproduction;
 use App\StockConsumptionModels\Vaccine;
 use App\StockConsumptionModels\Medicine;
 use App\MilkModels\Milk;
+use App\MilkModels\Distribution;
 use PDF;
 
 class pdfController extends Controller
@@ -209,6 +210,15 @@ class pdfController extends Controller
          $pdf = PDF::loadview('PdfViews.milk.milk-details', [ 'milks'=>$milks, 'date'=>$date  ] )->setPaper('a4', 'landscape');
         return $pdf->download('milk-details.pdf');
        
+    }
+
+
+    public function distributionList()
+    {   
+        $distributions = Distribution::orderBy( 'date', 'DESC' )->take(60)->get();
+
+        $pdf = PDF::loadview('PdfViews.distribution.list-distribution',['distributions' =>  $distributions] )->setPaper('a4', 'landscape');
+        return $pdf->download('distributions.pdf');
     }
 
 

@@ -25,7 +25,7 @@
 
                                             <div class="col-sm-9">
 
-                                                <select name="customer_id" class="form-control" required="">
+                                                <select name="customer_id" class="form-control select" required="">
                                                     <option  value="" selected="Please Select">Please Select</option>
                                                     <?php foreach( $customers as $customer ): ?>
                                                         <option value="<?php echo e($customer->id); ?>"><?php echo e($customer->name); ?></option>
@@ -139,7 +139,7 @@
                                             <div class="buttons">
                                                 <a href="<?php echo e(route('distribution.index')); ?>" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
 
-                                                <?php echo Form::submit( '&#10004; Create New Vaccine', array( 'class'=>'btn btn-success' ) ); ?>
+                                                <?php echo Form::submit( '&#10004; Create New', array( 'class'=>'btn btn-success' ) ); ?>
 
                                             </div>
                                            

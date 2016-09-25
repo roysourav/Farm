@@ -3,19 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\HrmModels\Customer;
-
 use App\MilkModels\Distribution;
-
 use App\MilkModels\Milk;
-
 use Session;
-
 use Redirect;
-
 use Carbon\Carbon;
 
 class distributionController extends Controller

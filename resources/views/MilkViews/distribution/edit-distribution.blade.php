@@ -19,13 +19,13 @@
                     <div class="col-lg-9">
                         {!! Form::model( $distribution, array( 'method'=>'put', 'route'=> array( 'distribution.update', $distribution->id ),'id'=>'form' ) ) !!}
 
-                             <div class="form-group">
+                                        <div class="form-group">
 
                                             <label class="col-sm-3 control-label">Name Of Customer *</label>
 
                                             <div class="col-sm-9">
 
-                                                <select name="customer_id" class="form-control" required="">
+                                                <select name="customer_id" class="form-control select" required="">
                                                     <option  value="" selected="Please Select">Please Select</option>
                                                     @foreach( $customers as $customer )
                                                         <option value="{{$customer->id}}">{{ $customer->name }}</option>
@@ -35,8 +35,6 @@
                                             </div>
 
                                         </div>
-
-
 
                                        <div class="form-group ">
 
@@ -136,7 +134,7 @@
                                 <div class="buttons">
                                     <a href="{{ route('distribution.index') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
                                     
-                                    {!! Form::submit( 'Update Record', array( 'class'=>'btn btn-warning' ) ) !!}
+                                    {!! Form::submit( '&#10004; Update Record', array( 'class'=>'btn btn-warning' ) ) !!}
                                 </div> 
                                         
                            </div>

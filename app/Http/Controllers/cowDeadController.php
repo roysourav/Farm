@@ -164,15 +164,18 @@ class cowDeadController extends Controller
         $cow = Cow::find( $cow_id );
 
        $has_reproduction = $cow->reproduction;
+       $has_milks = $cow->milks;
 
-       if( count( $has_reproduction ) > 0 ){
+      if( count( $has_reproduction ) > 0 || count( $has_milks ) > 0 ){
 
-        Session::flash( 'error', 'Cow already in use, You must delete all records related with that cow first.(e.g. reproduction etc.)' );
+        Session::flash( 'error', 'Cow already in use, You must delete all records related with that cow first.(e.g. reproduction,milk-record etc.)' );
        }else{
 
          $cow->vaccines()->detach();
          
          $cow->medicines()->detach();
+
+         $cow->milks()->delete();
 
          //delete cow image from images folder
         if ( $cow->img != '/images/avater.jpg' ) {
@@ -185,10 +188,10 @@ class cowDeadController extends Controller
 
         Session::flash( 'success', 'Cow Deleted Successfully !' );
 
-        return Redirect::route('dead-cow.index');
+       
        }
 
-
+        return Redirect::route('dead-cow.index');
 
     }
 

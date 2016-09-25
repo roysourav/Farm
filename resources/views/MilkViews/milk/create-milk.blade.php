@@ -4,9 +4,17 @@
 @section('content')
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
-
-    <h1>Milk Entry | Date : {{ Carbon\Carbon::parse($date)->format('jS M Y ') }}</h1>
+<section class="content-header m_bottom_10">
+    <div class="row">
+        <div class="col-md-6 no_mergin">
+            <h3>Milk Entry | Date : {{ Carbon\Carbon::parse($date)->format('jS M Y ') }}</h3>
+        </div>
+        <div class="col-md-6">
+            <div class="pull-right">
+                <a href="{{ route('milk.index') }}" class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>           
+            </div>        
+        </div>
+    </div>    
 </section>
 
 @include('partials._message')
@@ -15,7 +23,7 @@
         <div class="col-lg-6">
                     <div class="box box-info">
                         <div class="box-header">
-                            List Of All Cows  
+                            List Of Record  
                         </div>
                         <!-- /.panel-heading -->
                         <div class="boxy-body">
@@ -92,7 +100,7 @@
                                          {!! Form::open( array( 'route'=>'milk.store', 'id'=>'form' ) ) !!}
                                         <tr>
                                             <td>
-                                                <select name="cow_id" class="form-control" required="">
+                                                <select name="cow_id" class="form-control select" required="">
                                                 <option  value="" selected="Please Select">Please Select</option>
                                                 @foreach($cows as $cow)
                                                     <option value="{{$cow->id}}">{{ $cow->name }} ( C-{{ $cow->id }})</option>

@@ -222,4 +222,13 @@ class pdfController extends Controller
     }
 
 
+    public function vaccineList()
+    {   
+        $vaccines = Vaccine::all();
+
+        $pdf = PDF::loadview('PdfViews.vaccine.list-vaccine',['vaccines' =>  $vaccines] )->setPaper('a4', 'landscape');
+        return $pdf->download('vaccines.pdf');
+    }
+
+
 }

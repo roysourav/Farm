@@ -3,8 +3,19 @@
 @section('content')
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>All Vaccines</h1>
+<section class="content-header m_bottom_10">
+<div class="row">
+    <div class="col-md-6 no_mergin">
+        <h3>All Vaccines</h3>
+    </div>
+    <div class="col-md-6">
+        <div class="pull-right">
+            <a href="{{ route('vaccine.create') }}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add New</a>
+            <a href="{{ route('vaccine.list.pdf') }}" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>            
+        </div>
+        
+    </div>
+</div>    
 </section>
 
 @include('partials._message')
@@ -30,8 +41,8 @@
                                             <th>Sl</th>
                                             <th>Vaccine ID</th>
                                             <th>Name Of Vaccine</th>
-                                            <th>Dose Duration ( Months )</th>
-                                            <th>Cost ( Per Unit )</th>
+                                            <th>Next Dose ( Months )</th>
+                                            <th>Cost (Tk. Per Unit )</th>
                                             <th>Stock ( In Unit )</th>
                                             <th>Action</th>
                                             

@@ -36,7 +36,7 @@
 
                                        <div class="form-group">
 
-                                            <label class="col-sm-3 control-label">Dose Duration *</label>
+                                            <label class="col-sm-3 control-label">Next Dose *</label>
 
                                             <div class="col-sm-9">
 
@@ -49,7 +49,7 @@
                                                    '18' => '18 Months',
                                                    '24' => '24 Months',
                                                    ],null,
-                                                   ['class'=>'form-control','required'=> '']
+                                                   ['class'=>'form-control select','required'=> '']
                                                 ) !!}
 
                                             </div>

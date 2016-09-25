@@ -48,7 +48,7 @@
                                                    '18' => '18 Months',
                                                    '24' => '24 Months',
                                                    ],$vaccine->duration,
-                                                   ['class'=>'form-control','required'=> '']
+                                                   ['class'=>'form-control select','required'=> '']
                                                 ) !!}
 
                                             </div>

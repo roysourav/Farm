@@ -152,4 +152,6 @@ Route::delete( 'species/{id}' , [ 'uses'=>'speciesController@destroy' , 'as'=>'s
 
         Route::get('/distribution', [ 'as' => 'distribution.list.pdf', 'uses' => 'pdfController@distributionList' ] );
 
+        Route::get('/vaccine', [ 'as' => 'vaccine.list.pdf', 'uses' => 'pdfController@vaccineList' ] );
+
     } );

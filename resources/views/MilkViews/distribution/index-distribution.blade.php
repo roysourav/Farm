@@ -15,8 +15,7 @@
         </div>
         
     </div>
-</div>
-    
+</div>    
 </section>
 
 @include('partials._message')

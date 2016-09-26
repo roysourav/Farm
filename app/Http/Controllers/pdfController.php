@@ -231,4 +231,13 @@ class pdfController extends Controller
     }
 
 
+    public function medicineList()
+    {   
+        $medicines = Medicine::all();
+
+        $pdf = PDF::loadview('PdfViews.medicine.list-medicine',['medicines' =>  $medicines] )->setPaper('a4', 'landscape');
+        return $pdf->download('medicines.pdf');
+    }
+
+
 }

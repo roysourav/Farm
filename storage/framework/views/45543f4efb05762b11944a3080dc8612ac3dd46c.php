@@ -13,8 +13,7 @@
         </div>
         
     </div>
-</div>
-    
+</div>    
 </section>
 
 <?php echo $__env->make('partials._message', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

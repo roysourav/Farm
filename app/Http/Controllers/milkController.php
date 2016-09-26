@@ -10,8 +10,6 @@ use Session;
 use Redirect;
 
 
-
-
 class milkController extends Controller
 {
     /**

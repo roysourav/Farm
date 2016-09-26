@@ -40,7 +40,7 @@
 
                                 <div class="col-sm-9">
                                 
-                                    <select name="cat_id" class="form-control" required="">
+                                    <select name="cat_id" class="form-control select" required="">
                                         <option  value="" selected="Please Select">Please Select</option>
                                         @foreach($medicine_categories as $category)
                                             <option value="{{$category->id}}">{{ $category->name }}</option>

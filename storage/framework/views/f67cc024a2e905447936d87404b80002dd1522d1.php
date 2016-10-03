@@ -4,13 +4,13 @@
 <section class="content-header m_bottom_10">
     <div class="row">
         <div class="col-md-6 no_mergin">
-            <h3>Milk Record Of <?php echo e(Carbon\Carbon::parse($date)->format('jS M Y ')); ?> </h3>
+            <h3>Milk Record Of Cow <?php echo e($cow->name); ?> Id C-<?php echo e($cow->id); ?>(Last 60 Records)</h3>
         </div>
         <div class="col-md-6">
             <div class="pull-right">
-                <a href="<?php echo e(route('milk.index')); ?>" class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
-                
-                <a href="<?php echo e(route('milk.details.pdf', [ 'date'=> strtotime($date) ] )); ?>" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>            
+                <a href="<?php echo e(route('milk.index')); ?>" class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a> 
+                <a href="<?php echo e(route('cow.milk.details.pdf', ['id' => $cow->id] )); ?>" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                           
             </div>        
         </div>
     </div>    
@@ -22,8 +22,7 @@
         <div class="col-lg-12">
             <div class="box box-info">
                 <div class="box-header">
-                    Milk Record Of <?php echo e(Carbon\Carbon::parse($date)->format('jS M Y ')); ?>
-
+                   Last 60 Days Milk Record Of Cow <?php echo e($cow->name); ?>(Id C-<?php echo e($cow->id); ?>)
                 </div>
                         <!-- /.panel-heading -->
                 <div class="boxy-body">
@@ -32,13 +31,10 @@
                             <thead>
                                 <tr>
                                     <th>Sl</th>
-                                    <th>#</th>
-                                    <th>Cow Id</th>
-                                    <th>Cow Name</th>
+                                    <th>Date</th>
                                     <th>Morning(Ltr.)</th>
                                     <th>Evening(Ltr.)</th>
                                     <th>Total(Ltr.)</th>
-                                    <th>All Record/Cow</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,34 +53,25 @@
                                      ?>
                                     <tr>
                                         <td><?php echo e($count); ?></td>
-                                        <td style="display: block;margin: 0 auto;width: 40px;"> <?php echo e(Html::image($milk->cow->img, $milk->cow->name, array('class' => 'img-responsive '))); ?></td>
-                                        <td>C-<?php echo e($milk->cow->id); ?></td>
-                                        <td><?php echo e($milk->cow->name); ?></td>
+                                        <td><?php echo Carbon\Carbon::parse($milk->date)->format('jS M Y '); ?></td>
                                         <td><?php echo e($milk->morning); ?></td>
                                         <td><?php echo e($milk->evening); ?></td>
                                         <td><?php echo e($milk->morning+$milk->evening); ?></td>
-                                        <td><a class="label label-success" href="<?php echo e(route('cow.milk.details', ['id'=>$milk->cow->id] )); ?>"><i class="fa fa-eye" aria-hidden="true"></i> Details</a></td>
                                     </tr>
                                 <?php endforeach; ?> 
                                 <tr>
                                     <td>Grand Total</td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td><?php echo e($morning_total); ?></td>
                                     <td><?php echo e($evening_total); ?></td>
                                     <td><?php echo e($morning_total + $evening_total); ?></td>
-                                    <td></td>
-                                </tr> 
+                                </tr>
                                 <tr>
-                                    <td>Average(Per Cow)</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>Avarage</td>
                                     <td></td>
                                     <td><?php echo e(round($morning_total/$count)); ?></td>
                                     <td><?php echo e(round($evening_total/$count)); ?></td>
                                     <td><?php echo e(round( ($morning_total + $evening_total)/$count )); ?></td>
-                                    <td></td>
                                 </tr>                                        
                             </tbody>
                         </table>
@@ -98,6 +85,4 @@
     </div>
 
 <?php $__env->stopSection(); ?>
-
-
 <?php echo $__env->make('MilkViews.MilkMaster', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

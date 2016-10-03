@@ -61,8 +61,8 @@
                 <div class="icon">
                   <i class="fa fa-calculator"></i>
                 </div>
-                <a class="small-box-footer" href="#">
-                  Comming Soon &nbsp <i class="fa fa-arrow-circle-right"></i>
+                <a class="small-box-footer" href="<?php echo e(route('utility.index')); ?>">
+                  Enter &nbsp <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->

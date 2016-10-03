@@ -44,6 +44,8 @@ class milkController extends Controller
         return redirect::route('milk.create');
     }
 
+    //milk details as per date
+
     public function details($date)
     {   
         $date = date('m/d/Y', $date);
@@ -53,8 +55,26 @@ class milkController extends Controller
         return view( 'MilkViews.milk.milk-details' )->withMilks( $milks )->withDate( $date );
        
     }
+    //list view for cow milk details
+     public function cowMilkList()
+    {   
+        $cows = Cow::where( 'active', 1 )->get();
 
+        return view( 'MilkViews.milk.cow-milk-list' )->withCows( $cows );
+       
+    }
+    //milk details as per cow
+     public function cowMilkDetails($id) 
+    {   
+        $cow = Cow::find($id);
 
+        $milks = Milk::where('cow_id',$id)->orderBy('date', 'DESC')->take(60)->get();
+
+        return view( 'MilkViews.milk.cow-milk-details' )->withMilks( $milks )->withCow($cow);
+       
+    }
+
+    //milk details as per cow
 
     public function index()
     {

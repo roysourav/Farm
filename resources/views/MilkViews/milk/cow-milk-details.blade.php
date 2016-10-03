@@ -6,13 +6,13 @@
 <section class="content-header m_bottom_10">
     <div class="row">
         <div class="col-md-6 no_mergin">
-            <h3>Milk Record Of {{ Carbon\Carbon::parse($date)->format('jS M Y ') }} </h3>
+            <h3>Milk Record Of Cow {{ $cow->name }} Id C-{{ $cow->id }}(Last 60 Records)</h3>
         </div>
         <div class="col-md-6">
             <div class="pull-right">
-                <a href="{{ route('milk.index') }}" class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a>
-                
-                <a href="{{ route('milk.details.pdf', [ 'date'=> strtotime($date) ] ) }}" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>            
+                <a href="{{ route('milk.index') }}" class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> &nbsp Go Back</a> 
+                <a href="{{ route('cow.milk.details.pdf', ['id' => $cow->id] ) }}" class="btn btn-primary"> <i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                           
             </div>        
         </div>
     </div>    
@@ -24,7 +24,7 @@
         <div class="col-lg-12">
             <div class="box box-info">
                 <div class="box-header">
-                    Milk Record Of {{ Carbon\Carbon::parse($date)->format('jS M Y ') }}
+                   Last 60 Days Milk Record Of Cow {{ $cow->name }}(Id C-{{ $cow->id }})
                 </div>
                         <!-- /.panel-heading -->
                 <div class="boxy-body">
@@ -33,13 +33,10 @@
                             <thead>
                                 <tr>
                                     <th>Sl</th>
-                                    <th>#</th>
-                                    <th>Cow Id</th>
-                                    <th>Cow Name</th>
+                                    <th>Date</th>
                                     <th>Morning(Ltr.)</th>
                                     <th>Evening(Ltr.)</th>
                                     <th>Total(Ltr.)</th>
-                                    <th>All Record/Cow</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,34 +55,25 @@
                                      ?>
                                     <tr>
                                         <td>{{ $count }}</td>
-                                        <td style="display: block;margin: 0 auto;width: 40px;"> {{ Html::image($milk->cow->img, $milk->cow->name, array('class' => 'img-responsive ')) }}</td>
-                                        <td>C-{{ $milk->cow->id }}</td>
-                                        <td>{{ $milk->cow->name }}</td>
+                                        <td>{!! Carbon\Carbon::parse($milk->date)->format('jS M Y ') !!}</td>
                                         <td>{{ $milk->morning }}</td>
                                         <td>{{ $milk->evening }}</td>
                                         <td>{{ $milk->morning+$milk->evening }}</td>
-                                        <td><a class="label label-success" href="{{ route('cow.milk.details', ['id'=>$milk->cow->id] ) }}"><i class="fa fa-eye" aria-hidden="true"></i> Details</a></td>
                                     </tr>
                                 @endforeach 
                                 <tr>
                                     <td>Grand Total</td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td>{{ $morning_total }}</td>
                                     <td>{{ $evening_total }}</td>
                                     <td>{{ $morning_total + $evening_total }}</td>
-                                    <td></td>
-                                </tr> 
+                                </tr>
                                 <tr>
-                                    <td>Average(Per Cow)</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>Avarage</td>
                                     <td></td>
                                     <td>{{ round($morning_total/$count) }}</td>
                                     <td>{{ round($evening_total/$count) }}</td>
                                     <td>{{ round( ($morning_total + $evening_total)/$count ) }}</td>
-                                    <td></td>
                                 </tr>                                        
                             </tbody>
                         </table>
@@ -99,4 +87,3 @@
     </div>
 
 @stop
-

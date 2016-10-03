@@ -212,6 +212,16 @@ class pdfController extends Controller
        
     }
 
+    public function CowMilkDetails($id)
+    {
+        $cow = Cow::find($id);
+
+        $milks = Milk::where('cow_id',$id)->orderBy('date', 'DESC')->take(60)->get();
+
+        $pdf = PDF::loadview( 'PdfViews.milk.cow-milk-details', [ 'milks'=>$milks, 'cow'=>$cow  ] )->setPaper('a4', 'landscape');
+        return $pdf->download('cow-milk-details.pdf');
+    }
+
 
     public function distributionList()
     {   

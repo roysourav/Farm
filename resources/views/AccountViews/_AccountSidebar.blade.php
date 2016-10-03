@@ -6,8 +6,8 @@
 
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel">
+            <h3>Account Module</h3>
             
-            <h3>Milk Module</h3>
           </div>
 
          
@@ -21,33 +21,20 @@
 
             </li>
 
-
+            
             <li class="treeview">
             
-              <a href="#"><i class="fa fa-medkit"></i> <span>Milking</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class="fa fa-medkit"></i> <span>Utilitys</span> <i class="fa fa-angle-left pull-right"></i></a>
 
               <ul class="treeview-menu">
+                <li><a href="{{ route( 'utility.index' ) }}">All Utilitys</a></li>
                 
-                <li><a href="{{ route( 'milk.index' ) }}">All Record</a></li>
-                <li><a href="{{ route( 'milk.milk.list' ) }}">Cow Milk Details</a></li>
-                <li><a href="{{ route( 'milk.date.get' ) }}">Add New Record</a></li>
-
+                
               </ul>
 
             </li>
 
-            <li class="treeview">
-            
-              <a href="#"><i class="fa fa-medkit"></i> <span>Distribution</span> <i class="fa fa-angle-left pull-right"></i></a>
-
-              <ul class="treeview-menu">
-                
-                <li><a href="{{ route( 'distribution.index' ) }}">All Record</a></li>
-                <li><a href="{{ route( 'distribution.create' ) }}">Add New Record</a></li>
-                
-              </ul>
-
-            </li>
+             
 
           </ul><!-- /.sidebar-menu -->
 

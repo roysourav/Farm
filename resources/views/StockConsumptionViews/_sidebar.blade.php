@@ -22,8 +22,6 @@
             </li>
 
             
-
-
             <li class="treeview">
             
               <a href="#"><i class="fa fa-medkit"></i> <span>Vaccines</span> <i class="fa fa-angle-left pull-right"></i></a>

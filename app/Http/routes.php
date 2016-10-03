@@ -57,7 +57,15 @@ Route::post( 'milk-date', [ 'uses'=> 'milkController@storedate', 'as' => 'milk.d
 
 Route::get( 'milk-details/{date}', [ 'uses'=> 'milkController@details', 'as' => 'milk.details' ] );
 
+Route::get( 'cow-milk-list', [ 'uses'=> 'milkController@cowMilkList', 'as' => 'milk.milk.list' ] );
+
+Route::get( 'cow-milk-details/{id}', [ 'uses'=> 'milkController@cowMilkDetails', 'as' => 'cow.milk.details' ] );
+
 Route::resource( 'distribution', 'distributionController', ['except' => ['show'] ]  );
+
+Route::resource( 'utility', 'utilityController' , ['except' => ['create','show'] ] );
+
+Route::resource( 'utility-bill', 'utilityBillController' );
 
 
 
@@ -149,6 +157,7 @@ Route::delete( 'species/{id}' , [ 'uses'=>'speciesController@destroy' , 'as'=>'s
 
         Route::get('/milk', [ 'as' => 'milk.list.pdf', 'uses' => 'pdfController@milkList' ] );
         Route::get('/milk-details/{date}', [ 'as' => 'milk.details.pdf', 'uses' => 'pdfController@milkDetails' ] );
+        Route::get('/cow-milk-details/{id}', [ 'as' => 'cow.milk.details.pdf', 'uses' => 'pdfController@CowMilkDetails' ] );
 
         Route::get('/distribution', [ 'as' => 'distribution.list.pdf', 'uses' => 'pdfController@distributionList' ] );
 

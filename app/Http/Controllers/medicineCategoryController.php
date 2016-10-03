@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\StockConsumptionModels\MedicineCategory;
-
 use Session;
-
 use Redirect;
 
 class medicineCategoryController extends Controller
@@ -116,9 +112,7 @@ class medicineCategoryController extends Controller
             $medicine_category->delete();
 
             Session::flash('success', 'Medicine category has been deleted successfully !');
-        }
-
-    	
+        }    	
 
     	return Redirect::route( 'medicine-category.index' );
     }

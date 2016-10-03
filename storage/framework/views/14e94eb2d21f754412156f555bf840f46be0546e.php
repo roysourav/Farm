@@ -4,7 +4,7 @@
 <section class="content-header m_bottom_10">
     <div class="row">
         <div class="col-md-6 no_mergin">
-            <h3>Milk Record (60 Days)</h3>
+            <h3>Milk Record (Last 60 Records)</h3>
         </div>
         <div class="col-md-6">
             <div class="pull-right">
@@ -21,7 +21,7 @@
         <div class="col-lg-12">
                     <div class="box box-info">
                         <div class="box-header">
-                            Milk Record (60 Days)
+                            Milk Record (Last 60 Records)
                         </div>
                         <!-- /.panel-heading -->
                         <div class="boxy-body">
@@ -38,10 +38,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-    									<?php $count = 0;?>
+    									<?php 
+                                        $count = 0;
+                                        $morning_total = 0;
+                                        $evening_total = 0;
+                                        ?>
 
                                         <?php foreach( $milks as $milk ): ?>
-    										<?php $count++  ?>
+    										<?php 
+                                            $count++;
+                                            $morning_total += $milk->morning;
+                                            $evening_total += $milk->evening;
+
+                                     ?>
                                             <tr>
                                                 <td><?php echo e($count); ?></td>
                                                 <td><?php echo e(Carbon\Carbon::parse($milk->date)->format('jS M Y ')); ?></td>
@@ -50,7 +59,23 @@
                                                 <td><?php echo e($milk->morning+$milk->evening); ?></td>
                                                 <td><a class="label label-success" href="<?php echo e(route('milk.details', ['date'=>strtotime($milk->date) ] )); ?>"><i class="fa fa-eye" aria-hidden="true"></i> Details</a></td>
                                             </tr>
-                                        <?php endforeach; ?>                                         
+                                        <?php endforeach; ?>
+                                        <tr>
+                                            <td>Grand Total</td>
+                                            <td></td>
+                                            <td><?php echo e($morning_total); ?></td>
+                                            <td><?php echo e($evening_total); ?></td>
+                                            <td><?php echo e($morning_total + $evening_total); ?></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Average(Per Day)</td>
+                                            <td></td>
+                                            <td><?php echo e(round($morning_total/$count)); ?></td>
+                                            <td><?php echo e(round($evening_total/$count)); ?></td>
+                                            <td><?php echo e(round( ($morning_total + $evening_total)/$count )); ?></td>
+                                            <td></td>
+                                        </tr>                                          
                                     </tbody>
                                 </table>
                             </div>

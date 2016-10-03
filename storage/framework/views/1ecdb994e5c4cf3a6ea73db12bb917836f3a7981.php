@@ -21,8 +21,6 @@
 
             </li>
 
-            
-
 
             <li class="treeview">
             
@@ -31,8 +29,9 @@
               <ul class="treeview-menu">
                 
                 <li><a href="<?php echo e(route( 'milk.index' )); ?>">All Record</a></li>
-                <li><a href="<?php echo e(route( 'milk.date.get' )); ?>">Add Record</a></li>
-                
+                <li><a href="<?php echo e(route( 'milk.milk.list' )); ?>">Cow Milk Details</a></li>
+                <li><a href="<?php echo e(route( 'milk.date.get' )); ?>">Add New Record</a></li>
+
               </ul>
 
             </li>
@@ -44,13 +43,11 @@
               <ul class="treeview-menu">
                 
                 <li><a href="<?php echo e(route( 'distribution.index' )); ?>">All Record</a></li>
-                <li><a href="<?php echo e(route( 'distribution.create' )); ?>">Add Record</a></li>
+                <li><a href="<?php echo e(route( 'distribution.create' )); ?>">Add New Record</a></li>
                 
               </ul>
 
             </li>
-
-
 
           </ul><!-- /.sidebar-menu -->
 
